@@ -25,22 +25,17 @@ export default function PublicHeader({ compact = false }: PublicHeaderProps) {
 
       <div className="relative overflow-hidden border-b border-[#e7e7e7] bg-white text-[#151515]">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
-          <a href="/join" className="flex items-center gap-3.5">
+          <a href="/join" className="flex items-center gap-2">
             <Image
-              src="/nmd-logo.svg"
+              src="/nmd-logo-dark.png"
               alt="NakedMD"
-              width={85}
-              height={48}
-              className="h-12 w-auto"
+              width={140}
+              height={33}
+              className="h-8 w-auto"
             />
-            <div>
-              <div className="font-headline text-2xl uppercase tracking-[0.02em] leading-[0.9] text-[#151515]">
-                NakedMD
-              </div>
-              <div className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[#717171]">
-                Powered by Vi Operate
-              </div>
-            </div>
+            <span className="text-[9px] font-semibold uppercase tracking-[0.2em] text-[#C4B59A] border-l border-[#E0DEDB] pl-2 ml-1">
+              Powered by Vi
+            </span>
           </a>
 
           {!compact && (

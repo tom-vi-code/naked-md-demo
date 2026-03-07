@@ -219,35 +219,6 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
                   </span>
                 ))}
               </div>
-
-              <div className="mt-8 grid gap-4 sm:grid-cols-3">
-                {SOCIAL_PROOF.map((item) => (
-                  <div
-                    key={item.label}
-                    className="border border-white/12 bg-white/7 p-5 backdrop-blur animate-fade-up"
-                  >
-                    <div className="text-3xl font-black tracking-tight text-white">
-                      {item.value}
-                    </div>
-                    <div className="mt-2 text-sm leading-6 text-white/68">{item.label}</div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-8 grid gap-4 sm:grid-cols-3">
-                {[
-                  'Three studio locations',
-                  'Flexible appointment hours',
-                  'Fillers, Botox, skincare, and more',
-                ].map((item) => (
-                  <div
-                    key={item}
-                    className="border border-white/10 bg-black/18 px-4 py-4 text-sm font-medium text-white/86"
-                  >
-                    {item}
-                  </div>
-                ))}
-              </div>
             </div>
 
             <div id="lead-form" className="relative scroll-mt-24">
@@ -557,6 +528,39 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
         </div>
       </section>
 
+      <section className="bg-[#f4f1ea] py-10 sm:py-14">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-4 sm:grid-cols-3">
+            {SOCIAL_PROOF.map((item) => (
+              <div
+                key={item.label}
+                className="border border-[#E0DEDB] bg-white p-5 animate-fade-up"
+              >
+                <div className="font-headline text-3xl uppercase tracking-[0.02em] leading-[0.9] text-[#151515]">
+                  {item.value}
+                </div>
+                <div className="mt-2 text-sm leading-6 text-[#8B7D6B]">{item.label}</div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-6 grid gap-4 sm:grid-cols-3">
+            {[
+              'Board-certified plastic surgeon trained',
+              'Reliable results, proven daily nationwide',
+              'Consistent quality wherever you go',
+            ].map((item) => (
+              <div
+                key={item}
+                className="border border-[#E0DEDB] bg-[#f4f1ea] px-4 py-4 text-center text-sm font-bold uppercase tracking-[0.06em] text-[#151515]"
+              >
+                {item}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="bg-[#f4f1ea] py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="bg-[#151515] px-6 py-7 text-white sm:px-8">
@@ -635,14 +639,14 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
                         <span
                           className={cn(
                             'mt-0.5 flex h-6 w-6 items-center justify-center',
-                            tier.id === 'luxury' ? 'bg-white/10 text-white' : 'bg-[#f4f1ea] text-[#151515]',
+                            tier.id === 'luxury' ? 'bg-[#f4f1ea]/20 text-[#f4f1ea]' : 'bg-[#f4f1ea] text-[#151515]',
                           )}
                         >
                           <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2">
                             <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
                           </svg>
                         </span>
-                        <span className={cn('text-sm leading-6 text-[#151515]', tier.id === 'luxury' && 'text-white/86')}>
+                        <span className={cn('text-sm leading-6', tier.id === 'luxury' ? 'text-white' : 'text-[#151515]')}>
                           {feature}
                         </span>
                       </li>

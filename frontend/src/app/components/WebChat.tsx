@@ -317,7 +317,7 @@ export default function WebChat({ leadContext }: WebChatProps) {
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4 sm:px-6">
           <div className="flex min-w-0 items-center gap-4">
             <Image
-              src="/nmd-logo-white.svg"
+              src="/nmd-logo-white.png"
               alt="NakedMD"
               width={85}
               height={48}

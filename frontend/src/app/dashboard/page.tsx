@@ -241,7 +241,7 @@ export default function DashboardPage() {
         >
           <div className={cn('flex items-center gap-4 border-b pb-5', theme === 'dark' ? 'border-white/8' : 'border-[#E0DEDB]')}>
             <Image
-              src={theme === 'dark' ? '/nmd-logo-white.svg' : '/nmd-logo.svg'}
+              src={theme === 'dark' ? '/nmd-logo-white.png' : '/nmd-logo-dark.png'}
               alt="NakedMD"
               width={85}
               height={48}

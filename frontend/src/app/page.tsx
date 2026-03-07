@@ -48,7 +48,7 @@ export default function LoginPage() {
         >
           <div className="mb-8 flex flex-col items-center text-center">
             <Image
-              src="/nmd-logo-white.svg"
+              src="/nmd-logo-white.png"
               alt="NakedMD"
               width={114}
               height={64}
