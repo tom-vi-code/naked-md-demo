@@ -13,12 +13,12 @@ interface LocationBreakdownProps {
 function LocationCard({ stats }: { stats: LocationStats }) {
   return (
     <div className="surface-card-dark rounded-none p-6">
-      <div className="flex items-start justify-between gap-4">
+      <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
           <div className="dashboard-label text-xs font-semibold uppercase tracking-[0.22em]">
             Location
           </div>
-          <h4 className="dashboard-heading mt-2 text-2xl font-black tracking-tight">
+          <h4 className="dashboard-heading mt-2 text-xl font-black tracking-tight sm:text-2xl">
             {stats.name.replace('NakedMD ', '')}
           </h4>
         </div>
@@ -27,7 +27,7 @@ function LocationCard({ stats }: { stats: LocationStats }) {
         </div>
       </div>
 
-      <div className="mt-6 grid grid-cols-2 gap-4">
+      <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div className="rounded-none border border-white/8 bg-white/4 p-4">
           <div className="dashboard-label text-[11px] font-semibold uppercase tracking-[0.16em]">
             Total Calls

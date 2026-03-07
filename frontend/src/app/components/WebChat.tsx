@@ -111,6 +111,69 @@ const ChatBubble = React.memo(function ChatBubble({ msg, agentName }: { msg: Cha
   );
 });
 
+function MobileLeadSummary({
+  leadContext,
+  passLabel,
+  locationName,
+  recommendedTier,
+}: {
+  leadContext: LeadContext;
+  passLabel: string;
+  locationName: string;
+  recommendedTier: { name: string; price: string };
+}) {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <div className="lg:hidden">
+      <button
+        type="button"
+        onClick={() => setExpanded((prev) => !prev)}
+        className="flex w-full items-center justify-between rounded-none border border-slate-200 bg-white px-4 py-3"
+      >
+        <div className="flex items-center gap-3 text-sm">
+          <span className="font-semibold text-slate-900">{leadContext.firstName}</span>
+          <span className="text-slate-400">|</span>
+          <span className="text-slate-600">{recommendedTier.name}</span>
+          <span className="text-slate-400">|</span>
+          <span className="text-slate-600">{leadContext.interest}</span>
+        </div>
+        <svg
+          viewBox="0 0 24 24"
+          className={cn('h-4 w-4 text-slate-400 transition-transform', expanded && 'rotate-180')}
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+        >
+          <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </button>
+      {expanded && (
+        <div className="rounded-none border border-t-0 border-slate-200 bg-white px-4 py-4">
+          <dl className="grid grid-cols-2 gap-3 text-sm">
+            <div>
+              <dt className="text-slate-400">Offer selected</dt>
+              <dd className="mt-0.5 font-semibold text-slate-900">{passLabel}</dd>
+            </div>
+            <div>
+              <dt className="text-slate-400">Preferred studio</dt>
+              <dd className="mt-0.5 font-semibold text-slate-900">{locationName}</dd>
+            </div>
+            <div>
+              <dt className="text-slate-400">Top goal</dt>
+              <dd className="mt-0.5 font-semibold text-slate-900">{leadContext.interest}</dd>
+            </div>
+            <div>
+              <dt className="text-slate-400">Recommended tier</dt>
+              <dd className="mt-0.5 font-semibold text-slate-900">{recommendedTier.name}</dd>
+            </div>
+          </dl>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function WebChat({ leadContext }: WebChatProps) {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState('');
@@ -298,6 +361,12 @@ export default function WebChat({ leadContext }: WebChatProps) {
       </div>
 
       <div className="mx-auto flex min-h-[calc(100vh-117px)] max-w-6xl flex-col gap-6 px-4 py-4 sm:px-6 sm:py-6 lg:flex-row">
+        <MobileLeadSummary
+          leadContext={leadContext}
+          passLabel={passLabel}
+          locationName={locationName}
+          recommendedTier={recommendedTier}
+        />
         <aside className="hidden w-full max-w-[300px] shrink-0 flex-col gap-4 lg:flex">
           <div className="surface-card rounded-none p-5">
             <div className="text-xs font-semibold uppercase tracking-[0.22em] text-[#151515]">

@@ -43,8 +43,8 @@ export default function OutcomeDistribution({ distribution }: OutcomeDistributio
           const widthPct = Math.max((count / maxCount) * 100, 4);
 
           return (
-            <div key={outcome} className="grid grid-cols-[minmax(0,154px)_1fr_44px] items-center gap-3">
-              <div className="dashboard-copy text-sm">{OUTCOME_LABELS[outcome]}</div>
+            <div key={outcome} className="grid grid-cols-[minmax(0,100px)_1fr_36px] items-center gap-2 sm:grid-cols-[minmax(0,154px)_1fr_44px] sm:gap-3">
+              <div className="dashboard-copy text-xs sm:text-sm">{OUTCOME_LABELS[outcome]}</div>
 
               <div className="h-5 overflow-hidden bg-white/6">
                 <div

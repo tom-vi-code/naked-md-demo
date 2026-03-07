@@ -115,7 +115,7 @@ function ChannelWinBar({
       <div
         className={cn(
           'h-9 flex-1 overflow-hidden rounded-none',
-          theme === 'dark' ? 'bg-white/5' : 'bg-slate-100',
+          theme === 'dark' ? 'bg-white/5' : 'bg-[#f4f1ea]/30',
         )}
       >
         <div
@@ -126,7 +126,7 @@ function ChannelWinBar({
             borderRight: `3px solid ${meta.color}`,
           }}
         >
-          <span className={cn('text-xs font-bold', theme === 'dark' ? 'text-white' : 'text-slate-900')}>
+          <span className={cn('text-xs font-bold', theme === 'dark' ? 'text-white' : 'text-[#3D342A]')}>
             {wins} <span className="dashboard-label">({pct.toFixed(0)}%)</span>
           </span>
         </div>
@@ -159,10 +159,10 @@ function LeadCard({
         expanded
           ? theme === 'dark'
             ? 'border-white/12 bg-white/[0.04]'
-            : 'border-slate-200 bg-slate-50'
+            : 'border-[#E0DEDB] bg-[#f4f1ea]/30'
           : theme === 'dark'
             ? 'border-white/6 bg-white/[0.02] hover:border-white/10 hover:bg-white/[0.03]'
-            : 'border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50',
+            : 'border-[#E0DEDB] bg-white hover:border-[#C4B59A] hover:bg-[#f4f1ea]/30',
       )}
     >
       {/* Header */}
@@ -183,7 +183,7 @@ function LeadCard({
           <span
             className={cn(
               'dashboard-copy inline-flex items-center gap-1.5 rounded-none border px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em]',
-              theme === 'dark' ? 'border-white/10 bg-white/4' : 'border-slate-200 bg-slate-50',
+              theme === 'dark' ? 'border-white/10 bg-white/4' : 'border-[#E0DEDB] bg-[#f4f1ea]/30',
             )}
           >
             <span
@@ -207,14 +207,14 @@ function LeadCard({
         <span
           className={cn(
             'dashboard-label rounded-none border px-2.5 py-1 font-mono text-[11px]',
-            theme === 'dark' ? 'border-white/8 bg-white/4' : 'border-slate-200 bg-slate-50',
+            theme === 'dark' ? 'border-white/8 bg-white/4' : 'border-[#E0DEDB] bg-[#f4f1ea]/30',
           )}
         >
           {formatMs(record.firstResponseMs)}
         </span>
 
         <svg
-          className={cn('h-4 w-4 text-slate-500 transition-transform', expanded && 'rotate-180')}
+          className={cn('h-4 w-4 text-[#8B7D6B] transition-transform', expanded && 'rotate-180')}
           viewBox="0 0 20 20"
           fill="currentColor"
         >
@@ -231,7 +231,7 @@ function LeadCard({
         <div
           className={cn(
             'border-t px-5 pb-5 pt-4',
-            theme === 'dark' ? 'border-white/6' : 'border-slate-200',
+            theme === 'dark' ? 'border-white/6' : 'border-[#E0DEDB]',
           )}
         >
           {/* First response marker */}
@@ -277,7 +277,7 @@ function LeadCard({
                   <div
                     className={cn(
                       'relative h-8 flex-1 overflow-hidden rounded-none',
-                      theme === 'dark' ? 'bg-white/[0.04]' : 'bg-slate-100',
+                      theme === 'dark' ? 'bg-white/[0.04]' : 'bg-[#f4f1ea]/30',
                     )}
                   >
                     {/* Background fill for winner */}
@@ -326,14 +326,14 @@ function LeadCard({
                               'pointer-events-none absolute -top-10 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-none border px-2.5 py-1.5 text-[10px] opacity-0 shadow-lg transition-opacity group-hover:opacity-100',
                               theme === 'dark'
                                 ? 'border-white/10 bg-[#222222] text-slate-300'
-                                : 'border-slate-200 bg-white text-slate-700',
+                                : 'border-[#E0DEDB] bg-[#fdfcfa] text-[#4A3F33]',
                             )}
                           >
                             <span className="font-semibold" style={{ color: dotColor }}>
                               {formatEventAction(event.action)}
                             </span>{' '}
                             · {formatMs(event.offsetMs)}
-                            <div className={cn('mt-0.5', theme === 'dark' ? 'text-slate-500' : 'text-slate-500')}>
+                            <div className={cn('mt-0.5', theme === 'dark' ? 'text-slate-500' : 'text-[#8B7D6B]')}>
                               {event.detail}
                             </div>
                           </div>
@@ -368,7 +368,7 @@ function LeadCard({
           <div
             className={cn(
               'mt-4 rounded-none border px-4 py-3',
-              theme === 'dark' ? 'border-white/6 bg-white/[0.02]' : 'border-slate-200 bg-slate-50',
+              theme === 'dark' ? 'border-white/6 bg-white/[0.02]' : 'border-[#E0DEDB] bg-[#f4f1ea]/30',
             )}
           >
             <div className="dashboard-muted text-[10px] font-semibold uppercase tracking-[0.18em]">
@@ -553,7 +553,7 @@ export default function OrchestratorView({
           <span
             className={cn(
               'dashboard-label rounded-none border px-3 py-1.5 text-xs uppercase tracking-[0.14em]',
-              theme === 'dark' ? 'border-white/8 bg-white/4' : 'border-slate-200 bg-slate-50',
+              theme === 'dark' ? 'border-white/8 bg-white/4' : 'border-[#E0DEDB] bg-[#f4f1ea]/30',
             )}
           >
             {records.length} leads

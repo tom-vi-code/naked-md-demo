@@ -38,7 +38,7 @@ function Slider({
     <div>
       <div className="flex items-center justify-between">
         <div className="relative flex items-center gap-1.5">
-          <label className={cn('text-sm font-semibold', theme === 'dark' ? 'text-slate-200' : 'text-slate-700')}>
+          <label className={cn('text-sm font-semibold', theme === 'dark' ? 'text-slate-200' : 'text-[#4A3F33]')}>
             {label}
           </label>
           <button
@@ -50,7 +50,7 @@ function Slider({
               'flex h-4 w-4 items-center justify-center rounded-none text-[10px] font-bold leading-none',
               theme === 'dark'
                 ? 'bg-white/8 text-slate-400 hover:bg-white/14'
-                : 'bg-slate-200 text-slate-500 hover:bg-slate-300',
+                : 'bg-[#E0DEDB] text-[#8B7D6B] hover:bg-[#C4B59A]/40',
             )}
             aria-label={`Info about ${label}`}
           >
@@ -61,13 +61,13 @@ function Slider({
               'absolute left-0 top-full z-10 mt-2 w-56 rounded-none border px-3 py-2.5 text-xs leading-5 shadow-lg',
               theme === 'dark'
                 ? 'border-white/10 bg-[#282828] text-slate-300'
-                : 'border-slate-200 bg-white text-slate-600',
+                : 'border-[#E0DEDB] bg-[#fdfcfa] text-[#6B5E4E]',
             )}>
               {tooltip}
             </div>
           )}
         </div>
-        <span className={cn('text-xs font-mono tabular-nums', theme === 'dark' ? 'text-slate-400' : 'text-slate-500')}>
+        <span className={cn('text-xs font-mono tabular-nums', theme === 'dark' ? 'text-slate-400' : 'text-[#8B7D6B]')}>
           {value}
         </span>
       </div>
@@ -80,10 +80,10 @@ function Slider({
         className="mt-2 w-full accent-[#C4B59A]"
       />
       <div className="mt-1 flex justify-between">
-        <span className={cn('text-[10px] uppercase tracking-[0.16em]', theme === 'dark' ? 'text-slate-500' : 'text-slate-400')}>
+        <span className={cn('text-[10px] uppercase tracking-[0.16em]', theme === 'dark' ? 'text-slate-500' : 'text-[#A69A80]')}>
           {lowLabel}
         </span>
-        <span className={cn('text-[10px] uppercase tracking-[0.16em]', theme === 'dark' ? 'text-slate-500' : 'text-slate-400')}>
+        <span className={cn('text-[10px] uppercase tracking-[0.16em]', theme === 'dark' ? 'text-slate-500' : 'text-[#A69A80]')}>
           {highLabel}
         </span>
       </div>
@@ -243,19 +243,19 @@ export default function AgentConfigPanel({ theme }: AgentConfigPanelProps) {
   const isDark = theme === 'dark';
   const cardClass = cn(
     'rounded-none border p-5',
-    isDark ? 'border-white/8 bg-white/[0.03]' : 'border-slate-200 bg-white',
+    isDark ? 'border-white/8 bg-white/[0.03]' : 'border-[#E0DEDB] bg-[#fdfcfa]',
   );
   const inputClass = cn(
     'w-full rounded-none border px-4 py-3 text-sm',
     isDark
       ? 'border-white/10 bg-white/[0.04] text-white placeholder:text-slate-500 focus:border-[#4C4C4B]/50'
-      : 'border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:border-[#4C4C4B]',
+      : 'border-[#E0DEDB] bg-[#f4f1ea]/30 text-[#3D342A] placeholder:text-[#A69A80] focus:border-[#4C4C4B]',
   );
   const selectClass = cn(
     'w-full rounded-none border px-4 py-3 text-sm appearance-none',
     isDark
       ? 'border-white/10 bg-white/[0.04] text-white focus:border-[#4C4C4B]/50'
-      : 'border-slate-200 bg-slate-50 text-slate-900 focus:border-[#4C4C4B]',
+      : 'border-[#E0DEDB] bg-[#f4f1ea]/30 text-[#3D342A] focus:border-[#4C4C4B]',
   );
 
   return (
@@ -263,16 +263,16 @@ export default function AgentConfigPanel({ theme }: AgentConfigPanelProps) {
       {/* Status bar */}
       <div className="flex items-center justify-between">
         <div>
-          <div className={cn('text-xs font-semibold uppercase tracking-[0.22em]', isDark ? 'text-slate-400' : 'text-slate-500')}>
+          <div className={cn('text-xs font-semibold uppercase tracking-[0.22em]', isDark ? 'text-slate-400' : 'text-[#8B7D6B]')}>
             Agent Configuration
           </div>
-          <p className={cn('mt-1 text-sm', isDark ? 'text-slate-300' : 'text-slate-600')}>
+          <p className={cn('mt-1 text-sm', isDark ? 'text-slate-300' : 'text-[#6B5E4E]')}>
             Customize how the chat concierge sounds and behaves with prospects.
           </p>
         </div>
         <div className="flex items-center gap-3">
           {(saving || saved) && (
-            <span className={cn('text-xs font-semibold uppercase tracking-[0.14em]', saved ? 'text-emerald-400' : isDark ? 'text-slate-400' : 'text-slate-500')}>
+            <span className={cn('text-xs font-semibold uppercase tracking-[0.14em]', saved ? 'text-emerald-400' : isDark ? 'text-slate-400' : 'text-[#8B7D6B]')}>
               {saved ? 'Saved' : 'Saving...'}
             </span>
           )}
@@ -282,7 +282,7 @@ export default function AgentConfigPanel({ theme }: AgentConfigPanelProps) {
               'rounded-none border px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em]',
               isDark
                 ? 'border-white/10 text-slate-300 hover:border-white/20 hover:bg-white/5'
-                : 'border-slate-200 text-slate-600 hover:border-slate-300 hover:bg-slate-50',
+                : 'border-[#E0DEDB] text-[#6B5E4E] hover:border-[#C4B59A] hover:bg-[#f4f1ea]/30',
             )}
           >
             Reset to Default
@@ -299,7 +299,7 @@ export default function AgentConfigPanel({ theme }: AgentConfigPanelProps) {
 
           <div className="mt-5 space-y-4">
             <div>
-              <label className={cn('text-sm font-semibold', isDark ? 'text-slate-200' : 'text-slate-700')}>
+              <label className={cn('text-sm font-semibold', isDark ? 'text-slate-200' : 'text-[#4A3F33]')}>
                 Agent Name
               </label>
               <input
@@ -312,7 +312,7 @@ export default function AgentConfigPanel({ theme }: AgentConfigPanelProps) {
             </div>
 
             <div>
-              <label className={cn('text-sm font-semibold', isDark ? 'text-slate-200' : 'text-slate-700')}>
+              <label className={cn('text-sm font-semibold', isDark ? 'text-slate-200' : 'text-[#4A3F33]')}>
                 Language
               </label>
               <select
@@ -329,7 +329,7 @@ export default function AgentConfigPanel({ theme }: AgentConfigPanelProps) {
             </div>
 
             <div>
-              <label className={cn('text-sm font-semibold', isDark ? 'text-slate-200' : 'text-slate-700')}>
+              <label className={cn('text-sm font-semibold', isDark ? 'text-slate-200' : 'text-[#4A3F33]')}>
                 Response Style
               </label>
               <div className="mt-2 flex gap-2">
@@ -343,13 +343,13 @@ export default function AgentConfigPanel({ theme }: AgentConfigPanelProps) {
                         ? 'border-[#C4B59A]/40 bg-[#C4B59A]/10'
                         : isDark
                           ? 'border-white/8 bg-white/[0.02] hover:border-white/16'
-                          : 'border-slate-200 bg-slate-50 hover:border-slate-300',
+                          : 'border-[#E0DEDB] bg-[#f4f1ea]/30 hover:border-[#C4B59A]',
                     )}
                   >
-                    <div className={cn('text-xs font-semibold', persona.style === opt.value ? (isDark ? 'text-[#f4f1ea]' : 'text-[#151515]') : isDark ? 'text-slate-200' : 'text-slate-700')}>
+                    <div className={cn('text-xs font-semibold', persona.style === opt.value ? (isDark ? 'text-[#f4f1ea]' : 'text-[#151515]') : isDark ? 'text-slate-200' : 'text-[#4A3F33]')}>
                       {opt.label}
                     </div>
-                    <div className={cn('mt-1 text-[11px]', isDark ? 'text-slate-400' : 'text-slate-500')}>
+                    <div className={cn('mt-1 text-[11px]', isDark ? 'text-slate-400' : 'text-[#8B7D6B]')}>
                       {opt.description}
                     </div>
                   </button>
@@ -359,10 +359,10 @@ export default function AgentConfigPanel({ theme }: AgentConfigPanelProps) {
 
             <div className="flex items-center justify-between">
               <div>
-                <div className={cn('text-sm font-semibold', isDark ? 'text-slate-200' : 'text-slate-700')}>
+                <div className={cn('text-sm font-semibold', isDark ? 'text-slate-200' : 'text-[#4A3F33]')}>
                   Use Emoji
                 </div>
-                <div className={cn('mt-0.5 text-xs', isDark ? 'text-slate-400' : 'text-slate-500')}>
+                <div className={cn('mt-0.5 text-xs', isDark ? 'text-slate-400' : 'text-[#8B7D6B]')}>
                   Add contextual emoji to responses
                 </div>
               </div>
@@ -373,7 +373,7 @@ export default function AgentConfigPanel({ theme }: AgentConfigPanelProps) {
                 onClick={() => update({ useEmoji: !persona.useEmoji })}
                 className={cn(
                   'relative flex h-7 w-12 items-center rounded-full transition-colors',
-                  persona.useEmoji ? 'bg-[#151515]' : isDark ? 'bg-white/10' : 'bg-slate-300',
+                  persona.useEmoji ? 'bg-[#151515]' : isDark ? 'bg-white/10' : 'bg-[#C4B59A]/40',
                 )}
               >
                 <span
@@ -441,7 +441,7 @@ export default function AgentConfigPanel({ theme }: AgentConfigPanelProps) {
 
           <div className="mt-5 space-y-4">
             <div>
-              <label className={cn('text-sm font-semibold', isDark ? 'text-slate-200' : 'text-slate-700')}>
+              <label className={cn('text-sm font-semibold', isDark ? 'text-slate-200' : 'text-[#4A3F33]')}>
                 Custom Greeting
               </label>
               <input
@@ -451,12 +451,12 @@ export default function AgentConfigPanel({ theme }: AgentConfigPanelProps) {
                 placeholder="Hey there"
                 className={cn(inputClass, 'mt-2')}
               />
-              <p className={cn('mt-1 text-xs', isDark ? 'text-slate-500' : 'text-slate-400')}>
+              <p className={cn('mt-1 text-xs', isDark ? 'text-slate-500' : 'text-[#A69A80]')}>
                 Used as the opening of the welcome message. Leave blank for default.
               </p>
             </div>
             <div>
-              <label className={cn('text-sm font-semibold', isDark ? 'text-slate-200' : 'text-slate-700')}>
+              <label className={cn('text-sm font-semibold', isDark ? 'text-slate-200' : 'text-[#4A3F33]')}>
                 Sign-off
               </label>
               <input
@@ -466,7 +466,7 @@ export default function AgentConfigPanel({ theme }: AgentConfigPanelProps) {
                 placeholder="Talk soon!"
                 className={cn(inputClass, 'mt-2')}
               />
-              <p className={cn('mt-1 text-xs', isDark ? 'text-slate-500' : 'text-slate-400')}>
+              <p className={cn('mt-1 text-xs', isDark ? 'text-slate-500' : 'text-[#A69A80]')}>
                 Appended to every response. Leave blank for none.
               </p>
             </div>
@@ -486,14 +486,14 @@ export default function AgentConfigPanel({ theme }: AgentConfigPanelProps) {
               Test Response
             </button>
           </div>
-          <p className={cn('mt-2 text-xs', isDark ? 'text-slate-500' : 'text-slate-400')}>
+          <p className={cn('mt-2 text-xs', isDark ? 'text-slate-500' : 'text-[#A69A80]')}>
             Sends &quot;What treatments do you recommend for me?&quot; as a test prospect and shows the response with your current settings.
           </p>
 
           {previewing ? (
             <div className={cn(
               'mt-4 rounded-none border border-dashed px-6 py-10 text-center text-sm',
-              isDark ? 'border-white/10 text-slate-400' : 'border-slate-200 text-slate-500',
+              isDark ? 'border-white/10 text-slate-400' : 'border-[#E0DEDB] text-[#8B7D6B]',
             )}>
               <div className="flex items-center justify-center gap-2">
                 <svg className="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none">
@@ -506,13 +506,13 @@ export default function AgentConfigPanel({ theme }: AgentConfigPanelProps) {
           ) : preview ? (
             <div className={cn(
               'mt-4 rounded-none border px-4 py-4 text-sm leading-7',
-              isDark ? 'border-white/8 bg-white/[0.02] text-slate-200' : 'border-slate-200 bg-slate-50 text-slate-700',
+              isDark ? 'border-white/8 bg-white/[0.02] text-slate-200' : 'border-[#E0DEDB] bg-[#f4f1ea]/30 text-[#4A3F33]',
             )}>
               <div className="mb-2 flex items-center gap-2">
                 <div className="flex h-7 w-7 items-center justify-center rounded-none bg-[#151515] text-[10px] font-bold text-white">
                   {(persona.name || 'Vi').slice(0, 2)}
                 </div>
-                <span className={cn('text-xs font-semibold', isDark ? 'text-slate-300' : 'text-slate-600')}>
+                <span className={cn('text-xs font-semibold', isDark ? 'text-slate-300' : 'text-[#6B5E4E]')}>
                   {persona.name || 'Vi'}
                 </span>
               </div>
@@ -521,7 +521,7 @@ export default function AgentConfigPanel({ theme }: AgentConfigPanelProps) {
           ) : (
             <div className={cn(
               'mt-4 rounded-none border border-dashed px-6 py-10 text-center text-sm',
-              isDark ? 'border-white/10 text-slate-500' : 'border-slate-200 text-slate-400',
+              isDark ? 'border-white/10 text-slate-500' : 'border-[#E0DEDB] text-[#A69A80]',
             )}>
               Click &quot;Test Response&quot; to preview
             </div>

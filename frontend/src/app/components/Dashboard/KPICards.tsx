@@ -64,7 +64,7 @@ export default function KPICards({ kpis }: KPICardsProps) {
       icon: '02',
       label: 'Connect Rate',
       value: kpis.connectRate,
-      accent: 'from-emerald-400 to-emerald-600',
+      accent: 'from-[#C4B59A] to-[#A69A80]',
       formatter: (value) => `${value.toFixed(1)}%`,
       tooltip: 'Percentage of calls where the prospect answered and a live conversation occurred.',
     },
@@ -72,7 +72,7 @@ export default function KPICards({ kpis }: KPICardsProps) {
       icon: '03',
       label: 'Avg Duration',
       value: kpis.avgDuration,
-      accent: 'from-cyan-400 to-sky-600',
+      accent: 'from-[#D4C5AE] to-[#B8A88E]',
       formatter: (value) => formatDuration(Math.round(value)),
       tooltip: 'Average length of connected calls, excluding unanswered and voicemail.',
     },
@@ -80,7 +80,7 @@ export default function KPICards({ kpis }: KPICardsProps) {
       icon: '04',
       label: 'Consultations Booked',
       value: kpis.consultationsBooked,
-      accent: 'from-amber-300 to-amber-500',
+      accent: 'from-[#E8DFD0] to-[#C4B59A]',
       formatter: (value) => Math.round(value).toLocaleString(),
       tooltip: 'Prospects who booked a consultation during their call.',
     },
@@ -88,7 +88,7 @@ export default function KPICards({ kpis }: KPICardsProps) {
       icon: '05',
       label: 'Conversion Rate',
       value: kpis.conversionRate,
-      accent: 'from-lime-300 to-emerald-500',
+      accent: 'from-[#B8A88E] to-[#8B7D6B]',
       formatter: (value) => `${value.toFixed(1)}%`,
       tooltip: 'Percentage of connected calls that resulted in a consultation, treatment, or package sale.',
     },
@@ -96,7 +96,7 @@ export default function KPICards({ kpis }: KPICardsProps) {
       icon: '06',
       label: 'Escalations',
       value: kpis.escalations,
-      accent: 'from-rose-400 to-red-500',
+      accent: 'from-[#C4A882] to-[#9B7F5E]',
       formatter: (value) => Math.round(value).toLocaleString(),
       tooltip: 'Calls transferred to a human manager due to complex issues or complaints.',
     },
@@ -104,14 +104,14 @@ export default function KPICards({ kpis }: KPICardsProps) {
       icon: '07',
       label: 'Avg Sentiment',
       value: kpis.avgSentiment,
-      accent: 'from-violet-400 to-indigo-500',
+      accent: 'from-[#A69A80] to-[#7A6E5A]',
       formatter: (value) => `${Math.round(value)}/100`,
       tooltip: 'AI-scored caller satisfaction from 0 (negative) to 100 (positive), based on tone and language.',
     },
   ], [kpis.totalCalls, kpis.connectRate, kpis.avgDuration, kpis.consultationsBooked, kpis.conversionRate, kpis.escalations, kpis.avgSentiment]);
 
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4 2xl:grid-cols-7">
+    <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 xl:grid-cols-7">
       {cards.map((card) => (
         <div
           key={card.label}
@@ -132,7 +132,7 @@ export default function KPICards({ kpis }: KPICardsProps) {
             </div>
           </div>
 
-          <div className="dashboard-value mt-5 text-3xl font-black tracking-tight">
+          <div className="dashboard-value mt-5 text-2xl font-black tracking-tight sm:text-3xl">
             <AnimatedMetric value={card.value} formatter={card.formatter} />
           </div>
         </div>

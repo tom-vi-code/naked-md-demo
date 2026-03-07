@@ -57,7 +57,7 @@ export default function LoginPage() {
             <span className="mb-3 border border-white/12 bg-white/6 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.28em] text-white/70">
               Newport Beach
             </span>
-            <h1 className="font-headline text-4xl uppercase tracking-[0.02em] leading-[0.9] text-white">
+            <h1 className="font-headline text-2xl uppercase tracking-[0.02em] leading-[0.9] text-white sm:text-4xl">
               Manager Dashboard
             </h1>
             <p className="mt-3 max-w-sm text-sm leading-6 text-slate-400">
@@ -101,7 +101,7 @@ export default function LoginPage() {
             Sign In
           </button>
 
-          <div className="mt-6 flex items-center justify-between gap-4 text-[11px] uppercase tracking-[0.2em] text-slate-500">
+          <div className="mt-6 flex flex-wrap items-center justify-between gap-4 text-[11px] uppercase tracking-[0.2em] text-slate-500">
             <span>No white-label clutter</span>
             <span>Dark analytics theme</span>
           </div>

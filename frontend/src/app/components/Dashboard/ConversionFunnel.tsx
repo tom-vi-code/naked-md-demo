@@ -66,9 +66,9 @@ export default function ConversionFunnel({ funnel }: ConversionFunnelProps) {
                 </div>
               )}
 
-              <div className="grid grid-cols-[92px_1fr_78px] items-center gap-4">
+              <div className="grid grid-cols-[minmax(0,70px)_1fr_50px] items-center gap-3 sm:grid-cols-[92px_1fr_78px] sm:gap-4">
                 <Tooltip text={stage.tooltip}>
-                  <span className="dashboard-copy text-sm font-semibold">{stage.label}</span>
+                  <span className="dashboard-copy text-xs font-semibold sm:text-sm">{stage.label}</span>
                 </Tooltip>
                 <div className="overflow-hidden bg-white/6">
                   <div

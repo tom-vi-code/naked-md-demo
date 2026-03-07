@@ -100,15 +100,15 @@ textarea:focus-visible {
    --------------------------------------------------------------------------- */
 
 [data-theme='light'] [data-dashboard] {
-  --nakedmd-dashboard-bg: #f5f6fa;
-  --nakedmd-dashboard-elevated: #ffffff;
-  --nakedmd-dashboard-border: rgba(15, 23, 42, 0.1);
+  --nakedmd-dashboard-bg: #faf8f4;
+  --nakedmd-dashboard-elevated: #fdfcfa;
+  --nakedmd-dashboard-border: rgba(224, 222, 219, 0.6);
 }
 
 [data-theme='light'] [data-dashboard] .surface-card-dark {
-  background: #ffffff;
-  border-color: rgba(15, 23, 42, 0.08);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 4px 16px rgba(0, 0, 0, 0.04);
+  background: #fdfcfa;
+  border-color: rgba(224, 222, 219, 0.6);
+  box-shadow: 0 1px 3px rgba(139, 125, 107, 0.06), 0 4px 16px rgba(139, 125, 107, 0.04);
 }
 
 [data-theme='light'] [data-dashboard] .skeleton {
@@ -149,19 +149,19 @@ textarea:focus-visible {
 
 [data-theme='light'] [data-dashboard] .dashboard-heading,
 [data-theme='light'] [data-dashboard] .dashboard-value {
-  color: #0f172a;
+  color: #3D342A;
 }
 
 [data-theme='light'] [data-dashboard] .dashboard-copy {
-  color: #475569;
+  color: #6B5E4E;
 }
 
 [data-theme='light'] [data-dashboard] .dashboard-label {
-  color: #64748b;
+  color: #8B7D6B;
 }
 
 [data-theme='light'] [data-dashboard] .dashboard-muted {
-  color: #94a3b8;
+  color: #A69A80;
 }
 
 .nmd-gradient-text {

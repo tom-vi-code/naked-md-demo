@@ -69,12 +69,12 @@ function FilterSelect({
           'w-full appearance-none rounded-none border px-4 py-3 pr-11 text-sm focus:border-[#4C4C4B]',
           theme === 'dark'
             ? 'border-white/10 bg-[#1e1e1e] text-slate-200'
-            : 'border-slate-200 bg-white text-slate-700',
+            : 'border-[#E0DEDB] bg-[#fdfcfa] text-[#4A3F33]',
         )}
       >
         {children}
       </select>
-      <div className="pointer-events-none absolute inset-y-0 right-4 flex items-center text-slate-500">
+      <div className="pointer-events-none absolute inset-y-0 right-4 flex items-center text-[#8B7D6B]">
         <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
@@ -97,7 +97,7 @@ function LoadingRows({
           key={index}
           className={cn(
             'border-b',
-            theme === 'dark' ? 'border-white/6' : 'border-slate-200',
+            theme === 'dark' ? 'border-white/6' : 'border-[#E0DEDB]',
           )}
         >
           {Array.from({ length: columns }).map((__, cellIndex) => (
@@ -180,7 +180,7 @@ export default function CallLog({
       <div
         className={cn(
           'border-b px-5 py-5 sm:px-6',
-          theme === 'dark' ? 'border-white/8' : 'border-slate-200',
+          theme === 'dark' ? 'border-white/8' : 'border-[#E0DEDB]',
         )}
       >
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
@@ -222,7 +222,7 @@ export default function CallLog({
           </FilterSelect>
 
           <div className="relative flex-1">
-            <div className="pointer-events-none absolute inset-y-0 left-4 flex items-center text-slate-500">
+            <div className="pointer-events-none absolute inset-y-0 left-4 flex items-center text-[#8B7D6B]">
               <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M21 21l-4.35-4.35M11 18a7 7 0 100-14 7 7 0 000 14z" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
@@ -236,20 +236,125 @@ export default function CallLog({
                 'w-full rounded-none border px-11 py-3 text-sm focus:border-[#4C4C4B]',
                 theme === 'dark'
                   ? 'border-white/10 bg-[#1e1e1e] text-slate-200 placeholder:text-slate-500'
-                  : 'border-slate-200 bg-white text-slate-700 placeholder:text-slate-400',
+                  : 'border-[#E0DEDB] bg-[#fdfcfa] text-[#4A3F33] placeholder:text-[#A69A80]',
               )}
             />
           </div>
         </div>
       </div>
 
-      <div className="overflow-x-auto dashboard-scroll">
+      {/* Mobile card view (< sm) */}
+      <div className="sm:hidden">
+        {loading ? (
+          <div className="space-y-3 px-4 py-4">
+            {Array.from({ length: 4 }).map((_, index) => (
+              <div
+                key={index}
+                className={cn(
+                  'rounded-none border p-4',
+                  theme === 'dark' ? 'border-white/8 bg-white/4' : 'border-[#E0DEDB] bg-[#f4f1ea]/30',
+                )}
+              >
+                <div className="skeleton h-5 w-32 rounded-none" />
+                <div className="skeleton mt-3 h-4 w-24 rounded-none" />
+                <div className="skeleton mt-3 h-4 w-20 rounded-none" />
+              </div>
+            ))}
+          </div>
+        ) : displayCalls.length === 0 ? (
+          <div className="px-4 py-16 text-center">
+            <div className="mx-auto max-w-sm">
+              <div className="dashboard-heading text-lg font-semibold">
+                {autopilot ? 'Action queue is clear' : 'No calls matched this view'}
+              </div>
+              <p className="dashboard-copy mt-2 text-sm leading-6">
+                {autopilot
+                  ? 'NakedMD AI does not have any conversations waiting for review in this view.'
+                  : 'Try clearing a filter, switching the time period, or using a broader search term.'}
+              </p>
+            </div>
+          </div>
+        ) : (
+          <div className="space-y-3 px-4 py-4">
+            {displayCalls.map((call) => {
+              const resolution = getSummaryResolution(call);
+              return (
+                <div
+                  key={call.id}
+                  onClick={() => onSelectCall(call.id)}
+                  className={cn(
+                    'cursor-pointer rounded-none border p-4',
+                    theme === 'dark'
+                      ? 'border-white/8 bg-white/[0.03] active:bg-white/[0.06]'
+                      : 'border-[#E0DEDB] bg-[#f4f1ea]/30 active:bg-[#f4f1ea]/40',
+                  )}
+                >
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <div className="dashboard-heading font-semibold">
+                        {call.contact.firstName} {call.contact.lastName}
+                      </div>
+                      <div className="dashboard-muted mt-1 text-xs">
+                        {formatPhoneDisplay(call.contact.phone)}
+                      </div>
+                    </div>
+                    {call.outcome ? (
+                      <span
+                        className={cn(
+                          'inline-flex shrink-0 items-center gap-1.5 rounded-none border px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.12em]',
+                          autopilot
+                            ? resolution.status === 'needs-you'
+                              ? theme === 'dark'
+                                ? 'border-[rgba(251,113,133,0.2)] bg-[rgba(251,113,133,0.1)] text-[#ffb4c3]'
+                                : 'border-rose-200 bg-rose-50 text-rose-700'
+                              : theme === 'dark'
+                                ? 'border-emerald-400/18 bg-emerald-400/10 text-emerald-200'
+                                : 'border-emerald-400/18 bg-emerald-400/10 text-emerald-700'
+                            : outcomeBadgeClasses(call.outcome, theme),
+                        )}
+                      >
+                        <span
+                          className="h-1.5 w-1.5 rounded-full"
+                          style={{ backgroundColor: OUTCOME_COLORS[call.outcome] }}
+                        />
+                        {autopilot ? resolution.statusLabel : OUTCOME_LABELS[call.outcome]}
+                      </span>
+                    ) : (
+                      <span className={cn('text-[10px] uppercase tracking-[0.12em]', theme === 'dark' ? 'text-slate-400' : 'text-[#8B7D6B]')}>
+                        Pending
+                      </span>
+                    )}
+                  </div>
+                  <div className="mt-3 flex items-center justify-between gap-3">
+                    <div className="dashboard-muted flex items-center gap-3 text-xs">
+                      <span>{formatDuration(call.duration)}</span>
+                      <span>{formatRelativeTime(call.startedAt)}</span>
+                    </div>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onSelectCall(call.id);
+                      }}
+                      className="rounded-none border border-[#C4B59A]/22 bg-[#C4B59A]/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-[#f4f1ea] hover:border-[#C4B59A]/45 hover:bg-[#C4B59A]/16"
+                    >
+                      {autopilot ? 'Open' : 'View'}
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
+      </div>
+
+      {/* Desktop table view (>= sm) */}
+      <div className="hidden overflow-x-auto dashboard-scroll sm:block">
         <table className={cn('w-full text-sm', autopilot ? 'min-w-[980px]' : 'min-w-[860px]')}>
           <thead>
             <tr
               className={cn(
                 'dashboard-label border-b text-left text-[11px] uppercase tracking-[0.18em]',
-                theme === 'dark' ? 'border-white/8' : 'border-slate-200',
+                theme === 'dark' ? 'border-white/8' : 'border-[#E0DEDB]',
               )}
             >
               <th className="px-4 py-3 font-semibold">Contact</th>
@@ -303,7 +408,7 @@ export default function CallLog({
                     'cursor-pointer border-b bg-transparent',
                     theme === 'dark'
                       ? 'border-white/6 hover:bg-white/[0.03]'
-                      : 'border-slate-200 hover:bg-slate-50',
+                      : 'border-[#E0DEDB] hover:bg-[#f4f1ea]/20',
                   )}
                 >
                   <td className="px-4 py-4">
@@ -371,7 +476,7 @@ export default function CallLog({
                           <span
                             className={cn(
                               'text-xs uppercase tracking-[0.14em]',
-                              theme === 'dark' ? 'text-slate-400' : 'text-slate-500',
+                              theme === 'dark' ? 'text-slate-400' : 'text-[#8B7D6B]',
                             )}
                           >
                             Pending
@@ -396,7 +501,7 @@ export default function CallLog({
                           <span
                             className={cn(
                               'text-xs uppercase tracking-[0.14em]',
-                              theme === 'dark' ? 'text-slate-400' : 'text-slate-500',
+                              theme === 'dark' ? 'text-slate-400' : 'text-[#8B7D6B]',
                             )}
                           >
                             n/a
@@ -429,7 +534,7 @@ export default function CallLog({
         <div
           className={cn(
             'flex flex-col gap-3 border-t px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6',
-            theme === 'dark' ? 'border-white/8' : 'border-slate-200',
+            theme === 'dark' ? 'border-white/8' : 'border-[#E0DEDB]',
           )}
         >
           <div className="dashboard-label text-xs uppercase tracking-[0.16em]">
@@ -444,10 +549,10 @@ export default function CallLog({
                 page === 1
                   ? theme === 'dark'
                     ? 'cursor-not-allowed bg-white/5 text-slate-600'
-                    : 'cursor-not-allowed bg-slate-100 text-slate-400'
+                    : 'cursor-not-allowed bg-[#f4f1ea]/40 text-[#A69A80]'
                   : theme === 'dark'
                     ? 'bg-white/7 text-slate-200 hover:bg-white/12'
-                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200',
+                    : 'bg-[#f4f1ea]/40 text-[#4A3F33] hover:bg-[#f4f1ea]/60',
               )}
             >
               Previous
@@ -460,10 +565,10 @@ export default function CallLog({
                 page === totalPages
                   ? theme === 'dark'
                     ? 'cursor-not-allowed bg-white/5 text-slate-600'
-                    : 'cursor-not-allowed bg-slate-100 text-slate-400'
+                    : 'cursor-not-allowed bg-[#f4f1ea]/40 text-[#A69A80]'
                   : theme === 'dark'
                     ? 'bg-white/7 text-slate-200 hover:bg-white/12'
-                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200',
+                    : 'bg-[#f4f1ea]/40 text-[#4A3F33] hover:bg-[#f4f1ea]/60',
               )}
             >
               Next

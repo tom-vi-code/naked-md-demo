@@ -1,6 +1,12 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
 import './globals.css';
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#151515',
+};
 
 export const metadata: Metadata = {
   title: {
@@ -13,7 +19,6 @@ export const metadata: Metadata = {
     shortcut: '/nmd-logo.svg',
     apple: '/nmd-logo.svg',
   },
-  themeColor: '#151515',
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

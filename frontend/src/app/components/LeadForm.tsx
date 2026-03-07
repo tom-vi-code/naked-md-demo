@@ -190,14 +190,14 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
         <div className="absolute inset-0 opacity-30 nmd-hero-grid" />
 
         <div className="relative mx-auto max-w-7xl px-4 pb-16 pt-12 sm:px-6 lg:px-8 lg:pb-20 lg:pt-16">
-          <div className="grid items-start gap-10 lg:grid-cols-[1.06fr_0.94fr]">
+          <div className="grid items-start gap-6 lg:gap-10 lg:grid-cols-[1.06fr_0.94fr]">
             <div className="max-w-2xl">
               <span className="inline-flex items-center gap-2 border border-white/15 bg-white/8 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/76">
                 <SparkIcon />
                 Complimentary consultation + concierge follow-up
               </span>
 
-              <h1 className="mt-6 font-headline text-5xl uppercase leading-[0.9] tracking-[0.02em] sm:text-6xl lg:text-7xl">
+              <h1 className="mt-6 font-headline text-3xl uppercase leading-[0.9] tracking-[0.02em] sm:text-5xl md:text-6xl lg:text-7xl">
                 You, but better.
                 <span className="mt-2 block text-[#f4f1ea]">
                   Start with a free NakedMD consultation.

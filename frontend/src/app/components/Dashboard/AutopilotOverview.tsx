@@ -122,7 +122,7 @@ export default function AutopilotOverview({
             <span
               className={cn(
                 'dashboard-label rounded-none border px-3 py-1.5 text-xs uppercase tracking-[0.14em]',
-                theme === 'dark' ? 'border-white/8 bg-white/4' : 'border-slate-200 bg-slate-50',
+                theme === 'dark' ? 'border-white/8 bg-white/4' : 'border-[#E0DEDB] bg-[#f4f1ea]/30',
               )}
             >
               {actionFeed.length} recent actions
@@ -134,7 +134,7 @@ export default function AutopilotOverview({
               <div
                 className={cn(
                   'rounded-none border border-dashed px-5 py-12 text-center',
-                  theme === 'dark' ? 'border-white/10' : 'border-slate-300',
+                  theme === 'dark' ? 'border-white/10' : 'border-[#C4B59A]',
                 )}
               >
                 <div className="dashboard-heading text-lg font-semibold">No recent actions yet</div>
@@ -155,7 +155,7 @@ export default function AutopilotOverview({
                       'flex w-full items-start gap-4 rounded-none border px-4 py-4 text-left',
                       theme === 'dark'
                         ? 'border-white/8 bg-white/[0.03] hover:border-white/14 hover:bg-white/[0.05]'
-                        : 'border-slate-200 bg-slate-50 hover:border-slate-300 hover:bg-white',
+                        : 'border-[#E0DEDB] bg-[#f4f1ea]/30 hover:border-[#C4B59A] hover:bg-[#fdfcfa]',
                     )}
                   >
                     <div
@@ -205,7 +205,7 @@ export default function AutopilotOverview({
                 'dashboard-label rounded-none border px-3 py-1.5 text-xs uppercase tracking-[0.14em]',
                 theme === 'dark'
                   ? 'border-white/8 bg-white/4 hover:border-white/14 hover:bg-white/[0.08]'
-                  : 'border-slate-200 bg-slate-50 hover:border-slate-300 hover:bg-white',
+                  : 'border-[#E0DEDB] bg-[#f4f1ea]/30 hover:border-[#C4B59A] hover:bg-[#fdfcfa]',
               )}
             >
               View Queue
@@ -216,7 +216,7 @@ export default function AutopilotOverview({
             <div
               className={cn(
                 'mt-6 rounded-none border border-dashed px-5 py-12 text-center',
-                theme === 'dark' ? 'border-white/10' : 'border-slate-300',
+                theme === 'dark' ? 'border-white/10' : 'border-[#C4B59A]',
               )}
             >
               <div className="dashboard-heading text-lg font-semibold">Everything is handled</div>
