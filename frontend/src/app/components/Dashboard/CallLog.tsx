@@ -66,9 +66,9 @@ function FilterSelect({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         className={cn(
-          'w-full appearance-none rounded-2xl border px-4 py-3 pr-11 text-sm focus:border-[#1F8A84]',
+          'w-full appearance-none rounded-none border px-4 py-3 pr-11 text-sm focus:border-[#4C4C4B]',
           theme === 'dark'
-            ? 'border-white/10 bg-[#262626] text-slate-200'
+            ? 'border-white/10 bg-[#1e1e1e] text-slate-200'
             : 'border-slate-200 bg-white text-slate-700',
         )}
       >
@@ -102,7 +102,7 @@ function LoadingRows({
         >
           {Array.from({ length: columns }).map((__, cellIndex) => (
             <td key={cellIndex} className="px-4 py-4">
-              <div className="skeleton h-5 rounded-full" />
+              <div className="skeleton h-5 rounded-none" />
             </td>
           ))}
         </tr>
@@ -176,7 +176,7 @@ export default function CallLog({
   );
 
   return (
-    <div className="surface-card-dark overflow-hidden rounded-[28px]">
+    <div className="surface-card-dark overflow-hidden rounded-none">
       <div
         className={cn(
           'border-b px-5 py-5 sm:px-6',
@@ -233,9 +233,9 @@ export default function CallLog({
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search name or phone..."
               className={cn(
-                'w-full rounded-2xl border px-11 py-3 text-sm focus:border-[#1F8A84]',
+                'w-full rounded-none border px-11 py-3 text-sm focus:border-[#4C4C4B]',
                 theme === 'dark'
-                  ? 'border-white/10 bg-[#262626] text-slate-200 placeholder:text-slate-500'
+                  ? 'border-white/10 bg-[#1e1e1e] text-slate-200 placeholder:text-slate-500'
                   : 'border-slate-200 bg-white text-slate-700 placeholder:text-slate-400',
               )}
             />
@@ -333,7 +333,7 @@ export default function CallLog({
                       <td className="px-4 py-4">
                         <span
                           className={cn(
-                            'inline-flex items-center rounded-full border px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em]',
+                            'inline-flex items-center rounded-none border px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em]',
                             resolution.status === 'needs-you'
                               ? theme === 'dark'
                                 ? 'border-[rgba(251,113,133,0.2)] bg-[rgba(251,113,133,0.1)] text-[#ffb4c3]'
@@ -357,7 +357,7 @@ export default function CallLog({
                         {call.outcome ? (
                           <span
                             className={cn(
-                              'inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em]',
+                              'inline-flex items-center gap-2 rounded-none border px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em]',
                               outcomeBadgeClasses(call.outcome, theme),
                             )}
                           >
@@ -384,7 +384,7 @@ export default function CallLog({
                       <td className="px-4 py-4">
                         {call.sentiment !== null ? (
                           <span
-                            className="rounded-full px-2.5 py-1 text-xs font-semibold"
+                            className="rounded-none px-2.5 py-1 text-xs font-semibold"
                             style={{
                               color: getSentimentColor(call.sentiment),
                               backgroundColor: `${getSentimentColor(call.sentiment)}18`,
@@ -412,7 +412,7 @@ export default function CallLog({
                         e.stopPropagation();
                         onSelectCall(call.id);
                       }}
-                      className="rounded-full border border-[#1F8A84]/22 bg-[#1F8A84]/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-[#59B1AB] hover:border-[#1F8A84]/45 hover:bg-[#1F8A84]/16"
+                      className="rounded-none border border-[#C4B59A]/22 bg-[#C4B59A]/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-[#f4f1ea] hover:border-[#C4B59A]/45 hover:bg-[#C4B59A]/16"
                     >
                       {autopilot ? 'Open' : 'View'}
                     </button>
@@ -440,7 +440,7 @@ export default function CallLog({
               onClick={() => setPage((prev) => Math.max(1, prev - 1))}
               disabled={page === 1}
               className={cn(
-                'rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em]',
+                'rounded-none px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em]',
                 page === 1
                   ? theme === 'dark'
                     ? 'cursor-not-allowed bg-white/5 text-slate-600'
@@ -456,7 +456,7 @@ export default function CallLog({
               onClick={() => setPage((prev) => Math.min(totalPages, prev + 1))}
               disabled={page === totalPages}
               className={cn(
-                'rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em]',
+                'rounded-none px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em]',
                 page === totalPages
                   ? theme === 'dark'
                     ? 'cursor-not-allowed bg-white/5 text-slate-600'

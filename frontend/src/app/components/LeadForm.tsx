@@ -177,30 +177,29 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
   }
 
   const inputClasses =
-    'w-full rounded-2xl border border-slate-200 bg-white px-4 py-3.5 text-base text-slate-900 placeholder:text-slate-400 focus:border-[#1F8A84]';
+    'w-full border border-[#d6d6d6] bg-white px-4 py-3.5 text-base text-[#151515] placeholder:text-[#717171] focus:border-[#4C4C4B]';
   const selectClasses =
-    'w-full appearance-none rounded-2xl border border-slate-200 bg-white px-4 py-3.5 pr-11 text-base text-slate-900 focus:border-[#1F8A84]';
+    'w-full appearance-none border border-[#d6d6d6] bg-white px-4 py-3.5 pr-11 text-base text-[#151515] focus:border-[#4C4C4B]';
   const errorClasses = 'border-red-400 bg-red-50/60';
 
   return (
     <div className="min-h-screen bg-white">
       <PublicHeader />
 
-      <section className="relative overflow-hidden bg-[linear-gradient(180deg,#1a1a1a_0%,#2d2d2d_52%,#2d2d2d_100%)] text-white">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(31,138,132,0.35),transparent_24%),radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.12),transparent_24%)]" />
+      <section className="relative overflow-hidden bg-[#151515] text-white">
         <div className="absolute inset-0 opacity-30 nmd-hero-grid" />
 
         <div className="relative mx-auto max-w-7xl px-4 pb-16 pt-12 sm:px-6 lg:px-8 lg:pb-20 lg:pt-16">
           <div className="grid items-start gap-10 lg:grid-cols-[1.06fr_0.94fr]">
             <div className="max-w-2xl">
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/8 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/76">
+              <span className="inline-flex items-center gap-2 border border-white/15 bg-white/8 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/76">
                 <SparkIcon />
                 Complimentary consultation + concierge follow-up
               </span>
 
-              <h1 className="mt-6 text-4xl font-black leading-[0.92] tracking-tight sm:text-5xl lg:text-6xl">
+              <h1 className="mt-6 font-headline text-5xl uppercase leading-[0.9] tracking-[0.02em] sm:text-6xl lg:text-7xl">
                 You, but better.
-                <span className="mt-2 block nmd-gradient-text">
+                <span className="mt-2 block text-[#f4f1ea]">
                   Start with a free NakedMD consultation.
                 </span>
               </h1>
@@ -214,7 +213,7 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
                 {BENEFITS.map((benefit) => (
                   <span
                     key={benefit}
-                    className="rounded-full border border-white/14 bg-white/10 px-4 py-2 text-sm font-semibold text-white/92 backdrop-blur"
+                    className="border border-white/14 bg-white/10 px-4 py-2 text-sm font-semibold text-white/92 backdrop-blur"
                   >
                     {benefit}
                   </span>
@@ -225,7 +224,7 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
                 {SOCIAL_PROOF.map((item) => (
                   <div
                     key={item.label}
-                    className="rounded-[24px] border border-white/12 bg-white/7 p-5 backdrop-blur animate-fade-up"
+                    className="border border-white/12 bg-white/7 p-5 backdrop-blur animate-fade-up"
                   >
                     <div className="text-3xl font-black tracking-tight text-white">
                       {item.value}
@@ -243,7 +242,7 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
                 ].map((item) => (
                   <div
                     key={item}
-                    className="rounded-[22px] border border-white/10 bg-black/18 px-4 py-4 text-sm font-medium text-white/86"
+                    className="border border-white/10 bg-black/18 px-4 py-4 text-sm font-medium text-white/86"
                   >
                     {item}
                   </div>
@@ -255,27 +254,27 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
               <form
                 onSubmit={handleSubmit}
                 noValidate
-                className="rounded-[32px] border border-white/70 bg-white p-6 text-slate-900 shadow-[0_30px_80px_rgba(7,12,24,0.3)] sm:p-8"
+                className="border border-[#e7e7e7] bg-white p-6 text-[#151515] shadow-[0_3px_6px_rgba(0,0,0,0.05)] sm:p-8"
               >
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#1F8A84]">
+                    <p className="text-xs font-bold uppercase tracking-[0.04em] text-[#151515] font-ui">
                       Book Your Consultation
                     </p>
-                    <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-slate-950">
+                    <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-[#151515]">
                       Tell us where to send it
                     </h2>
-                    <p className="mt-2 text-sm leading-6 text-slate-500">
+                    <p className="mt-2 text-sm leading-6 text-[#717171]">
                       This should take less than a minute. We will text or email the confirmation and
                       Vi will stay available in chat right after submit.
                     </p>
                   </div>
-                  <span className="rounded-full bg-[#d4edeb] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#166f6b]">
+                  <span className="bg-[#f4f1ea] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#151515]">
                     45 sec
                   </span>
                 </div>
 
-                <div className="mt-6 rounded-[24px] bg-slate-950 p-4 text-white">
+                <div className="mt-6 bg-[#151515] p-4 text-white">
                   <div className="text-xs font-semibold uppercase tracking-[0.22em] text-white/56">
                     What you will get
                   </div>
@@ -287,7 +286,7 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
                 </div>
 
                 {errors.api && (
-                  <div className="mt-5 rounded-[20px] border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                  <div className="mt-5 border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
                     {errors.api}
                   </div>
                 )}
@@ -297,7 +296,7 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
                     <div>
                       <label
                         htmlFor="firstName"
-                        className="mb-2 block text-xs font-semibold uppercase tracking-[0.18em] text-slate-500"
+                        className="mb-2 block text-xs font-semibold uppercase tracking-[0.18em] text-[#717171]"
                       >
                         First Name
                       </label>
@@ -319,7 +318,7 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
                     <div>
                       <label
                         htmlFor="lastName"
-                        className="mb-2 block text-xs font-semibold uppercase tracking-[0.18em] text-slate-500"
+                        className="mb-2 block text-xs font-semibold uppercase tracking-[0.18em] text-[#717171]"
                       >
                         Last Name
                       </label>
@@ -343,7 +342,7 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
                     <div>
                       <label
                         htmlFor="phone"
-                        className="mb-2 block text-xs font-semibold uppercase tracking-[0.18em] text-slate-500"
+                        className="mb-2 block text-xs font-semibold uppercase tracking-[0.18em] text-[#717171]"
                       >
                         Phone Number
                       </label>
@@ -367,7 +366,7 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
                     <div>
                       <label
                         htmlFor="email"
-                        className="mb-2 block text-xs font-semibold uppercase tracking-[0.18em] text-slate-500"
+                        className="mb-2 block text-xs font-semibold uppercase tracking-[0.18em] text-[#717171]"
                       >
                         Email
                       </label>
@@ -392,7 +391,7 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
                     <div>
                       <label
                         htmlFor="offerType"
-                        className="mb-2 block text-xs font-semibold uppercase tracking-[0.18em] text-slate-500"
+                        className="mb-2 block text-xs font-semibold uppercase tracking-[0.18em] text-[#717171]"
                       >
                         Offer Type
                       </label>
@@ -407,7 +406,7 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
                           aria-invalid={Boolean(errors.offerType)}
                           className={cn(
                             selectClasses,
-                            !offerType && 'text-slate-400',
+                            !offerType && 'text-[#717171]',
                             errors.offerType && errorClasses,
                           )}
                         >
@@ -420,7 +419,7 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
                             </option>
                           ))}
                         </select>
-                        <div className="pointer-events-none absolute inset-y-0 right-4 flex items-center text-slate-400">
+                        <div className="pointer-events-none absolute inset-y-0 right-4 flex items-center text-[#717171]">
                           <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2">
                             <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
                           </svg>
@@ -432,7 +431,7 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
                     <div>
                       <label
                         htmlFor="interest"
-                        className="mb-2 block text-xs font-semibold uppercase tracking-[0.18em] text-slate-500"
+                        className="mb-2 block text-xs font-semibold uppercase tracking-[0.18em] text-[#717171]"
                       >
                         Primary Interest
                       </label>
@@ -447,7 +446,7 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
                           aria-invalid={Boolean(errors.interest)}
                           className={cn(
                             selectClasses,
-                            !interest && 'text-slate-400',
+                            !interest && 'text-[#717171]',
                             errors.interest && errorClasses,
                           )}
                         >
@@ -460,7 +459,7 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
                             </option>
                           ))}
                         </select>
-                        <div className="pointer-events-none absolute inset-y-0 right-4 flex items-center text-slate-400">
+                        <div className="pointer-events-none absolute inset-y-0 right-4 flex items-center text-[#717171]">
                           <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2">
                             <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
                           </svg>
@@ -473,7 +472,7 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
                   <div>
                     <label
                       htmlFor="location"
-                      className="mb-2 block text-xs font-semibold uppercase tracking-[0.18em] text-slate-500"
+                      className="mb-2 block text-xs font-semibold uppercase tracking-[0.18em] text-[#717171]"
                     >
                       Preferred Location
                     </label>
@@ -488,7 +487,7 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
                         aria-invalid={Boolean(errors.location)}
                         className={cn(
                           selectClasses,
-                          !location && 'text-slate-400',
+                          !location && 'text-[#717171]',
                           errors.location && errorClasses,
                         )}
                       >
@@ -501,7 +500,7 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
                           </option>
                         ))}
                       </select>
-                      <div className="pointer-events-none absolute inset-y-0 right-4 flex items-center text-slate-400">
+                      <div className="pointer-events-none absolute inset-y-0 right-4 flex items-center text-[#717171]">
                         <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2">
                           <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
@@ -514,10 +513,10 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
                     type="submit"
                     disabled={loading}
                     className={cn(
-                      'mt-2 flex w-full items-center justify-center gap-2 rounded-2xl px-5 py-4 text-base font-bold text-white shadow-[0_22px_40px_rgba(31,138,132,0.28)]',
+                      'mt-2 flex w-full items-center justify-center gap-2 px-5 py-4 text-[15px] font-bold uppercase tracking-[0.04em] text-white font-ui',
                       loading
-                        ? 'cursor-not-allowed bg-[#59B1AB]'
-                        : 'bg-[linear-gradient(135deg,#1F8A84_0%,#187F80_100%)] hover:-translate-y-0.5 active:translate-y-0',
+                        ? 'cursor-not-allowed bg-[#717171]'
+                        : 'bg-[#151515] hover:bg-[#2d2d2d] active:translate-y-0',
                     )}
                   >
                     {loading ? (
@@ -547,7 +546,7 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
                     )}
                   </button>
 
-                  <p className="text-sm leading-6 text-slate-500">
+                  <p className="text-sm leading-6 text-[#717171]">
                     By submitting, you agree to receive consultation details and a follow-up from the
                     studio team. We only use this to help you get started faster.
                   </p>
@@ -558,9 +557,9 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
         </div>
       </section>
 
-      <section className="bg-[linear-gradient(180deg,#f4f1ea_0%,#ffffff_100%)] py-16 sm:py-20">
+      <section className="bg-[#f4f1ea] py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-10 rounded-[28px] bg-[linear-gradient(120deg,#166f6b_0%,#1F8A84_44%,#59B1AB_100%)] px-6 py-7 text-white shadow-[0_24px_54px_rgba(31,138,132,0.28)] sm:px-8">
+          <div className="bg-[#151515] px-6 py-7 text-white sm:px-8">
             <div className="grid gap-5 md:grid-cols-4">
               <div>
                 <div className="text-3xl font-black">40+</div>
@@ -581,15 +580,15 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
             </div>
           </div>
 
-          <div id="pricing" className="scroll-mt-24">
+          <div id="pricing" className="mt-14 scroll-mt-24">
             <div className="mx-auto max-w-2xl text-center">
-              <span className="rounded-full bg-[#d4edeb] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#166f6b]">
+              <span className="bg-[#f4f1ea] border border-[#e7e7e7] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#151515]">
                 Treatment Tiers
               </span>
-              <h3 className="mt-4 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">
+              <h3 className="mt-4 font-headline text-4xl uppercase tracking-[0.02em] leading-[0.9] text-[#151515] sm:text-5xl">
                 Find the right tier before you even step in the studio
               </h3>
-              <p className="mt-3 text-base leading-7 text-slate-600">
+              <p className="mt-3 text-base leading-7 text-[#717171]">
                 Your consultation gets the conversation started. Compare tiers so you know exactly
                 what to expect on day one.
               </p>
@@ -600,27 +599,31 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
                 <div
                   key={tier.id}
                   className={cn(
-                    'relative overflow-hidden rounded-[28px] border p-6 shadow-[0_18px_40px_rgba(15,23,42,0.06)]',
+                    'relative overflow-hidden border p-6',
                     tier.id === 'premium'
-                      ? 'border-[#1F8A84] bg-white'
+                      ? 'border-[#151515] bg-white'
                       : tier.id === 'luxury'
-                        ? 'border-slate-900 bg-slate-950 text-white'
-                        : 'border-slate-200 bg-white',
+                        ? 'border-[#151515] bg-[#151515] text-white'
+                        : 'border-[#e7e7e7] bg-white',
                   )}
                 >
                   {tier.id === 'premium' && (
-                    <div className="absolute right-5 top-5 rounded-full bg-[#1F8A84] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-white">
+                    <div className="absolute right-5 top-5 bg-[#151515] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-white">
                       Most Popular
                     </div>
                   )}
 
-                  <div className="text-sm font-semibold uppercase tracking-[0.2em] text-[#1F8A84]">
-                    {tier.name}
+                  <div className="text-sm font-semibold uppercase tracking-[0.2em] text-[#151515]">
+                    {tier.id === 'luxury' ? (
+                      <span className="text-[#f4f1ea]">{tier.name}</span>
+                    ) : (
+                      tier.name
+                    )}
                   </div>
                   <div className={cn('mt-3 text-4xl font-black tracking-tight', tier.id === 'luxury' && 'text-white')}>
                     {tier.price}
                   </div>
-                  <p className={cn('mt-2 text-sm leading-6 text-slate-500', tier.id === 'luxury' && 'text-white/72')}>
+                  <p className={cn('mt-2 text-sm leading-6 text-[#717171]', tier.id === 'luxury' && 'text-white/72')}>
                     {tier.id === 'essential' && 'For someone exploring aesthetics for the first time with expert guidance.'}
                     {tier.id === 'premium' && 'The sweet spot for injectables, skincare, and a personalized treatment plan.'}
                     {tier.id === 'luxury' && 'Built for clients who want VIP access, advanced treatments, and concierge support.'}
@@ -631,15 +634,15 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
                       <li key={feature} className="flex items-start gap-3">
                         <span
                           className={cn(
-                            'mt-0.5 flex h-6 w-6 items-center justify-center rounded-full',
-                            tier.id === 'luxury' ? 'bg-white/10 text-white' : 'bg-[#d4edeb] text-[#166f6b]',
+                            'mt-0.5 flex h-6 w-6 items-center justify-center',
+                            tier.id === 'luxury' ? 'bg-white/10 text-white' : 'bg-[#f4f1ea] text-[#151515]',
                           )}
                         >
                           <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2">
                             <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
                           </svg>
                         </span>
-                        <span className={cn('text-sm leading-6 text-slate-700', tier.id === 'luxury' && 'text-white/86')}>
+                        <span className={cn('text-sm leading-6 text-[#151515]', tier.id === 'luxury' && 'text-white/86')}>
                           {feature}
                         </span>
                       </li>
@@ -650,12 +653,12 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
             </div>
           </div>
 
-          <div className="surface-card mt-14 rounded-[32px] p-6 sm:p-8">
+          <div className="surface-card mt-14 p-6 sm:p-8">
             <div className="mx-auto max-w-3xl text-center">
-              <span className="rounded-full bg-[#d4edeb] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#166f6b]">
+              <span className="bg-[#f4f1ea] border border-[#e7e7e7] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#151515]">
                 You, but better.
               </span>
-              <h3 className="mt-4 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">
+              <h3 className="mt-4 font-headline text-4xl uppercase tracking-[0.02em] leading-[0.9] text-[#151515] sm:text-5xl">
                 The NakedMD philosophy
               </h3>
             </div>
@@ -664,15 +667,15 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
               {PHILOSOPHY.map((pillar, index) => (
                 <div
                   key={pillar.title}
-                  className="rounded-[24px] border border-slate-200 bg-white p-6 shadow-[0_10px_28px_rgba(15,23,42,0.04)]"
+                  className="border border-[#e7e7e7] bg-white p-6"
                 >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#d4edeb] text-[#166f6b]">
+                  <div className="flex h-12 w-12 items-center justify-center bg-[#f4f1ea] text-[#151515]">
                     <PillarIcon type={index === 1 ? 'community' : index === 2 ? 'party' : 'spark'} />
                   </div>
-                  <h4 className="mt-5 text-2xl font-black tracking-tight text-[#2d2d2d]">
+                  <h4 className="mt-5 text-2xl font-black tracking-tight text-[#151515]">
                     {pillar.title}
                   </h4>
-                  <p className="mt-3 text-base leading-7 text-slate-600">{pillar.body}</p>
+                  <p className="mt-3 text-base leading-7 text-[#717171]">{pillar.body}</p>
                 </div>
               ))}
             </div>

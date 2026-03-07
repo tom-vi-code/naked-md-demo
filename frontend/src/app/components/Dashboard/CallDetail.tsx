@@ -24,21 +24,21 @@ function DetailSkeleton() {
     <div className="space-y-5">
       <div className="grid gap-3 sm:grid-cols-2">
         {Array.from({ length: 4 }).map((_, index) => (
-          <div key={index} className="rounded-[22px] border border-white/8 bg-white/4 p-4">
-            <div className="skeleton h-4 w-20 rounded-full" />
-            <div className="skeleton mt-3 h-6 rounded-full" />
+          <div key={index} className="rounded-none border border-white/8 bg-white/4 p-4">
+            <div className="skeleton h-4 w-20 rounded-none" />
+            <div className="skeleton mt-3 h-6 rounded-none" />
           </div>
         ))}
       </div>
-      <div className="rounded-[24px] border border-white/8 bg-white/4 p-5">
-        <div className="skeleton h-4 w-24 rounded-full" />
-        <div className="skeleton mt-4 h-20 rounded-[20px]" />
+      <div className="rounded-none border border-white/8 bg-white/4 p-5">
+        <div className="skeleton h-4 w-24 rounded-none" />
+        <div className="skeleton mt-4 h-20 rounded-none" />
       </div>
-      <div className="rounded-[24px] border border-white/8 bg-white/4 p-5">
-        <div className="skeleton h-4 w-28 rounded-full" />
+      <div className="rounded-none border border-white/8 bg-white/4 p-5">
+        <div className="skeleton h-4 w-28 rounded-none" />
         <div className="mt-4 space-y-3">
           {Array.from({ length: 4 }).map((_, index) => (
-            <div key={index} className="skeleton h-16 rounded-[18px]" />
+            <div key={index} className="skeleton h-16 rounded-none" />
           ))}
         </div>
       </div>
@@ -114,13 +114,13 @@ export default function CallDetail({
       <aside className={cn(
         'fixed inset-y-0 right-0 z-50 w-full max-w-2xl overflow-hidden border-l animate-slide-in-right',
         dark
-          ? 'border-white/10 bg-[#1a1a1a] text-white shadow-[0_0_60px_rgba(0,0,0,0.45)]'
+          ? 'border-white/10 bg-[#151515] text-white shadow-[0_0_60px_rgba(0,0,0,0.45)]'
           : 'border-slate-200 bg-white text-gray-900 shadow-[0_0_60px_rgba(0,0,0,0.12)]',
       )}>
         <div className="flex h-full flex-col">
           <div className={cn(
             'border-b px-5 py-5 sm:px-6',
-            dark ? 'border-white/8 bg-[linear-gradient(180deg,rgba(31,138,132,0.08),rgba(255,255,255,0))]' : 'border-slate-200 bg-gradient-to-b from-amber-50/60 to-transparent',
+            dark ? 'border-white/8 bg-[rgba(244,241,234,0.06)]' : 'border-slate-200 bg-gradient-to-b from-amber-50/60 to-transparent',
           )}>
             <div className="flex items-start justify-between gap-4">
               <div>
@@ -137,14 +137,14 @@ export default function CallDetail({
                     </p>
                   </>
                 ) : (
-                  <div className="skeleton mt-3 h-7 w-56 rounded-full" />
+                  <div className="skeleton mt-3 h-7 w-56 rounded-none" />
                 )}
               </div>
 
               <button
                 onClick={onClose}
                 className={cn(
-                  'rounded-full border px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em]',
+                  'rounded-none border px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em]',
                   dark
                     ? 'border-white/10 bg-white/5 text-slate-300 hover:border-white/18 hover:bg-white/10 hover:text-white'
                     : 'border-slate-200 bg-slate-100 text-slate-600 hover:border-slate-300 hover:bg-slate-200 hover:text-gray-900',
@@ -160,7 +160,7 @@ export default function CallDetail({
 
             {!loading && error && (
               <div className={cn(
-                'flex min-h-[320px] items-center justify-center rounded-[24px] border px-6 text-center text-sm',
+                'flex min-h-[320px] items-center justify-center rounded-none border px-6 text-center text-sm',
                 dark ? 'border-red-400/20 bg-red-400/8 text-red-200' : 'border-red-200 bg-red-50 text-red-600',
               )}>
                 {error}
@@ -194,7 +194,7 @@ export default function CallDetail({
                   ].map((meta) => (
                     <div
                       key={meta.label}
-                      className={cn('rounded-[22px] border p-4', dark ? 'border-white/8 bg-white/4' : 'border-slate-200 bg-slate-50')}
+                      className={cn('rounded-none border p-4', dark ? 'border-white/8 bg-white/4' : 'border-slate-200 bg-slate-50')}
                     >
                       <div className={cn('text-[11px] font-semibold uppercase tracking-[0.18em]', dark ? 'text-slate-400' : 'text-slate-500')}>
                         {meta.label}
@@ -205,14 +205,14 @@ export default function CallDetail({
                 </div>
 
                 {autopilot && (
-                  <div className="rounded-[24px] border border-[rgba(31,138,132,0.18)] bg-[rgba(31,138,132,0.08)] p-5">
+                  <div className="rounded-none border border-[rgba(244,241,234,0.18)] bg-[rgba(244,241,234,0.08)] p-5">
                     <div className="flex flex-wrap items-center justify-between gap-3">
-                      <div className={cn('text-[11px] font-semibold uppercase tracking-[0.18em]', dark ? 'text-[#59B1AB]' : 'text-[#166f6b]')}>
+                      <div className={cn('text-[11px] font-semibold uppercase tracking-[0.18em]', dark ? 'text-[#f4f1ea]' : 'text-[#151515]')}>
                         System Resolution
                       </div>
                       <span
                         className={cn(
-                          'inline-flex items-center rounded-full border px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em]',
+                          'inline-flex items-center rounded-none border px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em]',
                           resolution?.status === 'needs-you'
                             ? dark
                               ? 'border-[rgba(251,113,133,0.2)] bg-[rgba(251,113,133,0.1)] text-[#ffb4c3]'
@@ -235,8 +235,8 @@ export default function CallDetail({
                         <div
                           key={item.label}
                           className={cn(
-                            'rounded-[18px] border px-4 py-4',
-                            dark ? 'border-white/8 bg-[#262626]' : 'border-slate-200 bg-white',
+                            'rounded-none border px-4 py-4',
+                            dark ? 'border-white/8 bg-[#1e1e1e]' : 'border-slate-200 bg-white',
                           )}
                         >
                           <div className={cn('text-[11px] font-semibold uppercase tracking-[0.18em]', dark ? 'text-slate-400' : 'text-slate-500')}>
@@ -252,14 +252,14 @@ export default function CallDetail({
                 )}
 
                 <div className="grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
-                  <div className={cn('rounded-[24px] border p-5', dark ? 'border-white/8 bg-white/4' : 'border-slate-200 bg-slate-50')}>
+                  <div className={cn('rounded-none border p-5', dark ? 'border-white/8 bg-white/4' : 'border-slate-200 bg-slate-50')}>
                     <div className="flex flex-wrap items-center gap-3">
                       <span className={cn('text-[11px] font-semibold uppercase tracking-[0.18em]', dark ? 'text-slate-400' : 'text-slate-500')}>
                         Outcome
                       </span>
                       {call.outcome ? (
                         <span className={cn(
-                          'inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.16em]',
+                          'inline-flex items-center gap-2 rounded-none border px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.16em]',
                           dark ? 'border-white/10 bg-white/5 text-white' : 'border-slate-200 bg-white text-gray-900',
                         )}>
                           <span
@@ -280,9 +280,9 @@ export default function CallDetail({
                             <span>Confidence</span>
                             <span className={dark ? 'text-slate-300' : 'text-gray-900'}>{Math.round(call.outcomeConfidence * 100)}%</span>
                           </div>
-                          <div className={cn('h-2 rounded-full', dark ? 'bg-white/8' : 'bg-slate-200')}>
+                          <div className={cn('h-2 rounded-none', dark ? 'bg-white/8' : 'bg-slate-200')}>
                             <div
-                              className="h-2 rounded-full bg-[linear-gradient(90deg,#1F8A84_0%,#187F80_100%)]"
+                              className="h-2 bg-[#C4B59A]"
                               style={{ width: `${Math.round(call.outcomeConfidence * 100)}%` }}
                             />
                           </div>
@@ -301,7 +301,7 @@ export default function CallDetail({
                             {call.sentiment}
                           </span>
                           <span
-                            className="rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em]"
+                            className="rounded-none px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em]"
                             style={{
                               color: getSentimentColor(call.sentiment),
                               backgroundColor: `${getSentimentColor(call.sentiment)}18`,
@@ -314,13 +314,13 @@ export default function CallDetail({
                     </div>
                   </div>
 
-                  <div className={cn('rounded-[24px] border p-5', dark ? 'border-white/8 bg-white/4' : 'border-slate-200 bg-slate-50')}>
+                  <div className={cn('rounded-none border p-5', dark ? 'border-white/8 bg-white/4' : 'border-slate-200 bg-slate-50')}>
                     <div className={cn('text-[11px] font-semibold uppercase tracking-[0.18em]', dark ? 'text-slate-400' : 'text-slate-500')}>
                       AI Summary
                     </div>
                     <div className={cn(
-                      'mt-4 rounded-[20px] border p-4 text-sm leading-7',
-                      dark ? 'border-white/8 bg-[#262626] text-slate-300' : 'border-slate-200 bg-white text-slate-700',
+                      'mt-4 rounded-none border p-4 text-sm leading-7',
+                      dark ? 'border-white/8 bg-[#1e1e1e] text-slate-300' : 'border-slate-200 bg-white text-slate-700',
                     )}>
                       {call.summary || 'No summary available for this call.'}
                     </div>
@@ -333,7 +333,7 @@ export default function CallDetail({
                         <ul className="mt-3 space-y-2">
                           {call.keyMoments.map((moment, index) => (
                             <li key={index} className={cn('flex items-start gap-3 text-sm leading-6', dark ? 'text-slate-300' : 'text-slate-700')}>
-                              <span className="mt-2 h-2 w-2 rounded-full bg-[#1F8A84]" />
+                              <span className="mt-2 h-2 w-2 rounded-full bg-[#C4B59A]" />
                               <span>{moment}</span>
                             </li>
                           ))}
@@ -343,7 +343,7 @@ export default function CallDetail({
                   </div>
                 </div>
 
-                <div className={cn('rounded-[24px] border p-5', dark ? 'border-white/8 bg-white/4' : 'border-slate-200 bg-slate-50')}>
+                <div className={cn('rounded-none border p-5', dark ? 'border-white/8 bg-white/4' : 'border-slate-200 bg-slate-50')}>
                   <div className="flex items-center justify-between gap-3">
                     <div className={cn('text-[11px] font-semibold uppercase tracking-[0.18em]', dark ? 'text-slate-400' : 'text-slate-500')}>
                       Transcript
@@ -356,7 +356,7 @@ export default function CallDetail({
                   <div className="mt-5 space-y-4">
                     {call.transcript.length === 0 ? (
                       <div className={cn(
-                        'rounded-[18px] border border-dashed px-4 py-8 text-center text-sm',
+                        'rounded-none border border-dashed px-4 py-8 text-center text-sm',
                         dark ? 'border-white/10 text-slate-500' : 'border-slate-300 text-slate-400',
                       )}>
                         No transcript available.
@@ -371,21 +371,21 @@ export default function CallDetail({
                             className={cn('flex flex-col', isAgent ? 'items-start' : 'items-end')}
                           >
                             <div className="mb-1 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em]">
-                              <span className={isAgent ? 'text-[#1F8A84]' : dark ? 'text-slate-400' : 'text-slate-500'}>
+                              <span className={isAgent ? 'text-[#C4B59A]' : dark ? 'text-slate-400' : 'text-slate-500'}>
                                 {isAgent ? 'Vi' : call.contact.firstName}
                               </span>
                               <span className={dark ? 'text-slate-500' : 'text-slate-400'}>{formatTimestamp(entry.timestamp)}</span>
                             </div>
                             <div
                               className={cn(
-                                'max-w-[88%] rounded-[20px] px-4 py-3 text-sm leading-7 sm:max-w-[78%]',
+                                'max-w-[88%] rounded-none px-4 py-3 text-sm leading-7 sm:max-w-[78%]',
                                 isAgent
                                   ? dark
-                                    ? 'rounded-tl-md bg-[linear-gradient(135deg,rgba(31,138,132,0.2),rgba(31,138,132,0.06))] text-white'
-                                    : 'rounded-tl-md bg-gradient-to-br from-amber-50 to-amber-100/60 text-gray-900'
+                                    ? 'rounded-none bg-[rgba(244,241,234,0.12)] text-white'
+                                    : 'rounded-none bg-gradient-to-br from-amber-50 to-amber-100/60 text-gray-900'
                                   : dark
-                                    ? 'rounded-tr-md border border-white/8 bg-[#262626] text-slate-300'
-                                    : 'rounded-tr-md border border-slate-200 bg-white text-slate-700',
+                                    ? 'rounded-none border border-white/8 bg-[#1e1e1e] text-slate-300'
+                                    : 'rounded-none border border-slate-200 bg-white text-slate-700',
                               )}
                             >
                               {entry.text}

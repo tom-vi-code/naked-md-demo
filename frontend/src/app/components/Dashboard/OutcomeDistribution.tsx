@@ -24,7 +24,7 @@ export default function OutcomeDistribution({ distribution }: OutcomeDistributio
   const maxCount = Math.max(...sorted.map(([, count]) => count), 1);
 
   return (
-    <div className="surface-card-dark rounded-[28px] p-6">
+    <div className="surface-card-dark rounded-none p-6">
       <div className="mb-6 flex items-center justify-between gap-3">
         <div>
           <Tooltip text="How calls are classified across 14 outcomes. Green = conversion, amber = nurture, gray/red = lost.">
@@ -46,9 +46,9 @@ export default function OutcomeDistribution({ distribution }: OutcomeDistributio
             <div key={outcome} className="grid grid-cols-[minmax(0,154px)_1fr_44px] items-center gap-3">
               <div className="dashboard-copy text-sm">{OUTCOME_LABELS[outcome]}</div>
 
-              <div className="h-5 overflow-hidden rounded-full bg-white/6">
+              <div className="h-5 overflow-hidden bg-white/6">
                 <div
-                  className="h-full rounded-full transition-all duration-700 ease-out"
+                  className="h-full rounded-none transition-all duration-700 ease-out"
                   style={{
                     width: animateIn ? `${widthPct}%` : '0%',
                     background: `linear-gradient(90deg, ${OUTCOME_COLORS[outcome]} 0%, ${OUTCOME_COLORS[outcome]}CC 100%)`,

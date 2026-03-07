@@ -1,40 +1,45 @@
-@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=League+Gothic&family=Figtree:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --nakedmd-teal: #1F8A84;
-  --nakedmd-teal-dark: #187F80;
-  --nakedmd-teal-soft: #d4edeb;
-  --nakedmd-public-bg: #ffffff;
+  --nakedmd-primary: #151515;
+  --nakedmd-primary-hover: #2d2d2d;
+  --nakedmd-bg: #ffffff;
   --nakedmd-sand: #f4f1ea;
-  --nakedmd-dashboard-bg: #1a1a1a;
-  --nakedmd-dashboard-elevated: #262626;
-  --nakedmd-dashboard-border: rgba(255, 255, 255, 0.1);
-  --nakedmd-dark: #1a1a1a;
+  --nakedmd-cream: #F4EEDA;
+  --nakedmd-champagne: #C4B59A;
+  --nakedmd-text: #151515;
+  --nakedmd-text-secondary: #717171;
+  --nakedmd-text-inactive: #ADADAD;
+  --nakedmd-border: #e7e7e7;
+  --nakedmd-input-border: #d6d6d6;
+  --nakedmd-input-active: #4C4C4B;
+  --nakedmd-dashboard-bg: #151515;
+  --nakedmd-dashboard-elevated: #1e1e1e;
+  --nakedmd-dashboard-accent: #f4f1ea;
+  --nakedmd-dashboard-border: rgba(255, 255, 255, 0.08);
+  --nakedmd-dark: #151515;
   --nakedmd-dark-mid: #2d2d2d;
-  --nakedmd-text: #2d2d2d;
-  --radius-card: 24px;
-  --radius-input: 14px;
-  --shadow-soft: 0 16px 40px rgba(17, 24, 39, 0.08);
-  --shadow-lifted: 0 22px 60px rgba(26, 26, 26, 0.18);
+  --radius-card: 0px;
+  --radius-input: 0px;
+  --shadow-soft: 0 3px 6px rgba(0, 0, 0, 0.05);
+  --shadow-lifted: 0 6px 16px rgba(0, 0, 0, 0.08);
 }
 
 html {
   scroll-behavior: smooth;
-  background: var(--nakedmd-public-bg);
+  background: var(--nakedmd-bg);
 }
 
 body {
   min-height: 100vh;
-  background:
-    radial-gradient(circle at top left, rgba(31, 138, 132, 0.12), transparent 24%),
-    linear-gradient(180deg, rgba(244, 241, 234, 0.28), transparent 32%),
-    var(--nakedmd-public-bg);
+  background: var(--nakedmd-bg);
   color: var(--nakedmd-text);
   font-family:
+    'futura-pt',
     Figtree,
     Inter,
     ui-sans-serif,
@@ -47,8 +52,8 @@ body {
 }
 
 ::selection {
-  background: rgba(31, 138, 132, 0.22);
-  color: #2d2d2d;
+  background: rgba(244, 241, 234, 0.6);
+  color: #151515;
 }
 
 a,
@@ -73,23 +78,21 @@ textarea:focus-visible {
   outline: none;
   box-shadow:
     0 0 0 2px rgba(255, 255, 255, 0.95),
-    0 0 0 4px rgba(31, 138, 132, 0.85);
+    0 0 0 4px rgba(21, 21, 21, 0.85);
 }
 
 .surface-card {
-  border-radius: var(--radius-card);
-  border: 1px solid rgba(15, 23, 42, 0.06);
+  border-radius: 0px;
+  border: 1px solid var(--nakedmd-border);
   background: rgba(255, 255, 255, 0.96);
   box-shadow: var(--shadow-soft);
 }
 
 .surface-card-dark {
-  border-radius: var(--radius-card);
+  border-radius: 0px;
   border: 1px solid var(--nakedmd-dashboard-border);
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0)),
-    var(--nakedmd-dashboard-elevated);
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.28);
+  background: var(--nakedmd-dashboard-elevated);
+  box-shadow: none;
 }
 
 /* ---------------------------------------------------------------------------
@@ -117,7 +120,7 @@ textarea:focus-visible {
 }
 
 [data-theme='light'] [data-dashboard] .dashboard-scroll {
-  scrollbar-color: rgba(31, 138, 132, 0.5) rgba(0, 0, 0, 0.04);
+  scrollbar-color: rgba(196, 181, 154, 0.5) rgba(0, 0, 0, 0.04);
 }
 
 [data-theme='light'] [data-dashboard] .dashboard-scroll::-webkit-scrollbar-track {
@@ -162,10 +165,7 @@ textarea:focus-visible {
 }
 
 .nmd-gradient-text {
-  background: linear-gradient(90deg, #ffffff 0%, #b5e0dd 65%, #1F8A84 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: #f4f1ea;
 }
 
 .nmd-hero-grid {
@@ -177,7 +177,7 @@ textarea:focus-visible {
 }
 
 .dashboard-scroll {
-  scrollbar-color: rgba(31, 138, 132, 0.68) rgba(255, 255, 255, 0.05);
+  scrollbar-color: rgba(196, 181, 154, 0.68) rgba(255, 255, 255, 0.05);
   scrollbar-width: thin;
 }
 
@@ -188,16 +188,16 @@ textarea:focus-visible {
 
 .dashboard-scroll::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.05);
-  border-radius: 999px;
+  border-radius: 0px;
 }
 
 .dashboard-scroll::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, rgba(31, 138, 132, 0.95), rgba(24, 127, 128, 0.85));
-  border-radius: 999px;
+  background: rgba(196, 181, 154, 0.6);
+  border-radius: 0px;
 }
 
 .dashboard-scroll::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, rgba(31, 138, 132, 1), rgba(24, 127, 128, 0.95));
+  background: rgba(196, 181, 154, 0.85);
 }
 
 .hide-scrollbar {
@@ -249,12 +249,12 @@ textarea:focus-visible {
   0%,
   100% {
     transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(31, 138, 132, 0.24);
+    box-shadow: 0 0 0 0 rgba(196, 181, 154, 0.24);
   }
 
   50% {
     transform: scale(1.02);
-    box-shadow: 0 0 0 12px rgba(31, 138, 132, 0);
+    box-shadow: 0 0 0 12px rgba(196, 181, 154, 0);
   }
 }
 

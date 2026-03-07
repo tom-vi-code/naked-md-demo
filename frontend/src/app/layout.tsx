@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     shortcut: '/nmd-logo.svg',
     apple: '/nmd-logo.svg',
   },
-  themeColor: '#1a1a1a',
+  themeColor: '#151515',
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

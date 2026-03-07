@@ -47,7 +47,7 @@ function Slider({
             onMouseLeave={() => setShowTip(false)}
             onClick={() => setShowTip((p) => !p)}
             className={cn(
-              'flex h-4 w-4 items-center justify-center rounded-full text-[10px] font-bold leading-none',
+              'flex h-4 w-4 items-center justify-center rounded-none text-[10px] font-bold leading-none',
               theme === 'dark'
                 ? 'bg-white/8 text-slate-400 hover:bg-white/14'
                 : 'bg-slate-200 text-slate-500 hover:bg-slate-300',
@@ -58,7 +58,7 @@ function Slider({
           </button>
           {showTip && (
             <div className={cn(
-              'absolute left-0 top-full z-10 mt-2 w-56 rounded-xl border px-3 py-2.5 text-xs leading-5 shadow-lg',
+              'absolute left-0 top-full z-10 mt-2 w-56 rounded-none border px-3 py-2.5 text-xs leading-5 shadow-lg',
               theme === 'dark'
                 ? 'border-white/10 bg-[#282828] text-slate-300'
                 : 'border-slate-200 bg-white text-slate-600',
@@ -77,7 +77,7 @@ function Slider({
         max={100}
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="mt-2 w-full accent-[#1F8A84]"
+        className="mt-2 w-full accent-[#C4B59A]"
       />
       <div className="mt-1 flex justify-between">
         <span className={cn('text-[10px] uppercase tracking-[0.16em]', theme === 'dark' ? 'text-slate-500' : 'text-slate-400')}>
@@ -242,20 +242,20 @@ export default function AgentConfigPanel({ theme }: AgentConfigPanelProps) {
 
   const isDark = theme === 'dark';
   const cardClass = cn(
-    'rounded-[24px] border p-5',
+    'rounded-none border p-5',
     isDark ? 'border-white/8 bg-white/[0.03]' : 'border-slate-200 bg-white',
   );
   const inputClass = cn(
-    'w-full rounded-xl border px-4 py-3 text-sm',
+    'w-full rounded-none border px-4 py-3 text-sm',
     isDark
-      ? 'border-white/10 bg-white/[0.04] text-white placeholder:text-slate-500 focus:border-[#1F8A84]/50'
-      : 'border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:border-[#1F8A84]',
+      ? 'border-white/10 bg-white/[0.04] text-white placeholder:text-slate-500 focus:border-[#4C4C4B]/50'
+      : 'border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:border-[#4C4C4B]',
   );
   const selectClass = cn(
-    'w-full rounded-xl border px-4 py-3 text-sm appearance-none',
+    'w-full rounded-none border px-4 py-3 text-sm appearance-none',
     isDark
-      ? 'border-white/10 bg-white/[0.04] text-white focus:border-[#1F8A84]/50'
-      : 'border-slate-200 bg-slate-50 text-slate-900 focus:border-[#1F8A84]',
+      ? 'border-white/10 bg-white/[0.04] text-white focus:border-[#4C4C4B]/50'
+      : 'border-slate-200 bg-slate-50 text-slate-900 focus:border-[#4C4C4B]',
   );
 
   return (
@@ -279,7 +279,7 @@ export default function AgentConfigPanel({ theme }: AgentConfigPanelProps) {
           <button
             onClick={handleReset}
             className={cn(
-              'rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em]',
+              'rounded-none border px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em]',
               isDark
                 ? 'border-white/10 text-slate-300 hover:border-white/20 hover:bg-white/5'
                 : 'border-slate-200 text-slate-600 hover:border-slate-300 hover:bg-slate-50',
@@ -293,7 +293,7 @@ export default function AgentConfigPanel({ theme }: AgentConfigPanelProps) {
       <div className="grid gap-6 xl:grid-cols-2">
         {/* Identity */}
         <div className={cardClass}>
-          <div className={cn('text-xs font-semibold uppercase tracking-[0.2em]', isDark ? 'text-[#59B1AB]' : 'text-[#166f6b]')}>
+          <div className={cn('text-xs font-semibold uppercase tracking-[0.2em]', isDark ? 'text-[#f4f1ea]' : 'text-[#151515]')}>
             Identity
           </div>
 
@@ -338,15 +338,15 @@ export default function AgentConfigPanel({ theme }: AgentConfigPanelProps) {
                     key={opt.value}
                     onClick={() => update({ style: opt.value })}
                     className={cn(
-                      'flex-1 rounded-xl border px-3 py-3 text-left',
+                      'flex-1 rounded-none border px-3 py-3 text-left',
                       persona.style === opt.value
-                        ? 'border-[#1F8A84]/40 bg-[#1F8A84]/10'
+                        ? 'border-[#C4B59A]/40 bg-[#C4B59A]/10'
                         : isDark
                           ? 'border-white/8 bg-white/[0.02] hover:border-white/16'
                           : 'border-slate-200 bg-slate-50 hover:border-slate-300',
                     )}
                   >
-                    <div className={cn('text-xs font-semibold', persona.style === opt.value ? (isDark ? 'text-[#59B1AB]' : 'text-[#166f6b]') : isDark ? 'text-slate-200' : 'text-slate-700')}>
+                    <div className={cn('text-xs font-semibold', persona.style === opt.value ? (isDark ? 'text-[#f4f1ea]' : 'text-[#151515]') : isDark ? 'text-slate-200' : 'text-slate-700')}>
                       {opt.label}
                     </div>
                     <div className={cn('mt-1 text-[11px]', isDark ? 'text-slate-400' : 'text-slate-500')}>
@@ -373,7 +373,7 @@ export default function AgentConfigPanel({ theme }: AgentConfigPanelProps) {
                 onClick={() => update({ useEmoji: !persona.useEmoji })}
                 className={cn(
                   'relative flex h-7 w-12 items-center rounded-full transition-colors',
-                  persona.useEmoji ? 'bg-[linear-gradient(135deg,#1F8A84_0%,#187F80_100%)]' : isDark ? 'bg-white/10' : 'bg-slate-300',
+                  persona.useEmoji ? 'bg-[#151515]' : isDark ? 'bg-white/10' : 'bg-slate-300',
                 )}
               >
                 <span
@@ -389,7 +389,7 @@ export default function AgentConfigPanel({ theme }: AgentConfigPanelProps) {
 
         {/* Tone */}
         <div className={cardClass}>
-          <div className={cn('text-xs font-semibold uppercase tracking-[0.2em]', isDark ? 'text-[#59B1AB]' : 'text-[#166f6b]')}>
+          <div className={cn('text-xs font-semibold uppercase tracking-[0.2em]', isDark ? 'text-[#f4f1ea]' : 'text-[#151515]')}>
             Tone
           </div>
 
@@ -435,7 +435,7 @@ export default function AgentConfigPanel({ theme }: AgentConfigPanelProps) {
 
         {/* Custom phrases */}
         <div className={cardClass}>
-          <div className={cn('text-xs font-semibold uppercase tracking-[0.2em]', isDark ? 'text-[#59B1AB]' : 'text-[#166f6b]')}>
+          <div className={cn('text-xs font-semibold uppercase tracking-[0.2em]', isDark ? 'text-[#f4f1ea]' : 'text-[#151515]')}>
             Custom Phrases
           </div>
 
@@ -476,12 +476,12 @@ export default function AgentConfigPanel({ theme }: AgentConfigPanelProps) {
         {/* Preview */}
         <div className={cardClass}>
           <div className="flex items-center justify-between">
-            <div className={cn('text-xs font-semibold uppercase tracking-[0.2em]', isDark ? 'text-[#59B1AB]' : 'text-[#166f6b]')}>
+            <div className={cn('text-xs font-semibold uppercase tracking-[0.2em]', isDark ? 'text-[#f4f1ea]' : 'text-[#151515]')}>
               Live Preview
             </div>
             <button
               onClick={handlePreview}
-              className="rounded-full bg-[linear-gradient(135deg,#1F8A84_0%,#187F80_100%)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-white shadow-[0_10px_24px_rgba(31,138,132,0.24)] hover:-translate-y-0.5 active:translate-y-0"
+              className="rounded-none bg-[#151515] px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-white shadow-none hover:-translate-y-0.5 active:translate-y-0"
             >
               Test Response
             </button>
@@ -492,7 +492,7 @@ export default function AgentConfigPanel({ theme }: AgentConfigPanelProps) {
 
           {previewing ? (
             <div className={cn(
-              'mt-4 rounded-[20px] border border-dashed px-6 py-10 text-center text-sm',
+              'mt-4 rounded-none border border-dashed px-6 py-10 text-center text-sm',
               isDark ? 'border-white/10 text-slate-400' : 'border-slate-200 text-slate-500',
             )}>
               <div className="flex items-center justify-center gap-2">
@@ -505,11 +505,11 @@ export default function AgentConfigPanel({ theme }: AgentConfigPanelProps) {
             </div>
           ) : preview ? (
             <div className={cn(
-              'mt-4 rounded-[20px] border px-4 py-4 text-sm leading-7',
+              'mt-4 rounded-none border px-4 py-4 text-sm leading-7',
               isDark ? 'border-white/8 bg-white/[0.02] text-slate-200' : 'border-slate-200 bg-slate-50 text-slate-700',
             )}>
               <div className="mb-2 flex items-center gap-2">
-                <div className="flex h-7 w-7 items-center justify-center rounded-xl bg-[linear-gradient(135deg,#1F8A84_0%,#187F80_100%)] text-[10px] font-bold text-white">
+                <div className="flex h-7 w-7 items-center justify-center rounded-none bg-[#151515] text-[10px] font-bold text-white">
                   {(persona.name || 'Vi').slice(0, 2)}
                 </div>
                 <span className={cn('text-xs font-semibold', isDark ? 'text-slate-300' : 'text-slate-600')}>
@@ -520,7 +520,7 @@ export default function AgentConfigPanel({ theme }: AgentConfigPanelProps) {
             </div>
           ) : (
             <div className={cn(
-              'mt-4 rounded-[20px] border border-dashed px-6 py-10 text-center text-sm',
+              'mt-4 rounded-none border border-dashed px-6 py-10 text-center text-sm',
               isDark ? 'border-white/10 text-slate-500' : 'border-slate-200 text-slate-400',
             )}>
               Click &quot;Test Response&quot; to preview

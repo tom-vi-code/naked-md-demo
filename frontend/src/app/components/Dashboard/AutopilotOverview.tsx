@@ -30,8 +30,8 @@ function ImpactCard({
   accent: string;
 }) {
   return (
-    <div className="surface-card-dark rounded-[28px] p-6">
-      <div className="h-1 w-16 rounded-full" style={{ background: accent }} />
+    <div className="surface-card-dark rounded-none p-6">
+      <div className="h-1 w-16 rounded-none" style={{ background: accent }} />
       <div className="dashboard-label mt-5 text-xs font-semibold uppercase tracking-[0.2em]">
         {label}
       </div>
@@ -58,10 +58,10 @@ export default function AutopilotOverview({
 
   return (
     <div className="space-y-6 animate-fade-in">
-      <div className="rounded-[28px] border border-[#1F8A84]/18 bg-[linear-gradient(135deg,rgba(31,138,132,0.12),rgba(31,138,132,0.03))] px-6 py-6">
+      <div className="rounded-none border border-[#C4B59A]/18 bg-[rgba(244,241,234,0.08)] px-6 py-6">
         <div className="flex flex-wrap items-start justify-between gap-5">
           <div className="max-w-3xl">
-            <div className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#59B1AB]">
+            <div className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#f4f1ea]">
               Autopilot Active
             </div>
             <h2 className="mt-3 dashboard-heading text-2xl font-black tracking-tight">
@@ -76,7 +76,7 @@ export default function AutopilotOverview({
           <button
             type="button"
             onClick={onOpenCalls}
-            className="rounded-full border border-[#1F8A84]/24 bg-[#1F8A84]/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#59B1AB] hover:border-[#1F8A84]/40 hover:bg-[#1F8A84]/16"
+            className="rounded-none border border-[#C4B59A]/24 bg-[#C4B59A]/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#f4f1ea] hover:border-[#C4B59A]/40 hover:bg-[#C4B59A]/16"
           >
             Open Action Queue
           </button>
@@ -94,7 +94,7 @@ export default function AutopilotOverview({
           label="Booked"
           value={counts.bookedCount.toString()}
           detail="Consultations and treatments moved forward without a manager needing to step in."
-          accent="linear-gradient(90deg,#1F8A84 0%,#187F80 100%)"
+          accent="#C4B59A"
         />
         <ImpactCard
           label="Needs You"
@@ -109,7 +109,7 @@ export default function AutopilotOverview({
       </div>
 
       <div className="grid gap-6 xl:grid-cols-[1.15fr_0.85fr]">
-        <div className="surface-card-dark rounded-[28px] p-6">
+        <div className="surface-card-dark rounded-none p-6">
           <div className="flex items-center justify-between gap-4">
             <div>
               <div className="dashboard-label text-xs font-semibold uppercase tracking-[0.22em]">
@@ -121,7 +121,7 @@ export default function AutopilotOverview({
             </div>
             <span
               className={cn(
-                'dashboard-label rounded-full border px-3 py-1.5 text-xs uppercase tracking-[0.14em]',
+                'dashboard-label rounded-none border px-3 py-1.5 text-xs uppercase tracking-[0.14em]',
                 theme === 'dark' ? 'border-white/8 bg-white/4' : 'border-slate-200 bg-slate-50',
               )}
             >
@@ -133,7 +133,7 @@ export default function AutopilotOverview({
             {actionFeed.length === 0 ? (
               <div
                 className={cn(
-                  'rounded-[24px] border border-dashed px-5 py-12 text-center',
+                  'rounded-none border border-dashed px-5 py-12 text-center',
                   theme === 'dark' ? 'border-white/10' : 'border-slate-300',
                 )}
               >
@@ -152,7 +152,7 @@ export default function AutopilotOverview({
                     type="button"
                     onClick={() => onOpenCall(call.id)}
                     className={cn(
-                      'flex w-full items-start gap-4 rounded-[22px] border px-4 py-4 text-left',
+                      'flex w-full items-start gap-4 rounded-none border px-4 py-4 text-left',
                       theme === 'dark'
                         ? 'border-white/8 bg-white/[0.03] hover:border-white/14 hover:bg-white/[0.05]'
                         : 'border-slate-200 bg-slate-50 hover:border-slate-300 hover:bg-white',
@@ -188,7 +188,7 @@ export default function AutopilotOverview({
           </div>
         </div>
 
-        <div className="surface-card-dark rounded-[28px] p-6">
+        <div className="surface-card-dark rounded-none p-6">
           <div className="flex items-center justify-between gap-4">
             <div>
               <div className="dashboard-label text-xs font-semibold uppercase tracking-[0.22em]">
@@ -202,7 +202,7 @@ export default function AutopilotOverview({
               type="button"
               onClick={onOpenCalls}
               className={cn(
-                'dashboard-label rounded-full border px-3 py-1.5 text-xs uppercase tracking-[0.14em]',
+                'dashboard-label rounded-none border px-3 py-1.5 text-xs uppercase tracking-[0.14em]',
                 theme === 'dark'
                   ? 'border-white/8 bg-white/4 hover:border-white/14 hover:bg-white/[0.08]'
                   : 'border-slate-200 bg-slate-50 hover:border-slate-300 hover:bg-white',
@@ -215,7 +215,7 @@ export default function AutopilotOverview({
           {needsYou.length === 0 ? (
             <div
               className={cn(
-                'mt-6 rounded-[24px] border border-dashed px-5 py-12 text-center',
+                'mt-6 rounded-none border border-dashed px-5 py-12 text-center',
                 theme === 'dark' ? 'border-white/10' : 'border-slate-300',
               )}
             >
@@ -234,7 +234,7 @@ export default function AutopilotOverview({
                     key={call.id}
                   type="button"
                   onClick={() => onOpenCall(call.id)}
-                  className="w-full rounded-[22px] border border-[rgba(251,113,133,0.18)] bg-[rgba(251,113,133,0.06)] px-4 py-4 text-left hover:border-[rgba(251,113,133,0.28)] hover:bg-[rgba(251,113,133,0.08)]"
+                  className="w-full rounded-none border border-[rgba(251,113,133,0.18)] bg-[rgba(251,113,133,0.06)] px-4 py-4 text-left hover:border-[rgba(251,113,133,0.28)] hover:bg-[rgba(251,113,133,0.08)]"
                   >
                     <div className="flex items-start justify-between gap-4">
                       <div>

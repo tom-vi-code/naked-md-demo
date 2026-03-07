@@ -37,7 +37,7 @@ export default function ConversionFunnel({ funnel }: ConversionFunnelProps) {
   const maxCount = Math.max(...stages.map((stage) => stage.count), 1);
 
   return (
-    <div className="surface-card-dark rounded-[28px] p-6">
+    <div className="surface-card-dark rounded-none p-6">
       <div className="mb-6">
         <Tooltip text="Lead-to-close progression showing how many leads convert at each stage.">
           <span className="dashboard-label text-xs font-semibold uppercase tracking-[0.22em]">
@@ -70,9 +70,9 @@ export default function ConversionFunnel({ funnel }: ConversionFunnelProps) {
                 <Tooltip text={stage.tooltip}>
                   <span className="dashboard-copy text-sm font-semibold">{stage.label}</span>
                 </Tooltip>
-                <div className="overflow-hidden rounded-full bg-white/6">
+                <div className="overflow-hidden bg-white/6">
                   <div
-                    className="flex h-12 items-center rounded-full bg-[linear-gradient(90deg,#1F8A84_0%,#187F80_100%)] pl-5 text-sm font-semibold text-white transition-all duration-700 ease-out"
+                    className="flex h-12 items-center rounded-none bg-[#C4B59A] pl-5 text-sm font-semibold text-white transition-all duration-700 ease-out"
                     style={{ width: animateIn ? `${widthPct}%` : '0%' }}
                   >
                     {animateIn ? stage.count.toLocaleString() : ''}

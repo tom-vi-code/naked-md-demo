@@ -56,7 +56,7 @@ export default function KPICards({ kpis }: KPICardsProps) {
       icon: '01',
       label: 'Total Calls',
       value: kpis.totalCalls,
-      accent: 'from-[#1F8A84] to-[#187F80]',
+      accent: 'from-[#f4f1ea] to-[#C4B59A]',
       formatter: (value) => Math.round(value).toLocaleString(),
       tooltip: 'Total inbound and outbound calls across both locations in the selected period.',
     },
@@ -115,10 +115,10 @@ export default function KPICards({ kpis }: KPICardsProps) {
       {cards.map((card) => (
         <div
           key={card.label}
-          className="surface-card-dark group overflow-visible rounded-[24px] p-5 hover:-translate-y-0.5 hover:border-white/12"
+          className="surface-card-dark group overflow-visible rounded-none p-5 hover:-translate-y-0.5 hover:border-white/12"
         >
-          <div className="overflow-hidden rounded-t-[24px] -mx-5 -mt-5 px-5 pt-5">
-            <div className={`h-1 w-full rounded-full bg-gradient-to-r ${card.accent}`} />
+          <div className="overflow-hidden rounded-none -mx-5 -mt-5 px-5 pt-5">
+            <div className={`h-1 w-full rounded-none bg-gradient-to-r ${card.accent}`} />
           </div>
 
           <div className="mt-4 flex items-center justify-between gap-3">
@@ -127,7 +127,7 @@ export default function KPICards({ kpis }: KPICardsProps) {
                 {card.label}
               </span>
             </Tooltip>
-            <div className="dashboard-label rounded-full border border-white/10 px-2.5 py-1 text-[11px] font-semibold">
+            <div className="dashboard-label rounded-none border border-white/10 px-2.5 py-1 text-[11px] font-semibold">
               {card.icon}
             </div>
           </div>

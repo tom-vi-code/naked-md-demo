@@ -120,20 +120,23 @@ export const OUTCOME_COLORS: Record<OutcomeType, string> = {
 };
 
 export const BRAND = {
-  teal: '#1F8A84',
-  tealDark: '#187F80',
-  buttonDark: '#166f6b',
-  tealSoft: '#d4edeb',
-  bgPublic: '#FFFFFF',
-  bgDashboard: '#1a1a1a',
-  bgDashboardElevated: '#262626',
-  dark: '#1a1a1a',
-  darkMid: '#2d2d2d',
+  primary: '#151515',
+  hover: '#2d2d2d',
   sand: '#f4f1ea',
-  textPublic: '#2d2d2d',
+  cream: '#F4EEDA',
+  champagne: '#C4B59A',
+  bgPublic: '#FFFFFF',
+  bgDashboard: '#151515',
+  bgDashboardElevated: '#1e1e1e',
+  dark: '#151515',
+  darkMid: '#2d2d2d',
+  textPublic: '#151515',
+  textSecondary: '#717171',
+  textInactive: '#ADADAD',
+  border: '#e7e7e7',
   textDashboard: '#F0F0F5',
   chatAgentBg: '#F3F4F6',
-  chatUserBg: '#1F8A84',
+  chatUserBg: '#151515',
 } as const;
 
 export const DEFAULT_PERSONA: AgentPersona = {

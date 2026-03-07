@@ -66,8 +66,8 @@ function StatCard({
   accent: string;
 }) {
   return (
-    <div className="surface-card-dark rounded-[24px] p-5">
-      <div className="h-1 w-12 rounded-full" style={{ backgroundColor: accent }} />
+    <div className="surface-card-dark rounded-none p-5">
+      <div className="h-1 w-12 rounded-none" style={{ backgroundColor: accent }} />
       <div className="dashboard-label mt-4 text-xs font-semibold uppercase tracking-[0.2em]">
         {label}
       </div>
@@ -100,7 +100,7 @@ function ChannelWinBar({
     <div className="flex items-center gap-4">
       <div className="flex w-20 items-center gap-2">
         <div
-          className="flex h-7 w-7 items-center justify-center rounded-lg text-xs font-bold text-white"
+          className="flex h-7 w-7 items-center justify-center rounded-none text-xs font-bold text-white"
           style={{ backgroundColor: meta.color + '30' }}
         >
           {meta.icon}
@@ -114,12 +114,12 @@ function ChannelWinBar({
       </div>
       <div
         className={cn(
-          'h-9 flex-1 overflow-hidden rounded-full',
+          'h-9 flex-1 overflow-hidden rounded-none',
           theme === 'dark' ? 'bg-white/5' : 'bg-slate-100',
         )}
       >
         <div
-          className="flex h-full items-center justify-end rounded-full px-3 transition-all duration-700 ease-out"
+          className="flex h-full items-center justify-end rounded-none px-3 transition-all duration-700 ease-out"
           style={{
             width: animate ? `${Math.max(pct, 10)}%` : '0%',
             backgroundColor: meta.color + '25',
@@ -155,7 +155,7 @@ function LeadCard({
   return (
     <div
       className={cn(
-        'rounded-[20px] border transition-all duration-200',
+        'rounded-none border transition-all duration-200',
         expanded
           ? theme === 'dark'
             ? 'border-white/12 bg-white/[0.04]'
@@ -182,7 +182,7 @@ function LeadCard({
         {record.outcome && (
           <span
             className={cn(
-              'dashboard-copy inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em]',
+              'dashboard-copy inline-flex items-center gap-1.5 rounded-none border px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em]',
               theme === 'dark' ? 'border-white/10 bg-white/4' : 'border-slate-200 bg-slate-50',
             )}
           >
@@ -195,7 +195,7 @@ function LeadCard({
         )}
 
         <span
-          className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.12em]"
+          className="inline-flex items-center gap-1.5 rounded-none px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.12em]"
           style={{
             color: winnerMeta.color,
             backgroundColor: winnerMeta.color + '18',
@@ -206,7 +206,7 @@ function LeadCard({
 
         <span
           className={cn(
-            'dashboard-label rounded-full border px-2.5 py-1 font-mono text-[11px]',
+            'dashboard-label rounded-none border px-2.5 py-1 font-mono text-[11px]',
             theme === 'dark' ? 'border-white/8 bg-white/4' : 'border-slate-200 bg-slate-50',
           )}
         >
@@ -257,7 +257,7 @@ function LeadCard({
                   {/* Channel label */}
                   <div className="flex w-20 items-center gap-2">
                     <div
-                      className="flex h-6 w-6 items-center justify-center rounded-md text-[10px] font-bold"
+                      className="flex h-6 w-6 items-center justify-center rounded-none text-[10px] font-bold"
                       style={{
                         color: isWinner ? '#fff' : chMeta.color,
                         backgroundColor: isWinner ? chMeta.color + '50' : chMeta.color + '15',
@@ -276,14 +276,14 @@ function LeadCard({
                   {/* Timeline bar */}
                   <div
                     className={cn(
-                      'relative h-8 flex-1 overflow-hidden rounded-full',
+                      'relative h-8 flex-1 overflow-hidden rounded-none',
                       theme === 'dark' ? 'bg-white/[0.04]' : 'bg-slate-100',
                     )}
                   >
                     {/* Background fill for winner */}
                     {isWinner && (
                       <div
-                        className="absolute inset-0 rounded-full"
+                        className="absolute inset-0 rounded-none"
                         style={{
                           background: `linear-gradient(90deg, ${chMeta.color}08, ${chMeta.color}18)`,
                         }}
@@ -311,7 +311,7 @@ function LeadCard({
                         >
                           <div
                             className={cn(
-                              'rounded-full transition-transform',
+                              'rounded-none transition-transform',
                               isEngaged
                                 ? theme === 'dark'
                                   ? 'h-3.5 w-3.5 ring-2 ring-white/20'
@@ -323,7 +323,7 @@ function LeadCard({
                           {/* Tooltip */}
                           <div
                             className={cn(
-                              'pointer-events-none absolute -top-10 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-lg border px-2.5 py-1.5 text-[10px] opacity-0 shadow-lg transition-opacity group-hover:opacity-100',
+                              'pointer-events-none absolute -top-10 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-none border px-2.5 py-1.5 text-[10px] opacity-0 shadow-lg transition-opacity group-hover:opacity-100',
                               theme === 'dark'
                                 ? 'border-white/10 bg-[#222222] text-slate-300'
                                 : 'border-slate-200 bg-white text-slate-700',
@@ -367,7 +367,7 @@ function LeadCard({
           {/* Event log */}
           <div
             className={cn(
-              'mt-4 rounded-[14px] border px-4 py-3',
+              'mt-4 rounded-none border px-4 py-3',
               theme === 'dark' ? 'border-white/6 bg-white/[0.02]' : 'border-slate-200 bg-slate-50',
             )}
           >
@@ -411,19 +411,19 @@ function OrchestratorSkeleton() {
     <div className="space-y-6">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {Array.from({ length: 4 }).map((_, i) => (
-          <div key={i} className="surface-card-dark rounded-[24px] p-5">
-            <div className="skeleton h-1 w-12 rounded-full" />
-            <div className="skeleton mt-4 h-3 w-24 rounded-full" />
-            <div className="skeleton mt-3 h-8 w-20 rounded-full" />
-            <div className="skeleton mt-3 h-3 w-36 rounded-full" />
+          <div key={i} className="surface-card-dark rounded-none p-5">
+            <div className="skeleton h-1 w-12 rounded-none" />
+            <div className="skeleton mt-4 h-3 w-24 rounded-none" />
+            <div className="skeleton mt-3 h-8 w-20 rounded-none" />
+            <div className="skeleton mt-3 h-3 w-36 rounded-none" />
           </div>
         ))}
       </div>
-      <div className="surface-card-dark rounded-[28px] p-6">
-        <div className="skeleton h-4 w-48 rounded-full" />
+      <div className="surface-card-dark rounded-none p-6">
+        <div className="skeleton h-4 w-48 rounded-none" />
         <div className="mt-6 space-y-4">
           {Array.from({ length: 3 }).map((_, i) => (
-            <div key={i} className="skeleton h-9 rounded-full" />
+            <div key={i} className="skeleton h-9 rounded-none" />
           ))}
         </div>
       </div>
@@ -473,9 +473,9 @@ export default function OrchestratorView({
   return (
     <div className="space-y-6">
       {/* Orchestrator overview */}
-      <div className="rounded-[24px] border border-[#818cf8]/20 bg-[#818cf8]/[0.06] px-6 py-5">
+      <div className="rounded-none border border-[#818cf8]/20 bg-[#818cf8]/[0.06] px-6 py-5">
         <div className="flex flex-wrap items-start gap-4">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#818cf8]/20 text-lg font-black text-[#818cf8]">
+          <div className="flex h-10 w-10 items-center justify-center rounded-none bg-[#818cf8]/20 text-lg font-black text-[#818cf8]">
             3
           </div>
           <div className="min-w-0 flex-1">
@@ -501,7 +501,7 @@ export default function OrchestratorView({
           label="Avg First Reply"
           value={formatMs(stats.avgFirstResponseMs)}
           detail="Time to first engagement"
-          accent="#1F8A84"
+          accent="#f4f1ea"
         />
         <StatCard
           label="Leads Saved"
@@ -518,7 +518,7 @@ export default function OrchestratorView({
       </div>
 
       {/* Channel win distribution */}
-      <div className="surface-card-dark rounded-[28px] p-6">
+      <div className="surface-card-dark rounded-none p-6">
         <div className="dashboard-label text-xs font-semibold uppercase tracking-[0.22em]">
           What Got the Reply
         </div>
@@ -540,7 +540,7 @@ export default function OrchestratorView({
       </div>
 
       {/* Lead orchestration timeline */}
-      <div className="surface-card-dark rounded-[28px] p-6">
+      <div className="surface-card-dark rounded-none p-6">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
             <div className="dashboard-label text-xs font-semibold uppercase tracking-[0.22em]">
@@ -552,7 +552,7 @@ export default function OrchestratorView({
           </div>
           <span
             className={cn(
-              'dashboard-label rounded-full border px-3 py-1.5 text-xs uppercase tracking-[0.14em]',
+              'dashboard-label rounded-none border px-3 py-1.5 text-xs uppercase tracking-[0.14em]',
               theme === 'dark' ? 'border-white/8 bg-white/4' : 'border-slate-200 bg-slate-50',
             )}
           >

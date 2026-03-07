@@ -12,7 +12,7 @@ interface LocationBreakdownProps {
 
 function LocationCard({ stats }: { stats: LocationStats }) {
   return (
-    <div className="surface-card-dark rounded-[28px] p-6">
+    <div className="surface-card-dark rounded-none p-6">
       <div className="flex items-start justify-between gap-4">
         <div>
           <div className="dashboard-label text-xs font-semibold uppercase tracking-[0.22em]">
@@ -22,13 +22,13 @@ function LocationCard({ stats }: { stats: LocationStats }) {
             {stats.name.replace('NakedMD ', '')}
           </h4>
         </div>
-        <div className="dashboard-label rounded-full border border-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em]">
+        <div className="dashboard-label rounded-none border border-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em]">
           {stats.totalCalls} calls
         </div>
       </div>
 
       <div className="mt-6 grid grid-cols-2 gap-4">
-        <div className="rounded-[22px] border border-white/8 bg-white/4 p-4">
+        <div className="rounded-none border border-white/8 bg-white/4 p-4">
           <div className="dashboard-label text-[11px] font-semibold uppercase tracking-[0.16em]">
             Total Calls
           </div>
@@ -36,7 +36,7 @@ function LocationCard({ stats }: { stats: LocationStats }) {
             {stats.totalCalls}
           </div>
         </div>
-        <div className="rounded-[22px] border border-white/8 bg-white/4 p-4">
+        <div className="rounded-none border border-white/8 bg-white/4 p-4">
           <Tooltip text="Percentage of dialed calls where the prospect picked up.">
             <span className="dashboard-label text-[11px] font-semibold uppercase tracking-[0.16em]">
               Connect Rate
@@ -55,9 +55,9 @@ function LocationCard({ stats }: { stats: LocationStats }) {
           </Tooltip>
           <span>{stats.connectRate.toFixed(1)}%</span>
         </div>
-        <div className="h-2 rounded-full bg-white/8">
+        <div className="h-2 bg-white/8">
           <div
-            className="h-2 rounded-full bg-[linear-gradient(90deg,#1F8A84_0%,#187F80_100%)]"
+            className="h-2 bg-[#C4B59A]"
             style={{ width: `${Math.min(stats.connectRate, 100)}%` }}
           />
         </div>
@@ -79,7 +79,7 @@ function LocationCard({ stats }: { stats: LocationStats }) {
                 />
                 {OUTCOME_LABELS[item.outcome]}
               </span>
-              <span className="dashboard-copy rounded-full border border-white/8 bg-white/4 px-3 py-1 text-xs font-semibold">
+              <span className="dashboard-copy rounded-none border border-white/8 bg-white/4 px-3 py-1 text-xs font-semibold">
                 {item.count}
               </span>
             </div>

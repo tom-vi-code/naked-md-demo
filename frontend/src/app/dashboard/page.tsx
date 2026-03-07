@@ -41,36 +41,36 @@ function OverviewSkeleton() {
     <div className="space-y-6">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4 2xl:grid-cols-7">
         {Array.from({ length: 7 }).map((_, index) => (
-          <div key={index} className="surface-card-dark rounded-[24px] p-5">
-            <div className="skeleton h-1 rounded-full" />
-            <div className="skeleton mt-5 h-4 w-28 rounded-full" />
-            <div className="skeleton mt-5 h-10 rounded-full" />
+          <div key={index} className="surface-card-dark rounded-none p-5">
+            <div className="skeleton h-1 rounded-none" />
+            <div className="skeleton mt-5 h-4 w-28 rounded-none" />
+            <div className="skeleton mt-5 h-10 rounded-none" />
           </div>
         ))}
       </div>
       <div className="grid gap-6 xl:grid-cols-2">
-        <div className="surface-card-dark rounded-[28px] p-6">
-          <div className="skeleton h-5 w-40 rounded-full" />
+        <div className="surface-card-dark rounded-none p-6">
+          <div className="skeleton h-5 w-40 rounded-none" />
           <div className="mt-5 grid gap-4 md:grid-cols-2">
             {Array.from({ length: 2 }).map((_, index) => (
-              <div key={index} className="skeleton h-48 rounded-[24px]" />
+              <div key={index} className="skeleton h-48 rounded-none" />
             ))}
           </div>
         </div>
-        <div className="surface-card-dark rounded-[28px] p-6">
-          <div className="skeleton h-5 w-40 rounded-full" />
+        <div className="surface-card-dark rounded-none p-6">
+          <div className="skeleton h-5 w-40 rounded-none" />
           <div className="mt-5 space-y-4">
             {Array.from({ length: 6 }).map((_, index) => (
-              <div key={index} className="skeleton h-5 rounded-full" />
+              <div key={index} className="skeleton h-5 rounded-none" />
             ))}
           </div>
         </div>
       </div>
-      <div className="surface-card-dark rounded-[28px] p-6">
-        <div className="skeleton h-5 w-32 rounded-full" />
+      <div className="surface-card-dark rounded-none p-6">
+        <div className="skeleton h-5 w-32 rounded-none" />
         <div className="mt-5 space-y-3">
           {Array.from({ length: 6 }).map((_, index) => (
-            <div key={index} className="skeleton h-12 rounded-[18px]" />
+            <div key={index} className="skeleton h-12 rounded-none" />
           ))}
         </div>
       </div>
@@ -191,12 +191,12 @@ export default function DashboardPage() {
 
   if (!authed) {
     return (
-      <div className="min-h-screen bg-[#1a1a1a]">
+      <div className="min-h-screen bg-[#151515]">
         <div className="mx-auto flex min-h-screen max-w-5xl items-center justify-center px-4">
-          <div className="surface-card-dark w-full max-w-md rounded-[28px] p-8 text-center">
-            <div className="skeleton mx-auto h-14 w-14 rounded-2xl" />
-            <div className="skeleton mx-auto mt-6 h-6 w-48 rounded-full" />
-            <div className="skeleton mx-auto mt-3 h-4 w-64 rounded-full" />
+          <div className="surface-card-dark w-full max-w-md p-8 text-center">
+            <div className="skeleton mx-auto h-14 w-14" />
+            <div className="skeleton mx-auto mt-6 h-6 w-48" />
+            <div className="skeleton mx-auto mt-3 h-4 w-64" />
           </div>
         </div>
       </div>
@@ -209,15 +209,15 @@ export default function DashboardPage() {
       className={cn(
         'min-h-screen overflow-hidden transition-colors duration-300',
         theme === 'dark'
-          ? 'bg-[#1a1a1a] text-[#F0F0F5]'
+          ? 'bg-[#151515] text-[#F0F0F5]'
           : 'bg-[#f5f6fa] text-[#1f2937]',
       )}
     >
       <div className={cn(
         'pointer-events-none fixed inset-0 transition-opacity duration-300',
         theme === 'dark'
-          ? 'bg-[radial-gradient(circle_at_top_left,rgba(31,138,132,0.16),transparent_18%),radial-gradient(circle_at_bottom_right,rgba(31,138,132,0.55),transparent_32%)]'
-          : 'bg-[radial-gradient(circle_at_top_left,rgba(31,138,132,0.06),transparent_18%)] opacity-60',
+          ? 'bg-[radial-gradient(circle_at_top_left,rgba(244,241,234,0.06),transparent_18%),radial-gradient(circle_at_bottom_right,rgba(196,181,154,0.12),transparent_32%)]'
+          : 'bg-[radial-gradient(circle_at_top_left,rgba(244,241,234,0.04),transparent_18%)] opacity-60',
       )} />
 
       {menuOpen && (
@@ -245,7 +245,7 @@ export default function DashboardPage() {
               alt="NakedMD"
               width={85}
               height={48}
-              className="h-12 w-auto drop-shadow-[0_18px_34px_rgba(31,138,132,0.28)]"
+              className="h-12 w-auto drop-shadow-none"
             />
             <div>
               <div className={cn('text-lg font-extrabold tracking-tight', theme === 'dark' ? 'text-white' : 'text-gray-900')}>NakedMD</div>
@@ -255,7 +255,7 @@ export default function DashboardPage() {
             </div>
           </div>
 
-          <div className={cn('mt-5 rounded-[24px] border p-4', theme === 'dark' ? 'border-white/8 bg-white/4' : 'border-slate-200 bg-slate-50')}>
+          <div className={cn('mt-5 rounded-none border p-4', theme === 'dark' ? 'border-white/8 bg-white/4' : 'border-slate-200 bg-slate-50')}>
             <div className={cn('text-xs font-semibold uppercase tracking-[0.2em]', theme === 'dark' ? 'text-slate-400' : 'text-slate-500')}>
               Portfolio
             </div>
@@ -273,11 +273,11 @@ export default function DashboardPage() {
                 key={item.id}
                 onClick={() => setActiveTab(item.id)}
                 className={cn(
-                  'rounded-[22px] border px-4 py-4 text-left',
+                  'rounded-none border px-4 py-4 text-left',
                   activeTab === item.id
                     ? theme === 'dark'
-                      ? 'border-[#1F8A84]/35 bg-[#1F8A84]/12 text-white'
-                      : 'border-[#1F8A84]/30 bg-[#1F8A84]/8 text-gray-900'
+                      ? 'border-[#C4B59A]/35 bg-[#f4f1ea]/12 text-white'
+                      : 'border-[#C4B59A]/30 bg-[#f4f1ea]/8 text-gray-900'
                     : theme === 'dark'
                       ? 'border-white/0 bg-transparent text-slate-400 hover:border-white/8 hover:bg-white/4 hover:text-slate-200'
                       : 'border-transparent bg-transparent text-slate-500 hover:border-slate-200 hover:bg-slate-50 hover:text-slate-700',
@@ -289,7 +289,7 @@ export default function DashboardPage() {
                   </div>
                   <div
                     className={cn(
-                      'rounded-full border px-2.5 py-1 text-[11px] font-semibold',
+                      'rounded-none border px-2.5 py-1 text-[11px] font-semibold',
                       theme === 'dark' ? 'border-white/10 text-slate-400' : 'border-slate-200 text-slate-500',
                     )}
                   >
@@ -316,10 +316,10 @@ export default function DashboardPage() {
               target="_blank"
               rel="noopener noreferrer"
               className={cn(
-                'flex w-full items-center justify-between rounded-full border px-4 py-3 text-xs font-semibold uppercase tracking-[0.18em]',
+                'flex w-full items-center justify-between rounded-none border px-4 py-3 text-xs font-semibold uppercase tracking-[0.18em]',
                 theme === 'dark'
-                  ? 'border-[#1F8A84]/20 text-[#59B1AB] hover:border-[#1F8A84]/40 hover:bg-[#1F8A84]/10'
-                  : 'border-[#1F8A84]/20 text-[#166f6b] hover:border-[#1F8A84]/40 hover:bg-[#1F8A84]/5',
+                  ? 'border-[#C4B59A]/20 text-[#f4f1ea] hover:border-[#C4B59A]/40 hover:bg-[#f4f1ea]/10'
+                  : 'border-[#C4B59A]/20 text-[#151515] hover:border-[#C4B59A]/40 hover:bg-[#f4f1ea]/10',
               )}
             >
               <span>Prospect View</span>
@@ -331,7 +331,7 @@ export default function DashboardPage() {
             <button
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
               className={cn(
-                'flex w-full items-center justify-between rounded-full border px-4 py-3 text-xs font-semibold uppercase tracking-[0.18em]',
+                'flex w-full items-center justify-between rounded-none border px-4 py-3 text-xs font-semibold uppercase tracking-[0.18em]',
                 theme === 'dark'
                   ? 'border-white/10 text-slate-300 hover:border-white/20 hover:bg-white/5'
                   : 'border-slate-200 text-slate-600 hover:border-slate-300 hover:bg-slate-50',
@@ -349,7 +349,7 @@ export default function DashboardPage() {
             <button
               onClick={handleLogout}
               className={cn(
-                'w-full rounded-full border px-4 py-3 text-xs font-semibold uppercase tracking-[0.18em]',
+                'w-full rounded-none border px-4 py-3 text-xs font-semibold uppercase tracking-[0.18em]',
                 theme === 'dark'
                   ? 'border-white/10 text-slate-300 hover:border-red-400/26 hover:bg-red-400/10 hover:text-red-200'
                   : 'border-slate-200 text-slate-500 hover:border-red-300 hover:bg-red-50 hover:text-red-600',
@@ -363,7 +363,7 @@ export default function DashboardPage() {
         <main className="flex min-w-0 flex-1 flex-col">
           <header className={cn(
             'sticky top-0 z-20 border-b backdrop-blur transition-colors duration-300',
-            theme === 'dark' ? 'border-white/8 bg-[#1a1a1a]/86' : 'border-slate-200 bg-white/80',
+            theme === 'dark' ? 'border-white/8 bg-[#151515]/86' : 'border-slate-200 bg-white/80',
           )}>
             <div className="flex flex-col gap-4 px-4 py-4 sm:px-6 lg:px-8">
               <div className="flex flex-wrap items-start justify-between gap-4">
@@ -372,7 +372,7 @@ export default function DashboardPage() {
                     type="button"
                     onClick={() => setMenuOpen(true)}
                     className={cn(
-                      'mt-1 rounded-full border p-2 md:hidden',
+                      'mt-1 rounded-none border p-2 md:hidden',
                       theme === 'dark'
                         ? 'border-white/10 bg-white/5 text-slate-300'
                         : 'border-slate-200 bg-white text-slate-700',
@@ -397,15 +397,15 @@ export default function DashboardPage() {
                 </div>
 
                 <div className="flex flex-col items-end gap-3 self-start">
-                  <div className={cn('flex items-center gap-2 rounded-full border p-1', theme === 'dark' ? 'border-white/8 bg-white/4' : 'border-slate-200 bg-slate-100')}>
+                  <div className={cn('flex items-center gap-2 rounded-none border p-1', theme === 'dark' ? 'border-white/8 bg-white/4' : 'border-slate-200 bg-slate-100')}>
                     {PERIOD_OPTIONS.map((option) => (
                       <button
                         key={option.id}
                         onClick={() => setPeriod(option.id)}
                         className={cn(
-                          'rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em]',
+                          'rounded-none px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em]',
                           period === option.id
-                            ? 'bg-[linear-gradient(135deg,#1F8A84_0%,#187F80_100%)] text-white shadow-[0_10px_24px_rgba(31,138,132,0.24)]'
+                            ? 'bg-[#f4f1ea] text-[#151515]'
                             : theme === 'dark' ? 'text-slate-400 hover:text-white' : 'text-slate-500 hover:text-gray-900',
                         )}
                       >
@@ -420,16 +420,16 @@ export default function DashboardPage() {
                     aria-checked={autopilot}
                     onClick={() => setAutopilot((current) => !current)}
                     className={cn(
-                      'flex items-center gap-3 rounded-full border px-4 py-2.5',
+                      'flex items-center gap-3 rounded-none border px-4 py-2.5',
                       autopilot
-                        ? 'border-[#1F8A84]/30 bg-[rgba(31,138,132,0.1)]'
+                        ? 'border-[#C4B59A]/30 bg-[rgba(244,241,234,0.1)]'
                         : theme === 'dark'
                           ? 'border-white/10 bg-white/[0.04]'
                           : 'border-slate-200 bg-slate-50',
                     )}
                   >
                     <div className="text-left">
-                      <div className={cn('text-[10px] font-semibold uppercase tracking-[0.22em]', autopilot ? 'text-[#59B1AB]' : theme === 'dark' ? 'text-slate-400' : 'text-slate-500')}>
+                      <div className={cn('text-[10px] font-semibold uppercase tracking-[0.22em]', autopilot ? 'text-[#f4f1ea]' : theme === 'dark' ? 'text-slate-400' : 'text-slate-500')}>
                         Autopilot
                       </div>
                       <div className={cn('mt-0.5 text-xs', theme === 'dark' ? 'text-slate-300' : 'text-slate-600')}>
@@ -439,7 +439,7 @@ export default function DashboardPage() {
                     <span
                       className={cn(
                         'relative flex h-7 w-12 items-center rounded-full transition-colors',
-                        autopilot ? 'bg-[linear-gradient(135deg,#1F8A84_0%,#187F80_100%)]' : theme === 'dark' ? 'bg-white/10' : 'bg-slate-300',
+                        autopilot ? 'bg-[#f4f1ea] text-[#151515]' : theme === 'dark' ? 'bg-white/10' : 'bg-slate-300',
                       )}
                     >
                       <span
@@ -468,7 +468,7 @@ export default function DashboardPage() {
                           `Conversion rate: ${analytics.kpis.conversionRate.toFixed(1)}%`,
                         ]
                   ).map((label) => (
-                    <span key={label} className={cn('rounded-full border px-3 py-1.5', theme === 'dark' ? 'border-white/8 bg-white/4' : 'border-slate-200 bg-slate-100')}>
+                    <span key={label} className={cn('rounded-none border px-3 py-1.5', theme === 'dark' ? 'border-white/8 bg-white/4' : 'border-slate-200 bg-slate-100')}>
                       {label}
                     </span>
                   ))}
@@ -504,7 +504,7 @@ export default function DashboardPage() {
                         <OutcomeDistribution distribution={analytics.outcomeDistribution} />
                       </div>
 
-                      <div className="surface-card-dark rounded-[28px] p-6">
+                      <div className="surface-card-dark rounded-none p-6">
                         <div className="mb-5 flex flex-wrap items-center justify-between gap-4">
                           <div>
                             <div className="dashboard-label text-xs font-semibold uppercase tracking-[0.22em]">
@@ -516,7 +516,7 @@ export default function DashboardPage() {
                           </div>
                           <button
                             onClick={() => setActiveTab('calls')}
-                            className="rounded-full border border-[#1F8A84]/22 bg-[#1F8A84]/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#59B1AB] hover:border-[#1F8A84]/45 hover:bg-[#1F8A84]/16"
+                            className="rounded-none border border-[#C4B59A]/22 bg-[#f4f1ea]/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#f4f1ea] hover:border-[#C4B59A]/45 hover:bg-[#f4f1ea]/16"
                           >
                             View full log
                           </button>
@@ -551,7 +551,7 @@ export default function DashboardPage() {
                     </div>
 
                     {analytics.topObjections.length > 0 && (
-                      <div className="surface-card-dark rounded-[28px] p-6">
+                      <div className="surface-card-dark rounded-none p-6">
                         <div className="dashboard-label text-xs font-semibold uppercase tracking-[0.22em]">
                           Top Objections
                         </div>
@@ -561,14 +561,14 @@ export default function DashboardPage() {
                         <div className="mt-5 space-y-3">
                           {analytics.topObjections.map((obj, idx) => (
                             <div key={idx} className="flex items-center gap-4">
-                              <span className="dashboard-copy flex h-7 w-7 items-center justify-center rounded-lg border border-white/8 bg-white/4 text-xs font-bold">
+                              <span className="dashboard-copy flex h-7 w-7 items-center justify-center rounded-none border border-white/8 bg-white/4 text-xs font-bold">
                                 {idx + 1}
                               </span>
                               <div className="min-w-0 flex-1">
                                 <div className="dashboard-heading text-sm">{obj.objection}</div>
                                 <div className="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-white/5">
                                   <div
-                                    className="h-full rounded-full bg-[#1F8A84]/60"
+                                    className="h-full bg-[#C4B59A]/60"
                                     style={{ width: `${obj.percentage}%` }}
                                   />
                                 </div>
@@ -595,14 +595,14 @@ export default function DashboardPage() {
                 )}
               </>
             ) : (
-              <div className="surface-card-dark rounded-[28px] px-6 py-16 text-center">
+              <div className="surface-card-dark rounded-none px-6 py-16 text-center">
                 <div className="dashboard-heading text-xl font-semibold">Dashboard data could not load</div>
                 <p className="dashboard-copy mx-auto mt-3 max-w-md text-sm leading-6">
                   Refresh the page or try a different period filter.
                 </p>
                 <button
                   onClick={() => void fetchAnalytics()}
-                  className="mt-6 rounded-full bg-[linear-gradient(135deg,#1F8A84_0%,#187F80_100%)] px-5 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-white"
+                  className="mt-6 bg-[#f4f1ea] px-5 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#151515]"
                 >
                   Retry
                 </button>
@@ -644,7 +644,7 @@ function RecentCallsPreview({
 }) {
   if (!calls || calls.length === 0) {
     return (
-      <div className="dashboard-copy rounded-[24px] border border-dashed border-white/10 px-6 py-14 text-center text-sm">
+      <div className="dashboard-copy rounded-none border border-dashed border-white/10 px-6 py-14 text-center text-sm">
         No recent calls for this period.
       </div>
     );
@@ -674,7 +674,7 @@ function RecentCallsPreview({
               </td>
               <td className="px-4 py-3.5">
                 {call.outcome ? (
-                  <span className="dashboard-copy inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/4 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em]">
+                  <span className="dashboard-copy inline-flex items-center gap-2 rounded-none border border-white/10 bg-white/4 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em]">
                     <span
                       className="h-2 w-2 rounded-full"
                       style={{ backgroundColor: OUTCOME_COLORS[call.outcome] }}
@@ -691,7 +691,7 @@ function RecentCallsPreview({
               <td className="px-4 py-3.5">
                 {call.sentiment !== null ? (
                   <span
-                    className="rounded-full px-2.5 py-1 text-xs font-semibold"
+                    className="rounded-none px-2.5 py-1 text-xs font-semibold"
                     style={{
                       color: getSentimentColor(call.sentiment),
                       backgroundColor: `${getSentimentColor(call.sentiment)}18`,
@@ -727,11 +727,11 @@ function DailyTrendChart({
 
   if (!data || data.length === 0) {
     return (
-      <div className="surface-card-dark rounded-[28px] p-6">
+      <div className="surface-card-dark rounded-none p-6">
         <div className="dashboard-label text-xs font-semibold uppercase tracking-[0.22em]">
           Daily Trend
         </div>
-        <div className="dashboard-copy mt-6 rounded-[24px] border border-dashed border-white/10 px-6 py-14 text-center text-sm">
+        <div className="dashboard-copy mt-6 rounded-none border border-dashed border-white/10 px-6 py-14 text-center text-sm">
           No trend data available for this period.
         </div>
       </div>
@@ -741,7 +741,7 @@ function DailyTrendChart({
   const maxCalls = Math.max(...data.map((day) => day.calls), 1);
 
   return (
-    <div className="surface-card-dark rounded-[28px] p-6">
+    <div className="surface-card-dark rounded-none p-6">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
           <div className="dashboard-label text-xs font-semibold uppercase tracking-[0.22em]">
@@ -754,11 +754,11 @@ function DailyTrendChart({
 
         <div className="dashboard-label flex items-center gap-4 text-xs uppercase tracking-[0.16em]">
           <span className="flex items-center gap-2">
-            <span className="h-2.5 w-6 rounded-full bg-[#1F8A84]" />
+            <span className="h-2.5 w-6 bg-[#C4B59A]" />
             Calls
           </span>
           <span className="flex items-center gap-2">
-            <span className="h-2.5 w-6 rounded-full bg-[#22c55e]" />
+            <span className="h-2.5 w-6 bg-[#22c55e]" />
             Conversions
           </span>
         </div>
@@ -775,17 +775,17 @@ function DailyTrendChart({
 
           return (
             <div key={day.date} className="group relative flex flex-1 flex-col items-center gap-2">
-              <div className="pointer-events-none absolute -top-12 rounded-full border border-white/10 bg-[#222222] px-3 py-1 text-[11px] uppercase tracking-[0.14em] text-slate-300 opacity-0 transition-opacity duration-150 group-hover:opacity-100">
+              <div className="pointer-events-none absolute -top-12 rounded-none border border-white/10 bg-[#222222] px-3 py-1 text-[11px] uppercase tracking-[0.14em] text-slate-300 opacity-0 transition-opacity duration-150 group-hover:opacity-100">
                 {dateLabel}: {day.calls} calls, {day.conversions} conversions
               </div>
 
               <div className="flex w-full items-end justify-center gap-1" style={{ height: 160 }}>
                 <div
-                  className="w-full max-w-4 rounded-t-full bg-[#1F8A84] transition-all duration-700 ease-out"
+                  className="w-full max-w-4 rounded-none bg-[#C4B59A] transition-all duration-700 ease-out"
                   style={{ height: animateIn ? callHeight : 0 }}
                 />
                 <div
-                  className="w-full max-w-4 rounded-t-full bg-[#22c55e] transition-all duration-700 ease-out"
+                  className="w-full max-w-4 rounded-none bg-[#22c55e] transition-all duration-700 ease-out"
                   style={{ height: animateIn ? conversionHeight : 0 }}
                 />
               </div>

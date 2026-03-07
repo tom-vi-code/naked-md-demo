@@ -128,19 +128,19 @@ export default function NakedMDAICommand({
           type="button"
           onClick={() => setOpen(true)}
           className={cn(
-            'pointer-events-auto w-[min(100vw-2rem,23rem)] overflow-hidden rounded-[24px] border text-left shadow-[0_24px_72px_rgba(15,23,42,0.2)] animate-fade-up',
+            'pointer-events-auto w-[min(100vw-2rem,23rem)] overflow-hidden rounded-none border text-left shadow-[0_24px_72px_rgba(15,23,42,0.2)] animate-fade-up',
             theme === 'dark'
               ? 'border-white/10 bg-[#1e1e1e] text-white'
               : 'border-slate-200 bg-white text-slate-900',
           )}
         >
-          <div className="bg-[linear-gradient(135deg,rgba(31,138,132,0.18),rgba(31,138,132,0.04))] px-4 py-4">
+          <div className="bg-[rgba(244,241,234,0.08)] px-4 py-4">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[linear-gradient(135deg,#1F8A84_0%,#187F80_100%)] text-xs font-black uppercase tracking-[0.12em] text-white">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-none bg-[#151515] text-xs font-black uppercase tracking-[0.12em] text-white">
                 AI
               </div>
               <div className="min-w-0 flex-1">
-                <div className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#59B1AB]">
+                <div className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#f4f1ea]">
                   NakedMD AI
                 </div>
                 <div className={cn('mt-1 text-sm font-semibold leading-5', theme === 'dark' ? 'text-white' : 'text-slate-900')}>
@@ -155,21 +155,21 @@ export default function NakedMDAICommand({
       {open && (
         <div
           className={cn(
-            'pointer-events-auto w-[min(100vw-2rem,24rem)] overflow-hidden rounded-[30px] border shadow-[0_30px_90px_rgba(15,23,42,0.24)] animate-fade-up',
+            'pointer-events-auto w-[min(100vw-2rem,24rem)] overflow-hidden rounded-none border shadow-[0_30px_90px_rgba(15,23,42,0.24)] animate-fade-up',
             theme === 'dark'
-              ? 'border-white/10 bg-[#1a1a1a] text-white'
+              ? 'border-white/10 bg-[#151515] text-white'
               : 'border-slate-200 bg-white text-slate-900',
           )}
         >
           <div className={cn(
             'border-b px-5 py-5',
             theme === 'dark'
-              ? 'border-white/8 bg-[linear-gradient(180deg,rgba(31,138,132,0.14),rgba(255,255,255,0))]'
-              : 'border-slate-200 bg-[linear-gradient(180deg,rgba(31,138,132,0.14),rgba(255,255,255,0))]',
+              ? 'border-white/8 bg-[rgba(244,241,234,0.06)]'
+              : 'border-slate-200 bg-[rgba(244,241,234,0.06)]',
           )}>
             <div className="flex items-start justify-between gap-4">
               <div>
-                <div className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#59B1AB]">
+                <div className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#f4f1ea]">
                   NakedMD AI
                 </div>
                 <h2 className={cn('mt-2 text-xl font-black tracking-tight', theme === 'dark' ? 'text-white' : 'text-slate-900')}>
@@ -183,7 +183,7 @@ export default function NakedMDAICommand({
                   setShowWhy(false);
                 }}
                 className={cn(
-                  'rounded-full border px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.16em]',
+                  'rounded-none border px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.16em]',
                   theme === 'dark'
                     ? 'border-white/10 bg-white/[0.04] text-slate-300 hover:border-white/18 hover:bg-white/[0.08] hover:text-white'
                     : 'border-slate-200 bg-slate-50 text-slate-600 hover:border-slate-300 hover:bg-white hover:text-slate-900',
@@ -196,7 +196,7 @@ export default function NakedMDAICommand({
 
           <div className="space-y-4 px-5 py-5">
             <section className={cn(
-              'rounded-[24px] border px-4 py-4',
+              'rounded-none border px-4 py-4',
               theme === 'dark' ? 'border-white/8 bg-white/[0.03]' : 'border-slate-200 bg-slate-50/80',
             )}>
               <div className={cn('text-[11px] font-semibold uppercase tracking-[0.18em]', theme === 'dark' ? 'text-slate-400' : 'text-slate-500')}>
@@ -211,7 +211,7 @@ export default function NakedMDAICommand({
             </section>
 
             <section className={cn(
-              'rounded-[24px] border px-4 py-4',
+              'rounded-none border px-4 py-4',
               snapshot.needsCount > 0
                 ? 'border-[rgba(251,113,133,0.18)] bg-[rgba(251,113,133,0.06)]'
                 : theme === 'dark'
@@ -241,7 +241,7 @@ export default function NakedMDAICommand({
                 <button
                   type="button"
                   onClick={handlePrimaryAction}
-                  className="rounded-full bg-[linear-gradient(135deg,#1F8A84_0%,#187F80_100%)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-white shadow-[0_14px_28px_rgba(31,138,132,0.22)]"
+                  className="rounded-none bg-[#151515] px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-white shadow-none"
                 >
                   {snapshot.primaryLabel}
                 </button>
@@ -252,7 +252,7 @@ export default function NakedMDAICommand({
             </section>
 
             <section className={cn(
-              'rounded-[24px] border px-4 py-4',
+              'rounded-none border px-4 py-4',
               theme === 'dark' ? 'border-white/8 bg-white/[0.03]' : 'border-slate-200 bg-slate-50/80',
             )}>
               <button
@@ -287,7 +287,7 @@ export default function NakedMDAICommand({
                     <div
                       key={item}
                       className={cn(
-                        'rounded-[18px] border px-3 py-3 text-sm leading-6',
+                        'rounded-none border px-3 py-3 text-sm leading-6',
                         theme === 'dark'
                           ? 'border-white/8 bg-[#222222] text-slate-200'
                           : 'border-slate-200 bg-white text-slate-700',
