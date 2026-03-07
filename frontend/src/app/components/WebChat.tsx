@@ -427,7 +427,7 @@ export default function WebChat({ leadContext }: WebChatProps) {
           </div>
 
           {!isTyping && (
-            <div className="hidden border-t border-slate-200/80 bg-[#fff8f3] px-4 py-4 sm:px-6 lg:block">
+            <div className="hidden border-t border-slate-200/80 bg-[#faf8f4] px-4 py-4 sm:px-6 lg:block">
               <div className="mx-auto max-w-3xl">
                 <div className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
                   Suggested next questions

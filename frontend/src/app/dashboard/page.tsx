@@ -15,7 +15,7 @@ import ConversionFunnel from '@/app/components/Dashboard/ConversionFunnel';
 import LocationBreakdown from '@/app/components/Dashboard/LocationBreakdown';
 import OutcomeDistribution from '@/app/components/Dashboard/OutcomeDistribution';
 import OrchestratorView from '@/app/components/Dashboard/OrchestratorView';
-import NakedMDAICommand from '@/app/components/Dashboard/CrunchAICommand';
+import NakedMDAICommand from '@/app/components/Dashboard/NakedMDAICommand';
 import AutopilotOverview from '@/app/components/Dashboard/AutopilotOverview';
 import AgentConfigPanel from '@/app/components/Dashboard/AgentConfigPanel';
 
