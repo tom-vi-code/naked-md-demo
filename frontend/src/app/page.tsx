@@ -35,8 +35,8 @@ export default function LoginPage() {
   }
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#05060a] text-white">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(197,165,114,0.22),transparent_22%),radial-gradient(circle_at_bottom_right,rgba(53,18,74,0.85),transparent_38%)]" />
+    <main className="relative min-h-screen overflow-hidden bg-[#1a1a1a] text-white">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(31,138,132,0.22),transparent_22%),radial-gradient(circle_at_bottom_right,rgba(31,138,132,0.85),transparent_38%)]" />
       <div className="absolute inset-0 opacity-60 nmd-hero-grid" />
 
       <div className="relative mx-auto flex min-h-screen max-w-5xl items-center justify-center px-4 py-10 sm:px-6">
@@ -49,11 +49,11 @@ export default function LoginPage() {
         >
           <div className="mb-8 flex flex-col items-center text-center">
             <Image
-              src="/nmd-logo.png"
+              src="/nmd-logo-white.svg"
               alt="NakedMD"
               width={114}
               height={64}
-              className="mb-5 h-16 w-auto drop-shadow-[0_20px_48px_rgba(197,165,114,0.35)]"
+              className="mb-5 h-16 w-auto drop-shadow-[0_20px_48px_rgba(31,138,132,0.35)]"
             />
             <span className="mb-3 rounded-full border border-white/12 bg-white/6 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.28em] text-white/70">
               Newport Beach
@@ -86,7 +86,7 @@ export default function LoginPage() {
               autoFocus
               aria-invalid={error}
               className={cn(
-                'w-full rounded-2xl border bg-[#12121f] px-4 py-3.5 text-base text-white placeholder:text-slate-500 focus:border-[#C5A572]',
+                'w-full rounded-2xl border bg-[#262626] px-4 py-3.5 text-base text-white placeholder:text-slate-500 focus:border-[#1F8A84]',
                 error ? 'border-red-400/75' : 'border-white/10',
               )}
             />
@@ -97,7 +97,7 @@ export default function LoginPage() {
 
           <button
             type="submit"
-            className="w-full rounded-2xl bg-[linear-gradient(135deg,#C5A572_0%,#B8944A_100%)] px-5 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-white shadow-[0_20px_38px_rgba(197,165,114,0.35)] hover:-translate-y-0.5 active:translate-y-0"
+            className="w-full rounded-2xl bg-[linear-gradient(135deg,#1F8A84_0%,#187F80_100%)] px-5 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-white shadow-[0_20px_38px_rgba(31,138,132,0.35)] hover:-translate-y-0.5 active:translate-y-0"
           >
             Sign In
           </button>

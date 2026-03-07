@@ -57,7 +57,7 @@ function LocationCard({ stats }: { stats: LocationStats }) {
         </div>
         <div className="h-2 rounded-full bg-white/8">
           <div
-            className="h-2 rounded-full bg-[linear-gradient(90deg,#C5A572_0%,#B8944A_100%)]"
+            className="h-2 rounded-full bg-[linear-gradient(90deg,#1F8A84_0%,#187F80_100%)]"
             style={{ width: `${Math.min(stats.connectRate, 100)}%` }}
           />
         </div>

@@ -58,10 +58,10 @@ export default function AutopilotOverview({
 
   return (
     <div className="space-y-6 animate-fade-in">
-      <div className="rounded-[28px] border border-[#C5A572]/18 bg-[linear-gradient(135deg,rgba(197,165,114,0.12),rgba(197,165,114,0.03))] px-6 py-6">
+      <div className="rounded-[28px] border border-[#1F8A84]/18 bg-[linear-gradient(135deg,rgba(31,138,132,0.12),rgba(31,138,132,0.03))] px-6 py-6">
         <div className="flex flex-wrap items-start justify-between gap-5">
           <div className="max-w-3xl">
-            <div className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#d4bd8a]">
+            <div className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#59B1AB]">
               Autopilot Active
             </div>
             <h2 className="mt-3 dashboard-heading text-2xl font-black tracking-tight">
@@ -76,7 +76,7 @@ export default function AutopilotOverview({
           <button
             type="button"
             onClick={onOpenCalls}
-            className="rounded-full border border-[#C5A572]/24 bg-[#C5A572]/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#d4bd8a] hover:border-[#C5A572]/40 hover:bg-[#C5A572]/16"
+            className="rounded-full border border-[#1F8A84]/24 bg-[#1F8A84]/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#59B1AB] hover:border-[#1F8A84]/40 hover:bg-[#1F8A84]/16"
           >
             Open Action Queue
           </button>
@@ -94,7 +94,7 @@ export default function AutopilotOverview({
           label="Booked"
           value={counts.bookedCount.toString()}
           detail="Consultations and treatments moved forward without a manager needing to step in."
-          accent="linear-gradient(90deg,#C5A572 0%,#B8944A 100%)"
+          accent="linear-gradient(90deg,#1F8A84 0%,#187F80 100%)"
         />
         <ImpactCard
           label="Needs You"

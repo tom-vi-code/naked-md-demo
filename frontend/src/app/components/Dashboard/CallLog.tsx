@@ -66,9 +66,9 @@ function FilterSelect({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         className={cn(
-          'w-full appearance-none rounded-2xl border px-4 py-3 pr-11 text-sm focus:border-[#C5A572]',
+          'w-full appearance-none rounded-2xl border px-4 py-3 pr-11 text-sm focus:border-[#1F8A84]',
           theme === 'dark'
-            ? 'border-white/10 bg-[#151723] text-slate-200'
+            ? 'border-white/10 bg-[#262626] text-slate-200'
             : 'border-slate-200 bg-white text-slate-700',
         )}
       >
@@ -233,9 +233,9 @@ export default function CallLog({
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search name or phone..."
               className={cn(
-                'w-full rounded-2xl border px-11 py-3 text-sm focus:border-[#C5A572]',
+                'w-full rounded-2xl border px-11 py-3 text-sm focus:border-[#1F8A84]',
                 theme === 'dark'
-                  ? 'border-white/10 bg-[#151723] text-slate-200 placeholder:text-slate-500'
+                  ? 'border-white/10 bg-[#262626] text-slate-200 placeholder:text-slate-500'
                   : 'border-slate-200 bg-white text-slate-700 placeholder:text-slate-400',
               )}
             />
@@ -412,7 +412,7 @@ export default function CallLog({
                         e.stopPropagation();
                         onSelectCall(call.id);
                       }}
-                      className="rounded-full border border-[#C5A572]/22 bg-[#C5A572]/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-[#d4bd8a] hover:border-[#C5A572]/45 hover:bg-[#C5A572]/16"
+                      className="rounded-full border border-[#1F8A84]/22 bg-[#1F8A84]/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-[#59B1AB] hover:border-[#1F8A84]/45 hover:bg-[#1F8A84]/16"
                     >
                       {autopilot ? 'Open' : 'View'}
                     </button>

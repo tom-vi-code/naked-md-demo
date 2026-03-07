@@ -325,7 +325,7 @@ function LeadCard({
                             className={cn(
                               'pointer-events-none absolute -top-10 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-lg border px-2.5 py-1.5 text-[10px] opacity-0 shadow-lg transition-opacity group-hover:opacity-100',
                               theme === 'dark'
-                                ? 'border-white/10 bg-[#0e1118] text-slate-300'
+                                ? 'border-white/10 bg-[#222222] text-slate-300'
                                 : 'border-slate-200 bg-white text-slate-700',
                             )}
                           >
@@ -501,7 +501,7 @@ export default function OrchestratorView({
           label="Avg First Reply"
           value={formatMs(stats.avgFirstResponseMs)}
           detail="Time to first engagement"
-          accent="#C5A572"
+          accent="#1F8A84"
         />
         <StatCard
           label="Leads Saved"

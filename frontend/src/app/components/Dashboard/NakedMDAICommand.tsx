@@ -130,17 +130,17 @@ export default function NakedMDAICommand({
           className={cn(
             'pointer-events-auto w-[min(100vw-2rem,23rem)] overflow-hidden rounded-[24px] border text-left shadow-[0_24px_72px_rgba(15,23,42,0.2)] animate-fade-up',
             theme === 'dark'
-              ? 'border-white/10 bg-[#0b0d12] text-white'
+              ? 'border-white/10 bg-[#1e1e1e] text-white'
               : 'border-slate-200 bg-white text-slate-900',
           )}
         >
-          <div className="bg-[linear-gradient(135deg,rgba(197,165,114,0.18),rgba(197,165,114,0.04))] px-4 py-4">
+          <div className="bg-[linear-gradient(135deg,rgba(31,138,132,0.18),rgba(31,138,132,0.04))] px-4 py-4">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[linear-gradient(135deg,#C5A572_0%,#B8944A_100%)] text-xs font-black uppercase tracking-[0.12em] text-white">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[linear-gradient(135deg,#1F8A84_0%,#187F80_100%)] text-xs font-black uppercase tracking-[0.12em] text-white">
                 AI
               </div>
               <div className="min-w-0 flex-1">
-                <div className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#d4bd8a]">
+                <div className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#59B1AB]">
                   NakedMD AI
                 </div>
                 <div className={cn('mt-1 text-sm font-semibold leading-5', theme === 'dark' ? 'text-white' : 'text-slate-900')}>
@@ -157,19 +157,19 @@ export default function NakedMDAICommand({
           className={cn(
             'pointer-events-auto w-[min(100vw-2rem,24rem)] overflow-hidden rounded-[30px] border shadow-[0_30px_90px_rgba(15,23,42,0.24)] animate-fade-up',
             theme === 'dark'
-              ? 'border-white/10 bg-[#090b11] text-white'
+              ? 'border-white/10 bg-[#1a1a1a] text-white'
               : 'border-slate-200 bg-white text-slate-900',
           )}
         >
           <div className={cn(
             'border-b px-5 py-5',
             theme === 'dark'
-              ? 'border-white/8 bg-[linear-gradient(180deg,rgba(197,165,114,0.14),rgba(255,255,255,0))]'
-              : 'border-slate-200 bg-[linear-gradient(180deg,rgba(197,165,114,0.14),rgba(255,255,255,0))]',
+              ? 'border-white/8 bg-[linear-gradient(180deg,rgba(31,138,132,0.14),rgba(255,255,255,0))]'
+              : 'border-slate-200 bg-[linear-gradient(180deg,rgba(31,138,132,0.14),rgba(255,255,255,0))]',
           )}>
             <div className="flex items-start justify-between gap-4">
               <div>
-                <div className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#d4bd8a]">
+                <div className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#59B1AB]">
                   NakedMD AI
                 </div>
                 <h2 className={cn('mt-2 text-xl font-black tracking-tight', theme === 'dark' ? 'text-white' : 'text-slate-900')}>
@@ -241,7 +241,7 @@ export default function NakedMDAICommand({
                 <button
                   type="button"
                   onClick={handlePrimaryAction}
-                  className="rounded-full bg-[linear-gradient(135deg,#C5A572_0%,#B8944A_100%)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-white shadow-[0_14px_28px_rgba(197,165,114,0.22)]"
+                  className="rounded-full bg-[linear-gradient(135deg,#1F8A84_0%,#187F80_100%)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-white shadow-[0_14px_28px_rgba(31,138,132,0.22)]"
                 >
                   {snapshot.primaryLabel}
                 </button>
@@ -289,7 +289,7 @@ export default function NakedMDAICommand({
                       className={cn(
                         'rounded-[18px] border px-3 py-3 text-sm leading-6',
                         theme === 'dark'
-                          ? 'border-white/8 bg-[#0f1219] text-slate-200'
+                          ? 'border-white/8 bg-[#222222] text-slate-200'
                           : 'border-slate-200 bg-white text-slate-700',
                       )}
                     >

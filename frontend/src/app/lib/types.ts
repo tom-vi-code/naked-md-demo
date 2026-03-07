@@ -181,7 +181,7 @@ export interface ChatInfoCard {
   description?: string;
   bullets?: string[];
   footer?: string;
-  tone?: 'gold' | 'green' | 'slate';
+  tone?: 'teal' | 'green' | 'slate';
 }
 
 export interface ChatMessage {

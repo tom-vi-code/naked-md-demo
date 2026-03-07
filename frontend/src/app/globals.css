@@ -1,23 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --nakedmd-gold: #C5A572;
-  --nakedmd-gold-dark: #B8944A;
-  --nakedmd-gold-soft: #f0e6d4;
+  --nakedmd-teal: #1F8A84;
+  --nakedmd-teal-dark: #187F80;
+  --nakedmd-teal-soft: #d4edeb;
   --nakedmd-public-bg: #ffffff;
-  --nakedmd-sand: #f5f1ea;
-  --nakedmd-dashboard-bg: #0a0a0f;
-  --nakedmd-dashboard-elevated: #12121f;
-  --nakedmd-dashboard-border: rgba(255, 255, 255, 0.08);
-  --nakedmd-purple-deep: #180021;
-  --nakedmd-purple-mid: #35124a;
-  --nakedmd-text: #111827;
+  --nakedmd-sand: #f4f1ea;
+  --nakedmd-dashboard-bg: #1a1a1a;
+  --nakedmd-dashboard-elevated: #262626;
+  --nakedmd-dashboard-border: rgba(255, 255, 255, 0.1);
+  --nakedmd-dark: #1a1a1a;
+  --nakedmd-dark-mid: #2d2d2d;
+  --nakedmd-text: #2d2d2d;
   --radius-card: 24px;
   --radius-input: 14px;
   --shadow-soft: 0 16px 40px rgba(17, 24, 39, 0.08);
-  --shadow-lifted: 0 22px 60px rgba(24, 0, 33, 0.18);
+  --shadow-lifted: 0 22px 60px rgba(26, 26, 26, 0.18);
 }
 
 html {
@@ -28,17 +30,16 @@ html {
 body {
   min-height: 100vh;
   background:
-    radial-gradient(circle at top left, rgba(197, 165, 114, 0.12), transparent 24%),
-    linear-gradient(180deg, rgba(245, 241, 234, 0.28), transparent 32%),
+    radial-gradient(circle at top left, rgba(31, 138, 132, 0.12), transparent 24%),
+    linear-gradient(180deg, rgba(244, 241, 234, 0.28), transparent 32%),
     var(--nakedmd-public-bg);
   color: var(--nakedmd-text);
   font-family:
+    Figtree,
     Inter,
     ui-sans-serif,
     system-ui,
     -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
     sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -46,8 +47,8 @@ body {
 }
 
 ::selection {
-  background: rgba(197, 165, 114, 0.22);
-  color: #111827;
+  background: rgba(31, 138, 132, 0.22);
+  color: #2d2d2d;
 }
 
 a,
@@ -72,7 +73,7 @@ textarea:focus-visible {
   outline: none;
   box-shadow:
     0 0 0 2px rgba(255, 255, 255, 0.95),
-    0 0 0 4px rgba(197, 165, 114, 0.85);
+    0 0 0 4px rgba(31, 138, 132, 0.85);
 }
 
 .surface-card {
@@ -116,7 +117,7 @@ textarea:focus-visible {
 }
 
 [data-theme='light'] [data-dashboard] .dashboard-scroll {
-  scrollbar-color: rgba(197, 165, 114, 0.5) rgba(0, 0, 0, 0.04);
+  scrollbar-color: rgba(31, 138, 132, 0.5) rgba(0, 0, 0, 0.04);
 }
 
 [data-theme='light'] [data-dashboard] .dashboard-scroll::-webkit-scrollbar-track {
@@ -161,7 +162,7 @@ textarea:focus-visible {
 }
 
 .nmd-gradient-text {
-  background: linear-gradient(90deg, #ffffff 0%, #e8d5b5 65%, #c5a572 100%);
+  background: linear-gradient(90deg, #ffffff 0%, #b5e0dd 65%, #1F8A84 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -176,7 +177,7 @@ textarea:focus-visible {
 }
 
 .dashboard-scroll {
-  scrollbar-color: rgba(197, 165, 114, 0.68) rgba(255, 255, 255, 0.05);
+  scrollbar-color: rgba(31, 138, 132, 0.68) rgba(255, 255, 255, 0.05);
   scrollbar-width: thin;
 }
 
@@ -191,12 +192,12 @@ textarea:focus-visible {
 }
 
 .dashboard-scroll::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, rgba(197, 165, 114, 0.95), rgba(184, 148, 74, 0.85));
+  background: linear-gradient(180deg, rgba(31, 138, 132, 0.95), rgba(24, 127, 128, 0.85));
   border-radius: 999px;
 }
 
 .dashboard-scroll::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, rgba(197, 165, 114, 1), rgba(184, 148, 74, 0.95));
+  background: linear-gradient(180deg, rgba(31, 138, 132, 1), rgba(24, 127, 128, 0.95));
 }
 
 .hide-scrollbar {
@@ -248,12 +249,12 @@ textarea:focus-visible {
   0%,
   100% {
     transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(197, 165, 114, 0.24);
+    box-shadow: 0 0 0 0 rgba(31, 138, 132, 0.24);
   }
 
   50% {
     transform: scale(1.02);
-    box-shadow: 0 0 0 12px rgba(197, 165, 114, 0);
+    box-shadow: 0 0 0 12px rgba(31, 138, 132, 0);
   }
 }
 

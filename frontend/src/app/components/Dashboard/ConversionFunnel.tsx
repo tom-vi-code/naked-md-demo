@@ -72,7 +72,7 @@ export default function ConversionFunnel({ funnel }: ConversionFunnelProps) {
                 </Tooltip>
                 <div className="overflow-hidden rounded-full bg-white/6">
                   <div
-                    className="flex h-12 items-center rounded-full bg-[linear-gradient(90deg,#C5A572_0%,#B8944A_100%)] pl-5 text-sm font-semibold text-white transition-all duration-700 ease-out"
+                    className="flex h-12 items-center rounded-full bg-[linear-gradient(90deg,#1F8A84_0%,#187F80_100%)] pl-5 text-sm font-semibold text-white transition-all duration-700 ease-out"
                     style={{ width: animateIn ? `${widthPct}%` : '0%' }}
                   >
                     {animateIn ? stage.count.toLocaleString() : ''}

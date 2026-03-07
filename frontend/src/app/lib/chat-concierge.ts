@@ -220,7 +220,7 @@ function treatmentRecommendationCard(ctx: LeadContext): ChatInfoCard {
     title: tier.name,
     description: profile.recommendationReason,
     bullets: tier.features.slice(0, 4),
-    tone: 'gold',
+    tone: 'teal',
   });
 }
 
@@ -242,7 +242,7 @@ function buildPricingMessage(ctx: LeadContext): ChatMessage {
       ),
       serviceTierCard(
         MEMBERSHIP_TIERS[1],
-        'gold',
+        'teal',
         'Most popular. Neurotoxins, microneedling, and more.',
       ),
       serviceTierCard(
@@ -271,7 +271,7 @@ function buildServicesMessage(ctx: LeadContext): ChatMessage {
         title: profile.treatments[0],
         description: `Great match for ${ctx.interest.toLowerCase()}. Personalized and performed by licensed providers.`,
         bullets: profile.treatments,
-        tone: 'gold',
+        tone: 'teal',
       }),
     ],
     quickReplies: [
@@ -299,7 +299,7 @@ function buildHoursMessage(ctx: LeadContext): ChatMessage {
           'Arriving 10 minutes early gives time for your intake form.',
           'Mention your offer at check-in and we will take it from there.',
         ],
-        tone: 'gold',
+        tone: 'teal',
       }),
     ],
     quickReplies: [
@@ -421,7 +421,7 @@ function buildConsultationMessage(ctx: LeadContext): ChatMessage {
           'One-on-one with a licensed provider.',
           'Walk away with a personalized treatment plan.',
         ],
-        tone: 'gold',
+        tone: 'teal',
       }),
     ],
     quickReplies: [
@@ -493,7 +493,7 @@ function buildCompareMessage(): ChatMessage {
     content: 'Here is how to think about it - Essential is great for skin maintenance, Premium is where most clients land because you get neurotoxins and microneedling, and Luxury is for anyone who wants fillers and custom packages. Most clients who come in for a consultation end up going Premium once they see the value.',
     cards: [
       serviceTierCard(MEMBERSHIP_TIERS[0], 'slate', 'Skin care foundations. Facials, peels, dermaplaning.'),
-      serviceTierCard(MEMBERSHIP_TIERS[1], 'gold', 'Most popular. Neurotoxins and microneedling.'),
+      serviceTierCard(MEMBERSHIP_TIERS[1], 'teal', 'Most popular. Neurotoxins and microneedling.'),
       serviceTierCard(MEMBERSHIP_TIERS[2], 'green', 'Full suite. Fillers, injectables, and custom packages.'),
     ],
     quickReplies: [
@@ -522,7 +522,7 @@ function buildEssentialMessage(): ChatMessage {
           'Microneedling with PRP',
           'Personalized treatment plans',
         ],
-        tone: 'gold',
+        tone: 'teal',
       }),
     ],
     quickReplies: [
@@ -540,7 +540,7 @@ function buildPremiumMessage(): ChatMessage {
     cards: [
       serviceTierCard(
         MEMBERSHIP_TIERS[1],
-        'gold',
+        'teal',
         'Most popular tier. Neurotoxins and microneedling included.',
       ),
       card({
@@ -608,7 +608,7 @@ function buildHandoffMessage(ctx: LeadContext): ChatMessage {
           'How many sessions should I expect?',
           'What is the downtime for my recommended treatment?',
         ],
-        tone: 'gold',
+        tone: 'teal',
       }),
       locationCard(ctx.location),
     ],
@@ -847,7 +847,7 @@ export function createWelcomeMessage(ctx: LeadContext): ChatMessage {
         title: profile.treatments[0],
         description: profile.headline,
         bullets: profile.starterPlan.slice(0, 3),
-        tone: 'gold',
+        tone: 'teal',
       }),
     ],
     quickReplies: [

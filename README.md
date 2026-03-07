@@ -1,8 +1,8 @@
-# Vi Operate for Crunch Fitness
+# Vi Operate for NakedMD -- AI-powered Growth Engine for Med Spas
 
-**AI-Powered 24/7 Digital Growth Engine** -- Lead conversion, membership sales, guest pass activation, and member retention across Crunch Fitness's Colorado Springs locations.
+**AI-Powered 24/7 Digital Growth Engine** -- Lead conversion, consultation booking, treatment sales, and client retention across NakedMD Medical Spa locations.
 
-Vi Operate deploys an omnichannel AI sales agent ("Vi") that handles voice calls, web chat, and SMS follow-ups. Prospects interact with Vi through a branded landing page, receive an AI-powered phone call within seconds, and are automatically classified and followed up via text message. Gym managers monitor performance through a real-time analytics dashboard.
+Vi Operate deploys an omnichannel AI sales agent ("Vi") that handles voice calls, web chat, and SMS follow-ups. Prospects interact with Vi through a branded landing page, receive an AI-powered phone call within seconds, and are automatically classified and followed up via text message. Studio managers monitor performance through a real-time analytics dashboard.
 
 **Version 1.0 | March 2026 | Demo Deployment**
 

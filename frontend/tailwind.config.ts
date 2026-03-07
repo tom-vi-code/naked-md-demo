@@ -9,15 +9,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'nmd-gold': '#C5A572',
-        'nmd-gold-dark': '#B8944A',
-        'nmd-button-dark': '#A6833F',
-        'bg-dashboard': '#0A0A0F',
+        'nmd-teal': '#1F8A84',
+        'nmd-teal-dark': '#187F80',
+        'nmd-button-dark': '#166f6b',
+        'bg-dashboard': '#1a1a1a',
         'text-dashboard': '#F0F0F5',
         'chat-agent-bg': '#F3F4F6',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Figtree', 'Inter', 'system-ui', 'sans-serif'],
         mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
       },
     },

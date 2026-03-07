@@ -56,7 +56,7 @@ export default function KPICards({ kpis }: KPICardsProps) {
       icon: '01',
       label: 'Total Calls',
       value: kpis.totalCalls,
-      accent: 'from-[#C5A572] to-[#B8944A]',
+      accent: 'from-[#1F8A84] to-[#187F80]',
       formatter: (value) => Math.round(value).toLocaleString(),
       tooltip: 'Total inbound and outbound calls across both locations in the selected period.',
     },

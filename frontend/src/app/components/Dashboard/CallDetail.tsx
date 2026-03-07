@@ -114,13 +114,13 @@ export default function CallDetail({
       <aside className={cn(
         'fixed inset-y-0 right-0 z-50 w-full max-w-2xl overflow-hidden border-l animate-slide-in-right',
         dark
-          ? 'border-white/10 bg-[#090a10] text-white shadow-[0_0_60px_rgba(0,0,0,0.45)]'
+          ? 'border-white/10 bg-[#1a1a1a] text-white shadow-[0_0_60px_rgba(0,0,0,0.45)]'
           : 'border-slate-200 bg-white text-gray-900 shadow-[0_0_60px_rgba(0,0,0,0.12)]',
       )}>
         <div className="flex h-full flex-col">
           <div className={cn(
             'border-b px-5 py-5 sm:px-6',
-            dark ? 'border-white/8 bg-[linear-gradient(180deg,rgba(197,165,114,0.08),rgba(255,255,255,0))]' : 'border-slate-200 bg-gradient-to-b from-amber-50/60 to-transparent',
+            dark ? 'border-white/8 bg-[linear-gradient(180deg,rgba(31,138,132,0.08),rgba(255,255,255,0))]' : 'border-slate-200 bg-gradient-to-b from-amber-50/60 to-transparent',
           )}>
             <div className="flex items-start justify-between gap-4">
               <div>
@@ -205,9 +205,9 @@ export default function CallDetail({
                 </div>
 
                 {autopilot && (
-                  <div className="rounded-[24px] border border-[rgba(197,165,114,0.18)] bg-[rgba(197,165,114,0.08)] p-5">
+                  <div className="rounded-[24px] border border-[rgba(31,138,132,0.18)] bg-[rgba(31,138,132,0.08)] p-5">
                     <div className="flex flex-wrap items-center justify-between gap-3">
-                      <div className={cn('text-[11px] font-semibold uppercase tracking-[0.18em]', dark ? 'text-[#d4bd8a]' : 'text-[#8a6d3b]')}>
+                      <div className={cn('text-[11px] font-semibold uppercase tracking-[0.18em]', dark ? 'text-[#59B1AB]' : 'text-[#166f6b]')}>
                         System Resolution
                       </div>
                       <span
@@ -236,7 +236,7 @@ export default function CallDetail({
                           key={item.label}
                           className={cn(
                             'rounded-[18px] border px-4 py-4',
-                            dark ? 'border-white/8 bg-[#11131b]' : 'border-slate-200 bg-white',
+                            dark ? 'border-white/8 bg-[#262626]' : 'border-slate-200 bg-white',
                           )}
                         >
                           <div className={cn('text-[11px] font-semibold uppercase tracking-[0.18em]', dark ? 'text-slate-400' : 'text-slate-500')}>
@@ -282,7 +282,7 @@ export default function CallDetail({
                           </div>
                           <div className={cn('h-2 rounded-full', dark ? 'bg-white/8' : 'bg-slate-200')}>
                             <div
-                              className="h-2 rounded-full bg-[linear-gradient(90deg,#C5A572_0%,#B8944A_100%)]"
+                              className="h-2 rounded-full bg-[linear-gradient(90deg,#1F8A84_0%,#187F80_100%)]"
                               style={{ width: `${Math.round(call.outcomeConfidence * 100)}%` }}
                             />
                           </div>
@@ -320,7 +320,7 @@ export default function CallDetail({
                     </div>
                     <div className={cn(
                       'mt-4 rounded-[20px] border p-4 text-sm leading-7',
-                      dark ? 'border-white/8 bg-[#11131b] text-slate-300' : 'border-slate-200 bg-white text-slate-700',
+                      dark ? 'border-white/8 bg-[#262626] text-slate-300' : 'border-slate-200 bg-white text-slate-700',
                     )}>
                       {call.summary || 'No summary available for this call.'}
                     </div>
@@ -333,7 +333,7 @@ export default function CallDetail({
                         <ul className="mt-3 space-y-2">
                           {call.keyMoments.map((moment, index) => (
                             <li key={index} className={cn('flex items-start gap-3 text-sm leading-6', dark ? 'text-slate-300' : 'text-slate-700')}>
-                              <span className="mt-2 h-2 w-2 rounded-full bg-[#C5A572]" />
+                              <span className="mt-2 h-2 w-2 rounded-full bg-[#1F8A84]" />
                               <span>{moment}</span>
                             </li>
                           ))}
@@ -371,7 +371,7 @@ export default function CallDetail({
                             className={cn('flex flex-col', isAgent ? 'items-start' : 'items-end')}
                           >
                             <div className="mb-1 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em]">
-                              <span className={isAgent ? 'text-[#C5A572]' : dark ? 'text-slate-400' : 'text-slate-500'}>
+                              <span className={isAgent ? 'text-[#1F8A84]' : dark ? 'text-slate-400' : 'text-slate-500'}>
                                 {isAgent ? 'Vi' : call.contact.firstName}
                               </span>
                               <span className={dark ? 'text-slate-500' : 'text-slate-400'}>{formatTimestamp(entry.timestamp)}</span>
@@ -381,10 +381,10 @@ export default function CallDetail({
                                 'max-w-[88%] rounded-[20px] px-4 py-3 text-sm leading-7 sm:max-w-[78%]',
                                 isAgent
                                   ? dark
-                                    ? 'rounded-tl-md bg-[linear-gradient(135deg,rgba(197,165,114,0.2),rgba(197,165,114,0.06))] text-white'
+                                    ? 'rounded-tl-md bg-[linear-gradient(135deg,rgba(31,138,132,0.2),rgba(31,138,132,0.06))] text-white'
                                     : 'rounded-tl-md bg-gradient-to-br from-amber-50 to-amber-100/60 text-gray-900'
                                   : dark
-                                    ? 'rounded-tr-md border border-white/8 bg-[#11131b] text-slate-300'
+                                    ? 'rounded-tr-md border border-white/8 bg-[#262626] text-slate-300'
                                     : 'rounded-tr-md border border-slate-200 bg-white text-slate-700',
                               )}
                             >

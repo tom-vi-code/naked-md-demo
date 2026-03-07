@@ -20,16 +20,16 @@ export default function PublicHeader({ compact = false }: PublicHeaderProps) {
         </div>
       </div>
 
-      <div className="relative overflow-hidden border-b border-white/10 bg-[linear-gradient(120deg,#0a0012_0%,#21002e_42%,#35124a_100%)] text-white">
+      <div className="relative overflow-hidden border-b border-white/10 bg-[linear-gradient(120deg,#1a1a1a_0%,#252525_42%,#2d2d2d_100%)] text-white">
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/35 to-transparent" />
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
           <a href="/join" className="flex items-center gap-3.5">
             <Image
-              src="/nmd-logo.png"
+              src="/nmd-logo-white.svg"
               alt="NakedMD"
               width={85}
               height={48}
-              className="h-12 w-auto drop-shadow-[0_12px_28px_rgba(197,165,114,0.35)]"
+              className="h-12 w-auto drop-shadow-[0_12px_28px_rgba(31,138,132,0.35)]"
             />
             <div>
               <div className="text-xl font-black tracking-[0.06em] text-white">
@@ -67,7 +67,7 @@ export default function PublicHeader({ compact = false }: PublicHeaderProps) {
             {!compact && (
               <a
                 href="/join#pricing"
-                className="rounded-full bg-[linear-gradient(135deg,#C5A572_0%,#B8944A_100%)] px-5 py-2.5 text-[11px] font-bold uppercase tracking-[0.16em] text-white shadow-[0_14px_30px_rgba(197,165,114,0.35)] hover:scale-[1.02]"
+                className="rounded-full bg-[linear-gradient(135deg,#1F8A84_0%,#187F80_100%)] px-5 py-2.5 text-[11px] font-bold uppercase tracking-[0.16em] text-white shadow-[0_14px_30px_rgba(31,138,132,0.35)] hover:scale-[1.02]"
               >
                 Book Now
               </a>

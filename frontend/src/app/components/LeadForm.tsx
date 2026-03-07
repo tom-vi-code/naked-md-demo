@@ -177,17 +177,17 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
   }
 
   const inputClasses =
-    'w-full rounded-2xl border border-slate-200 bg-white px-4 py-3.5 text-base text-slate-900 placeholder:text-slate-400 focus:border-[#C5A572]';
+    'w-full rounded-2xl border border-slate-200 bg-white px-4 py-3.5 text-base text-slate-900 placeholder:text-slate-400 focus:border-[#1F8A84]';
   const selectClasses =
-    'w-full appearance-none rounded-2xl border border-slate-200 bg-white px-4 py-3.5 pr-11 text-base text-slate-900 focus:border-[#C5A572]';
+    'w-full appearance-none rounded-2xl border border-slate-200 bg-white px-4 py-3.5 pr-11 text-base text-slate-900 focus:border-[#1F8A84]';
   const errorClasses = 'border-red-400 bg-red-50/60';
 
   return (
     <div className="min-h-screen bg-white">
       <PublicHeader />
 
-      <section className="relative overflow-hidden bg-[linear-gradient(180deg,#0a0012_0%,#230132_52%,#3a1451_100%)] text-white">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(197,165,114,0.35),transparent_24%),radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.12),transparent_24%)]" />
+      <section className="relative overflow-hidden bg-[linear-gradient(180deg,#1a1a1a_0%,#2d2d2d_52%,#2d2d2d_100%)] text-white">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(31,138,132,0.35),transparent_24%),radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.12),transparent_24%)]" />
         <div className="absolute inset-0 opacity-30 nmd-hero-grid" />
 
         <div className="relative mx-auto max-w-7xl px-4 pb-16 pt-12 sm:px-6 lg:px-8 lg:pb-20 lg:pt-16">
@@ -259,7 +259,7 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
               >
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#C5A572]">
+                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#1F8A84]">
                       Book Your Consultation
                     </p>
                     <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-slate-950">
@@ -270,7 +270,7 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
                       Vi will stay available in chat right after submit.
                     </p>
                   </div>
-                  <span className="rounded-full bg-[#f0e6d6] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#8a6d3b]">
+                  <span className="rounded-full bg-[#d4edeb] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#166f6b]">
                     45 sec
                   </span>
                 </div>
@@ -514,10 +514,10 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
                     type="submit"
                     disabled={loading}
                     className={cn(
-                      'mt-2 flex w-full items-center justify-center gap-2 rounded-2xl px-5 py-4 text-base font-bold text-white shadow-[0_22px_40px_rgba(197,165,114,0.28)]',
+                      'mt-2 flex w-full items-center justify-center gap-2 rounded-2xl px-5 py-4 text-base font-bold text-white shadow-[0_22px_40px_rgba(31,138,132,0.28)]',
                       loading
-                        ? 'cursor-not-allowed bg-[#d4bd8a]'
-                        : 'bg-[linear-gradient(135deg,#C5A572_0%,#B8944A_100%)] hover:-translate-y-0.5 active:translate-y-0',
+                        ? 'cursor-not-allowed bg-[#59B1AB]'
+                        : 'bg-[linear-gradient(135deg,#1F8A84_0%,#187F80_100%)] hover:-translate-y-0.5 active:translate-y-0',
                     )}
                   >
                     {loading ? (
@@ -558,9 +558,9 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
         </div>
       </section>
 
-      <section className="bg-[linear-gradient(180deg,#f6f1ea_0%,#ffffff_100%)] py-16 sm:py-20">
+      <section className="bg-[linear-gradient(180deg,#f4f1ea_0%,#ffffff_100%)] py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-10 rounded-[28px] bg-[linear-gradient(120deg,#8a6d3b_0%,#C5A572_44%,#d4bd8a_100%)] px-6 py-7 text-white shadow-[0_24px_54px_rgba(197,165,114,0.28)] sm:px-8">
+          <div className="mb-10 rounded-[28px] bg-[linear-gradient(120deg,#166f6b_0%,#1F8A84_44%,#59B1AB_100%)] px-6 py-7 text-white shadow-[0_24px_54px_rgba(31,138,132,0.28)] sm:px-8">
             <div className="grid gap-5 md:grid-cols-4">
               <div>
                 <div className="text-3xl font-black">40+</div>
@@ -583,7 +583,7 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
 
           <div id="pricing" className="scroll-mt-24">
             <div className="mx-auto max-w-2xl text-center">
-              <span className="rounded-full bg-[#f0e6d6] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#8a6d3b]">
+              <span className="rounded-full bg-[#d4edeb] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#166f6b]">
                 Treatment Tiers
               </span>
               <h3 className="mt-4 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">
@@ -602,19 +602,19 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
                   className={cn(
                     'relative overflow-hidden rounded-[28px] border p-6 shadow-[0_18px_40px_rgba(15,23,42,0.06)]',
                     tier.id === 'premium'
-                      ? 'border-[#C5A572] bg-white'
+                      ? 'border-[#1F8A84] bg-white'
                       : tier.id === 'luxury'
                         ? 'border-slate-900 bg-slate-950 text-white'
                         : 'border-slate-200 bg-white',
                   )}
                 >
                   {tier.id === 'premium' && (
-                    <div className="absolute right-5 top-5 rounded-full bg-[#C5A572] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-white">
+                    <div className="absolute right-5 top-5 rounded-full bg-[#1F8A84] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-white">
                       Most Popular
                     </div>
                   )}
 
-                  <div className="text-sm font-semibold uppercase tracking-[0.2em] text-[#C5A572]">
+                  <div className="text-sm font-semibold uppercase tracking-[0.2em] text-[#1F8A84]">
                     {tier.name}
                   </div>
                   <div className={cn('mt-3 text-4xl font-black tracking-tight', tier.id === 'luxury' && 'text-white')}>
@@ -632,7 +632,7 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
                         <span
                           className={cn(
                             'mt-0.5 flex h-6 w-6 items-center justify-center rounded-full',
-                            tier.id === 'luxury' ? 'bg-white/10 text-white' : 'bg-[#f0e6d6] text-[#8a6d3b]',
+                            tier.id === 'luxury' ? 'bg-white/10 text-white' : 'bg-[#d4edeb] text-[#166f6b]',
                           )}
                         >
                           <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2">
@@ -652,7 +652,7 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
 
           <div className="surface-card mt-14 rounded-[32px] p-6 sm:p-8">
             <div className="mx-auto max-w-3xl text-center">
-              <span className="rounded-full bg-[#f0e6d6] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#8a6d3b]">
+              <span className="rounded-full bg-[#d4edeb] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#166f6b]">
                 You, but better.
               </span>
               <h3 className="mt-4 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">
@@ -666,10 +666,10 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
                   key={pillar.title}
                   className="rounded-[24px] border border-slate-200 bg-white p-6 shadow-[0_10px_28px_rgba(15,23,42,0.04)]"
                 >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#f0e6d6] text-[#8a6d3b]">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#d4edeb] text-[#166f6b]">
                     <PillarIcon type={index === 1 ? 'community' : index === 2 ? 'party' : 'spark'} />
                   </div>
-                  <h4 className="mt-5 text-2xl font-black tracking-tight text-[#24186f]">
+                  <h4 className="mt-5 text-2xl font-black tracking-tight text-[#2d2d2d]">
                     {pillar.title}
                   </h4>
                   <p className="mt-3 text-base leading-7 text-slate-600">{pillar.body}</p>

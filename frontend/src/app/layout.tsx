@@ -9,11 +9,11 @@ export const metadata: Metadata = {
   },
   description: 'NakedMD lead capture, concierge chat, and manager analytics dashboard.',
   icons: {
-    icon: '/nmd-logo.png',
-    shortcut: '/nmd-logo.png',
-    apple: '/nmd-logo.png',
+    icon: '/nmd-logo.svg',
+    shortcut: '/nmd-logo.svg',
+    apple: '/nmd-logo.svg',
   },
-  themeColor: '#0A0A0F',
+  themeColor: '#1a1a1a',
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
