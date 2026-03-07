@@ -1,0 +1,56 @@
+Requirements (from Crunch Sales Use Case Slides)
+
+"24/7 Digital Growth Engine" — an AI inbound & outbound sales agent covering the entire member lifecycle. Key pillars:
+
+1. SELL & CONVERT
+
+Sell memberships using current active offers
+Issue free trials and guest passes instantly
+Book facility tours and kickoff appointments
+Distribute secure payment and signup links
+2. SCHEDULE & RECOVER
+
+Schedule and reschedule operational appointments
+Detect no-shows automatically
+Re-engage missed appointments immediately
+3. NOTIFY & FOLLOW-UP
+
+Send guest pass expiration reminders
+Automate appointment confirmations
+Execute win-back campaigns for lapsed members and leads
+4. SUPPORT & INFORM
+
+Provide instant club details, brand info, and pricing
+Facilitate cross-channel link sharing
+5. OMNICHANNEL
+
+Web Chat + SMS + Voice (Call) — seamless cross-channel handoff
+Human-in-the-loop escalation for high-intent/complex cases
+6. WHO IT SERVES
+
+New leads & guests (guest passes, first-time memberships)
+Active & lapsed members (retention, rejoin)
+Call-ins & web users (inbound capture)
+7. STRATEGIC IMPACT (5 Pillars)
+
+Zero Leakage — every lead addressed instantly
+Revenue Protection — 24/7 opportunity capture
+Staff Productivity — shift labor from repetitive to high-value
+Scalable Growth — handle volume peaks without scaling headcount
+Brand Consistency — uniform messaging across all locations
+Mapping to Our Existing UFC Backend (Tom's point of view for others to revise)
+
+Crunch Requirement	Existing Coverage	Gap / Build Needed
+Voice Calling (Deepgram)	✓ Fully built	Rewrite prompt for Crunch brand/pricing/offers
+Tour Booking	✓ Fully built	Update location data and tour slots for Crunch
+Web Chat	● Partial	Rebrand UI, update system prompt for Crunch
+Dashboard & Analytics	✓ Fully built	Rebrand to Crunch orange/black, add new KPIs
+Post-call Classification	✓ Fully built	Update outcomes for Crunch (membership sold, guest pass, etc.)
+Lead Submission Form	● Partial	Redesign as Crunch-branded landing page
+Membership Sales	● Partial	Add pricing tiers, offers, signup links to agent prompt
+Guest Pass Issuance	✗ New	New capability — agent offers trial/guest pass, sends link via SMS
+SMS Sending	✗ New	Add Twilio SMS via Deepgram send_sms tool function
+No-Show Detection	✗ New	Demo concept — agent mentions proactive re-engagement
+Win-Back Campaigns	✗ New	Demo concept — outbound calls to lapsed members
+Cross-Channel Handoff	● Partial	Chat + Voice exist separately. SMS bridging is new.
+Human Escalation	● Partial	Already in prompt. Update for Crunch staff contacts.

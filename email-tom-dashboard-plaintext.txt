@@ -1,0 +1,70 @@
+Subject: Vi Operate for Crunch Fitness -- full walkthrough
+
+Tom,
+
+The prototype for Crunch Fitness Colorado Springs is up. Three pages, two experiences (prospect-facing and GM-facing), with cross-links between them for easy demo navigation. Here's the full tour.
+
+
+OVERALL STRUCTURE
+
+/join -- Public prospect experience (lead capture form + AI chat)
+/ -- Dashboard login (password-gated)
+/dashboard -- GM Dashboard (analytics, call log, orchestrator)
+
+Each page links to the others so you can flip between the prospect view and the GM view during a demo without manually typing URLs.
+
+
+FRONTEND -- PROSPECT EXPERIENCE (/join)
+
+Landing page with Crunch branding, hero section, and social proof stats. The main feature is the lead capture form where a prospect enters their name, phone, email, preferred location (South Academy or North Academy), pass type (1-day, 3-day, or 7-day trial), and primary fitness interest. On submit, the backend fires an outbound call from Vi. The page then transitions into a web chat widget powered by Google Gemini with Crunch-specific knowledge so the prospect can keep the conversation going while waiting for the call. Below the form there's a membership tier comparison (Base, Peak, Peak Results) and a Crunch philosophy section.
+
+
+FRONTEND -- GM DASHBOARD (/dashboard)
+
+Four main tabs in the left sidebar:
+
+1. Overview -- Seven KPI cards across the top: Total Calls, Connect Rate, Avg Duration, Tours Booked, Conversion Rate, Escalations, and Avg Sentiment. Below that is a side-by-side Location Breakdown (South Academy vs North Academy) with connect rates and top outcomes for each club, plus an Outcome Distribution chart showing all 14 call classifications color-coded green/amber/red. A Recent Calls table sits at the bottom with one-click access into any transcript.
+
+2. Call Log -- Full searchable/filterable table of every Vi conversation. You can filter by location, outcome type, or search by name/phone. Each row shows contact, outcome badge, duration, sentiment score, and date. Click any row to open the full call detail with transcript, AI summary, key moments, and follow-up status.
+
+3. Analytics -- Conversion Funnel (Leads > Connected > Engaged > Converted with drop-off percentages), Outcome Distribution again for deeper analysis, a Daily Trend chart (calls vs conversions over time), and Top Objections ranked by frequency.
+
+4. Orchestrator -- The First-Response Wins engine view. When a lead comes in, Vi fires voice, SMS, and chat simultaneously. Whichever channel gets engagement first becomes primary; the others get suppressed or repurposed. The tab shows engagement rate, avg first response time, leakage prevented, duplicates suppressed, channel win distribution (voice vs SMS vs chat), and a per-lead timeline you can expand to see the exact event sequence across all three channels.
+
+Other frontend details:
+- Time period toggle (Today / This Week / All Time) filters everything globally.
+- Dark/light mode toggle in the sidebar.
+- Auth-gated with a password login screen.
+- Every KPI label and section header has a hover tooltip explaining what it measures.
+- All text passes WCAG AA contrast on the dark background.
+- "Prospect View" link in the dashboard sidebar opens the /join page in a new tab.
+- "GM Dashboard" link in the /join header navigates back to the login/dashboard.
+
+
+BACKEND -- WHAT'S REAL AND WIRED UP
+
+Voice pipeline (end to end):
+- Twilio handles telephony -- outbound calls triggered when a lead submits the form.
+- Deepgram Agent provides real-time speech-to-text, text-to-speech, and conversational AI on the call. The voice agent has Crunch-specific knowledge baked into its system prompt (pricing, locations, hours, class schedules, amenities, membership tiers).
+- After the call ends, Groq (llama-3.3-70b) classifies the full transcript into one of 14 outcome types with a confidence score, sentiment rating, AI-generated summary, key moments, and extracted objections.
+- Twilio SMS sends a templated follow-up message based on the classified outcome.
+
+Web chat:
+- Google Gemini (2.5-flash) powers the prospect-facing chat widget with the same Crunch knowledge base.
+
+Webhooks:
+- Twilio inbound call handler and status callback routes are wired and returning proper TwiML.
+
+So the full loop works: prospect submits form > Vi places outbound call > live conversation > transcript classified by AI > SMS follow-up sent automatically.
+
+
+BACKEND -- WHAT'S ON SEED/DEMO DATA
+
+- Dashboard analytics, call log, and orchestrator views all render from 47 realistic seed records held in memory. The data looks real but resets on server restart.
+- Authentication is a simple cookie-based password check (defaults to "crunch2026"), no external auth provider.
+- Call session state and lead records live in in-memory Maps with no persistence layer.
+
+Connecting the live voice pipeline output to the dashboard is the next step -- right now they're two working halves that aren't yet reading from the same data store.
+
+
+Happy to jump on a call to walk through it live if that's easier.
