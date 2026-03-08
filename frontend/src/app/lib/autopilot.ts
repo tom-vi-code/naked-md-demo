@@ -60,31 +60,31 @@ export function getOutcomeAction(
     case 'consultation-booked':
       return `Booked a consultation and sent the confirmation${withTime}.`;
     case 'treatment-sold':
-      return `Completed the treatment booking and sent details${withTime}.`;
+      return `Closed a treatment sale and sent payment details${withTime}.`;
     case 'package-sold':
-      return `Sold a treatment package and sent the details${withTime}.`;
+      return `Sold a treatment package and sent the summary${withTime}.`;
     case 'referral-generated':
-      return `Generated a referral and sent access details${withTime}.`;
+      return `Generated a referral and sent introduction details${withTime}.`;
     case 'appointment-scheduled':
-      return `Scheduled the follow-up appointment${withTime}.`;
+      return `Scheduled an appointment and sent the reminder${withTime}.`;
     case 'callback-requested':
-      return `Queued a callback and kept the lead warm by text${withTime}.`;
+      return `Logged a callback request and queued follow-up${withTime}.`;
     case 'info-sent':
-      return `Sent the requested information${withTime}.`;
+      return `Sent treatment information via text${withTime}.`;
     case 'info-provided':
-      return `Answered the question and followed up with details${withTime}.`;
+      return `Provided detailed treatment info during the call${withTime}.`;
     case 'nurture':
-      return `Moved the lead into a short follow-up sequence${withTime}.`;
+      return `Added to nurture sequence with next touch scheduled for${withTime}.`;
     case 'no-answer':
-      return `Queued a retry and a friendly text follow-up${withTime}.`;
+      return `No answer — queued a text follow-up${withTime}.`;
     case 'voicemail':
       return `Left a voicemail and queued a text follow-up${withTime}.`;
     case 'declined':
-      return `Paused automation and flagged the conversation for a person${withTime}.`;
+      return `Prospect declined — marked inactive${withTime}.`;
     case 'tech-issue':
-      return `Paused outreach and marked the conversation for retry${withTime}.`;
+      return `Technical issue encountered — flagged for review${withTime}.`;
     case 'win-back-success':
-      return `Recovered the client and sent confirmation${withTime}.`;
+      return `Win-back successful — reactivated account${withTime}.`;
     default:
       return `Finished processing the conversation${withTime}.`;
   }

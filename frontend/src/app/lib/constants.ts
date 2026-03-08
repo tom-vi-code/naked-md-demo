@@ -161,6 +161,31 @@ export const LANGUAGES = [
   { value: 'zh', label: 'Chinese (Simplified)' },
   { value: 'ko', label: 'Korean' },
   { value: 'ja', label: 'Japanese' },
+  { value: 'vi', label: 'Vietnamese' },
+  { value: 'th', label: 'Thai' },
+  { value: 'hi', label: 'Hindi' },
+  { value: 'tl', label: 'Filipino' },
 ] as const;
+
+export const EMOJI_MAP: Record<string, string> = {
+  pricing: '\uD83D\uDCB0',
+  services: '\u2728',
+  hours: '\u23F0',
+  consultation: '\uD83D\uDCCB',
+  'first-visit': '\u2705',
+  treatments: '\u2728',
+  injectables: '\uD83D\uDC89',
+  offer: '\uD83C\uDF9F\uFE0F',
+  recommendation: '\u2B50',
+  compare: '\uD83D\uDD0D',
+  location: '\uD83D\uDCCD',
+  greeting: '\uD83D\uDC4B',
+  thanks: '\uD83D\uDE4F',
+  provider: '\uD83D\uDC69\u200D\u2695\uFE0F',
+  complimentary: '\uD83C\uDF81',
+  essential: '\u2728',
+  premium: '\uD83D\uDC8E',
+  luxury: '\uD83D\uDC51',
+};
 
 export const WS_BACKEND_URL = process.env.NEXT_PUBLIC_WS_BACKEND_URL || 'http://localhost:8080';

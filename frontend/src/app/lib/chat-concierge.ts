@@ -138,6 +138,10 @@ function includesAny(text: string, phrases: string[]): boolean {
   return phrases.some((phrase) => text.includes(phrase));
 }
 
+function matchesAny(text: string, phrases: string[]): boolean {
+  return phrases.some((phrase) => new RegExp(`\\b${phrase}\\b`, 'i').test(text));
+}
+
 function quickReply(label: string, prompt = label): ChatQuickReply {
   return { label, prompt };
 }
@@ -701,8 +705,8 @@ function detectIntent(text: string): Intent {
       'human',
       'front desk',
       'team call',
-      'rep',
-    ])
+    ]) ||
+    matchesAny(normalized, ['rep'])
   ) {
     return 'handoff';
   }
