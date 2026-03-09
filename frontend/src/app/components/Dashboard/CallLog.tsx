@@ -288,14 +288,14 @@ export default function CallLog({
             <div className="dashboard-label text-xs font-semibold uppercase tracking-[0.22em]">
               {isDM
                 ? `${channelTab === 'instagram' ? 'Instagram' : 'Facebook'} Direct Message Log`
-                : autopilot ? 'Action Queue' : 'Call Log'}
+                : autopilot ? 'Action Queue' : 'Outbound Call Log'}
             </div>
             <p className="dashboard-copy mt-2 text-sm leading-6">
               {isDM
-                ? `All Vi agent conversations with NakedMD prospects via ${channelTab === 'instagram' ? 'Instagram' : 'Facebook'} DMs for lead conversion.`
+                ? `Vi agent outbound DMs to prospects who submitted lead forms through ${channelTab === 'instagram' ? 'Instagram' : 'Facebook'} ads.`
                 : autopilot
                   ? 'Only the conversations that still need a person, plus a clear receipt of what NakedMD AI already handled.'
-                  : 'All Vi conversations with full transcripts, AI classification, and follow-up status.'}
+                  : 'All outbound Vi agent calls to leads, with full transcripts, AI classification, and follow-up status.'}
             </p>
           </div>
 

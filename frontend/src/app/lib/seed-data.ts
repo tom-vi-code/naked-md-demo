@@ -865,27 +865,23 @@ const FB_HANDLES = [
   'Christine Lopez', 'Diana Scott', 'Laura Mitchell', 'Amanda Carter',
 ] as const;
 
-const DM_OPENERS_PROSPECT = [
-  'Hi! I saw your post about lip fillers. How much do those cost?',
-  'Hey there! Do you guys offer Botox? What are your prices?',
-  'I\'m interested in microneedling. Do you have any openings this week?',
-  'Hi! My friend got her lips done at your Newport Beach location and they look amazing. How do I book?',
-  'Do you offer free consultations? I want to learn about your anti-aging treatments',
-  'Hey! I\'ve been following your page for a while. What\'s the best treatment for acne scarring?',
-  'Hi NakedMD! I saw your before/after photos - incredible results! How much is a consult?',
-  'I\'m thinking about getting Dysport. What\'s the difference between that and Botox?',
-  'Hey! Do you guys have a new client special going on right now?',
-  'Hi! I saw your story about the chemical peel. Is there any downtime?',
-  'I want to look refreshed for my wedding in 3 months. What do you recommend?',
-  'How much are dermal fillers for cheeks? I saw your Beverly Hills location on IG',
+const AGENT_DM_OPENERS = [
+  (firstName: string, interest: string, locName: string, adType: string) =>
+    `Hey ${firstName}! 👋 This is Vi from NakedMD ${locName}. I saw you submitted a form through our ${adType} about ${interest.toLowerCase()} — so exciting! I'd love to tell you about what we can do for you. Do you have a quick sec?`,
+  (firstName: string, interest: string, locName: string, adType: string) =>
+    `Hi ${firstName}! 💛 Thanks for filling out our ${adType} form! I'm Vi, your personal concierge at NakedMD ${locName}. I noticed you're interested in ${interest.toLowerCase()} — great choice! Can I share some details?`,
+  (firstName: string, interest: string, locName: string, adType: string) =>
+    `${firstName}! 🙌 Welcome! I'm Vi from NakedMD ${locName}. We got your ${adType} form about ${interest.toLowerCase()} and I wanted to reach out personally. We have some amazing options I think you'll love. Got a minute?`,
+  (firstName: string, interest: string, locName: string, adType: string) =>
+    `Hey there ${firstName}! This is Vi from NakedMD ${locName} ✨ I saw you clicked through our ${adType} and expressed interest in ${interest.toLowerCase()}. I'd love to help you explore your options — are you free to chat?`,
 ] as const;
 
 function generateDMConversation(
   channel: DMChannel,
   outcome: OutcomeType,
   firstName: string,
-  lastName: string,
-  handle: string,
+  _lastName: string,
+  _handle: string,
   interest: string,
   location: Location,
   startTime: Date,
@@ -899,89 +895,88 @@ function generateDMConversation(
   };
 
   const locName = location === 'newport-beach' ? 'Newport Beach' : location === 'beverly-hills' ? 'Beverly Hills' : 'Scottsdale';
-  const platform = channel === 'instagram' ? 'Instagram' : 'Facebook';
+  const adType = channel === 'instagram' ? 'Instagram ad' : 'Facebook ad';
 
-  // Opening message from prospect
-  addMsg('prospect', pick(DM_OPENERS_PROSPECT), 0);
-
-  // Quick agent response
-  addMsg('agent', `Hey ${firstName}! Thanks so much for reaching out on ${platform}! 💛 We'd love to help you. ${interest} is one of our most popular treatments at our ${locName} studio!`, randInt(1, 4));
+  // Agent opens — outbound after lead form submission
+  const opener = AGENT_DM_OPENERS[Math.floor(rng() * AGENT_DM_OPENERS.length)];
+  addMsg('agent', opener(firstName, interest, locName, adType), 0);
 
   if (outcome === 'no-answer') {
-    // Prospect never responds
-    addMsg('agent', `Just following up, ${firstName}! Let me know if you have any questions about our treatments. We'd love to help! 😊`, randInt(120, 240));
+    // Prospect never responds to outbound DM
+    addMsg('agent', `Hey ${firstName}, just circling back! 😊 We'd love to get you booked for a complimentary consultation at our ${locName} studio. No pressure at all — just reply whenever you're ready! 💛`, randInt(120, 240));
+    addMsg('agent', `Hi ${firstName}! One last follow-up — we're running a New Client Special right now ($50 off your first treatment). If you're still interested in ${interest.toLowerCase()}, I'm here to help anytime! ✨`, randInt(360, 720));
     return messages;
   }
 
   addMsg('prospect', pick([
-    'Oh awesome! What are the prices like?',
-    'Great! How do I get started?',
-    'Nice! Do you have any specials right now?',
-    'Cool! Can you tell me more about what\'s included?',
-  ]), randInt(2, 15));
+    'Oh hey! Yeah I filled out that form. I\'ve been wanting to try something for a while!',
+    'Hi! Yes I\'m interested! I saw your ad and the results looked amazing',
+    'Hey! Yeah I submitted that. I have some questions actually',
+    'Hi Vi! Yes I\'d love to learn more. I\'ve been thinking about this for months',
+    'Oh wow that was fast! Yes tell me more 😊',
+  ]), randInt(3, 45));
 
-  addMsg('agent', `Great question! Our treatments start at $150/session for our Essential tier (facials, peels, dermaplaning), $250/session for Premium (neurotoxins, microneedling), and $450/session for our Luxury tier (fillers, advanced injectables, custom packages). We also offer a complimentary consultation to create your personalized plan! ✨`, randInt(1, 3));
+  addMsg('agent', `Love that you're taking this step! 🎉 So for ${interest.toLowerCase()}, we have some incredible options at our ${locName} studio. Our treatments start at $150/session for Essential (facials, peels, dermaplaning), $250 for Premium (neurotoxins, microneedling), and $450 for Luxury (fillers, advanced injectables, custom packages). The best way to figure out what's right for you is a complimentary consultation with one of our expert providers. Want me to get you set up?`, randInt(1, 3));
 
   if (outcome === 'consultation-booked' || outcome === 'appointment-scheduled') {
     addMsg('prospect', pick([
-      'I\'d love to come in for a consultation! When are you available?',
-      'Can I book a free consultation? That would be perfect',
-      'Let\'s do the complimentary consult! What times work?',
+      'Yes! A free consultation sounds perfect. What times do you have?',
+      'Definitely! I\'d love to come in and talk to someone in person',
+      'That would be great! When can I come by?',
     ]), randInt(3, 20));
-    addMsg('agent', `Absolutely! I can get you in this week. We have openings on Tuesday at 2pm, Wednesday at 11am, or Thursday at 4pm. Which works best for you? 📅`, randInt(1, 3));
+    addMsg('agent', `Amazing! 📅 I have openings this week: Tuesday at 2pm, Wednesday at 11am, or Thursday at 4pm. Which works best for your schedule?`, randInt(1, 3));
     addMsg('prospect', pick([
       'Wednesday at 11am works perfectly!',
       'Thursday at 4pm please!',
       'Tuesday at 2pm would be great',
     ]), randInt(5, 30));
-    addMsg('agent', `You're all set, ${firstName}! 🎉 I'll send you a confirmation with all the details. Our ${locName} studio is at ${location === 'newport-beach' ? '369 San Miguel Dr' : location === 'beverly-hills' ? '9735 Wilshire Blvd' : '7014 E Camelback Rd'}. Can't wait to meet you!`, randInt(1, 2));
-    addMsg('prospect', 'Thank you so much! Looking forward to it! 😍', randInt(2, 10));
+    addMsg('agent', `You're booked, ${firstName}! 🎉 Our ${locName} studio is at ${location === 'newport-beach' ? '369 San Miguel Dr Suite 230' : location === 'beverly-hills' ? '9735 Wilshire Blvd Suite 320' : '7014 E Camelback Rd Suite 1420'}. I'll send a confirmation with everything you need. This is going to be so exciting!`, randInt(1, 2));
+    addMsg('prospect', 'Thank you so much! Can\'t wait! 😍', randInt(2, 10));
   } else if (outcome === 'treatment-sold' || outcome === 'package-sold') {
-    addMsg('prospect', 'Those prices are reasonable! I\'m ready to book something. What do you recommend for a first-timer?', randInt(3, 15));
-    addMsg('agent', `Love your enthusiasm! 🙌 For first-timers, I'd suggest our New Client Special - $50 off your first treatment! Based on your interest in ${interest.toLowerCase()}, I think our ${interest.includes('Lip') || interest.includes('Wrinkle') ? 'Premium or Luxury' : 'Essential or Premium'} tier would be perfect. Want me to get you booked?`, randInt(1, 3));
-    addMsg('prospect', 'Yes please! Let\'s do it! 🙏', randInt(2, 10));
-    addMsg('agent', `Amazing! 🎉 Welcome to the NakedMD family, ${firstName}! I'll DM you a booking link. You're going to love the results! You, but better. ✨`, randInt(1, 2));
-    addMsg('prospect', 'Can\'t wait!! Thank you! 💕', randInt(1, 5));
+    addMsg('prospect', 'I\'m actually ready to just book something! I\'ve done my research. What do you recommend?', randInt(3, 15));
+    addMsg('agent', `I love it! 🙌 Since you're interested in ${interest.toLowerCase()}, I'd recommend starting with our ${interest.includes('Lip') || interest.includes('Wrinkle') ? 'Premium or Luxury' : 'Essential or Premium'} tier. AND since you came through our ad, I can set you up with our New Client Special — $50 off your first treatment! Want me to book you in?`, randInt(1, 3));
+    addMsg('prospect', 'Yes! Let\'s go! 🙏', randInt(2, 10));
+    addMsg('agent', `Done! 🎉 Welcome to the NakedMD family, ${firstName}! I'm sending you a booking link now. You, but better. ✨`, randInt(1, 2));
+    addMsg('prospect', 'So excited!! Thank you Vi! 💕', randInt(1, 5));
   } else if (outcome === 'info-provided' || outcome === 'info-sent') {
     addMsg('prospect', pick([
-      'Interesting! Let me think about it. Can you send me more info?',
-      'That\'s helpful. I want to do some research first. Do you have a website?',
-      'Thanks for all the info! I need to check with my schedule',
+      'That\'s really helpful! I need to think about which tier is right for me',
+      'Interesting! Can you send me more details? I want to look it over',
+      'Thanks! I need to check my schedule and figure out timing',
     ]), randInt(5, 30));
-    addMsg('agent', `Of course! Take your time 😊 Here's our website: nakedmd.com - you can see all our treatments, before/afters, and book directly. I'm also here if you have any more questions! Don't be a stranger 💛`, randInt(1, 3));
-    addMsg('prospect', 'Thanks! I\'ll check it out 🙌', randInt(2, 15));
+    addMsg('agent', `Totally! No rush at all 😊 I'll send you our full treatment guide with pricing, before/afters, and all the details. Also check out nakedmd.com for more info. And remember — I'm right here in your DMs whenever you're ready! 💛`, randInt(1, 3));
+    addMsg('prospect', 'Perfect, thanks so much! I\'ll review everything 🙌', randInt(2, 15));
   } else if (outcome === 'nurture') {
     addMsg('prospect', pick([
-      'Hmm that\'s a bit more than I expected. Let me think about it',
-      'I\'m interested but not ready to commit just yet',
-      'I need to save up a bit first. Maybe in a couple months?',
+      'Hmm the pricing is a bit more than I expected. Let me think on it',
+      'I\'m definitely interested but not quite ready to book yet',
+      'I need to save up a little first. Maybe in a couple months?',
     ]), randInt(5, 30));
-    addMsg('agent', `Totally understand, ${firstName}! No pressure at all 😊 We run specials regularly, so keep following us for deals! I'll check back in with you soon. In the meantime, feel free to DM us anytime with questions! 💛`, randInt(1, 3));
-    addMsg('prospect', 'Sounds good, thanks!', randInt(3, 20));
+    addMsg('agent', `Completely understand, ${firstName}! 😊 No pressure at all. We run specials all the time, especially for people who came through our ads. I'll check back in with you in a couple weeks. In the meantime, keep following us for deals! 💛`, randInt(1, 3));
+    addMsg('prospect', 'Sounds good, thanks for being so helpful!', randInt(3, 20));
   } else if (outcome === 'referral-generated') {
-    addMsg('prospect', 'This sounds great! My sister would love this too. Can we both come in?', randInt(3, 15));
-    addMsg('agent', `Absolutely! We have an amazing referral program 🎉 When you bring someone, you both get special perks! I'll set up consultations for both of you. What are her details?`, randInt(1, 3));
-    addMsg('prospect', 'Amazing! I\'ll have her DM you too. We\'re so excited!', randInt(2, 10));
-    addMsg('agent', `Can't wait to meet you both! 💛 This is going to be so fun. I'll send you both the consultation details shortly!`, randInt(1, 2));
+    addMsg('prospect', 'This sounds amazing! Actually my sister has been wanting to do something too. Can we both come?', randInt(3, 15));
+    addMsg('agent', `Even better! 🎉 We have a referral program — when you bring someone, you BOTH get special perks! I'll set up consultations for both of you. Just have her follow @nakedmd and I'll reach out to her too!`, randInt(1, 3));
+    addMsg('prospect', 'OMG perfect! She\'s going to be so excited! I\'ll tell her now 😍', randInt(2, 10));
+    addMsg('agent', `Can't wait to meet you both! 💛 Sending consultation details your way shortly!`, randInt(1, 2));
   } else if (outcome === 'declined') {
     addMsg('prospect', pick([
-      'Thanks but I think I\'ll pass for now',
-      'I appreciate the info but I\'m going with another provider',
-      'Not really what I\'m looking for, thanks though!',
+      'Thanks for reaching out but I think I\'ll pass for now',
+      'I appreciate it but I actually just signed up with another place',
+      'I clicked the ad but I\'m not really ready. Sorry!',
     ]), randInt(5, 30));
-    addMsg('agent', `No worries at all, ${firstName}! We're here whenever you change your mind. Wishing you the best! 💛`, randInt(1, 3));
+    addMsg('agent', `No worries at all, ${firstName}! Thanks for letting me know 😊 If you ever change your mind, we're right here. Wishing you the best! 💛`, randInt(1, 3));
   } else if (outcome === 'callback-requested') {
-    addMsg('prospect', 'Can someone call me instead? I have a lot of questions', randInt(3, 15));
-    addMsg('agent', `Of course! I'd love to have one of our specialists give you a call. What's your number and when's a good time? 📞`, randInt(1, 3));
+    addMsg('prospect', 'Can someone actually call me? I\'d rather talk through this on the phone', randInt(3, 15));
+    addMsg('agent', `Of course! 📞 I'd love to have one of our NakedMD specialists give you a call. What's your number and when's a good time to reach you?`, randInt(1, 3));
     addMsg('prospect', pick([
-      'My number is 949-555-1234. Anytime after 3pm works!',
+      'My number is 949-555-1234. After 3pm works best!',
       'Can you call 310-555-5678 tomorrow morning?',
     ]), randInt(2, 10));
-    addMsg('agent', `Got it! We'll give you a call then. Talk soon, ${firstName}! 😊`, randInt(1, 2));
+    addMsg('agent', `Perfect! We'll give you a ring then. Talk soon, ${firstName}! 😊`, randInt(1, 2));
   } else {
-    // Generic fallback (voicemail, tech-issue, win-back-success)
-    addMsg('prospect', 'Thanks for the info! I\'ll reach out when I\'m ready', randInt(5, 30));
-    addMsg('agent', `Sounds great, ${firstName}! We'll be here 💛 Follow us for the latest treatments and specials!`, randInt(1, 3));
+    addMsg('prospect', 'Thanks! Let me think about it and I\'ll get back to you', randInt(5, 30));
+    addMsg('agent', `Sounds great, ${firstName}! I'll be here whenever you're ready 💛 Don't forget to check out our page for the latest results and specials!`, randInt(1, 3));
   }
 
   return messages;
@@ -989,30 +984,38 @@ function generateDMConversation(
 
 function generateDMSummary(channel: DMChannel, outcome: OutcomeType, firstName: string, interest: string): string {
   const platform = channel === 'instagram' ? 'Instagram' : 'Facebook';
+  const adType = channel === 'instagram' ? 'Instagram ad' : 'Facebook ad';
   const summaries: Record<string, string[]> = {
     'consultation-booked': [
-      `${firstName} reached out via ${platform} DM about ${interest.toLowerCase()}. After discussing options and pricing, booked a complimentary consultation.`,
+      `Vi agent reached out to ${firstName} via ${platform} DM after ${adType} lead form submission. Discussed ${interest.toLowerCase()} options and booked complimentary consultation.`,
+      `Outbound DM to ${firstName} following ${adType} conversion. Strong engagement — consultation booked within the conversation.`,
     ],
     'treatment-sold': [
-      `${firstName} inquired about treatments on ${platform}. Converted directly in DMs after discussing ${interest.toLowerCase()} options and New Client Special.`,
+      `${firstName} submitted ${adType} lead form for ${interest.toLowerCase()}. Vi agent converted directly in ${platform} DMs — treatment booked with New Client Special applied.`,
     ],
     'package-sold': [
-      `${firstName} messaged on ${platform} interested in ${interest.toLowerCase()}. Sold New Client Special package through DM conversation.`,
+      `Vi outbounded ${firstName} on ${platform} after ${adType} form fill. Sold New Client Special package for ${interest.toLowerCase()} treatments.`,
     ],
     'info-provided': [
-      `${firstName} asked about ${interest.toLowerCase()} via ${platform} DM. Provided pricing and treatment info. Prospect wants time to decide.`,
+      `Vi agent DMed ${firstName} after ${adType} lead form submission. Provided ${interest.toLowerCase()} pricing and treatment details. Prospect reviewing before booking.`,
     ],
     'nurture': [
-      `${firstName} expressed interest in ${interest.toLowerCase()} on ${platform} but not ready to commit. Added to follow-up sequence.`,
+      `Outbound ${platform} DM to ${firstName} after ${adType} form fill. Interested in ${interest.toLowerCase()} but not ready to commit. Added to nurture sequence.`,
     ],
     'referral-generated': [
-      `${firstName} messaged about ${interest.toLowerCase()} on ${platform} and wants to bring a friend. Double consultation booked via referral program.`,
+      `Vi agent engaged ${firstName} via ${platform} DM after ${adType} lead form. Generated referral — prospect bringing a friend for dual consultation.`,
     ],
     'declined': [
-      `${firstName} inquired via ${platform} DM but decided to pass on ${interest.toLowerCase()} treatments at this time.`,
+      `Outbound DM to ${firstName} following ${adType} submission. Prospect declined ${interest.toLowerCase()} treatments at this time.`,
+    ],
+    'no-answer': [
+      `Vi agent sent outbound ${platform} DM to ${firstName} after ${adType} form submission. No response after multiple follow-ups. Will retry via voice.`,
+    ],
+    'callback-requested': [
+      `${firstName} submitted ${adType} form. Vi agent reached out via ${platform} DM — prospect prefers phone call. Callback scheduled.`,
     ],
   };
-  const pool = summaries[outcome] ?? [`${firstName} engaged via ${platform} DM regarding ${interest.toLowerCase()}. Conversation concluded with ${outcome.replace(/-/g, ' ')}.`];
+  const pool = summaries[outcome] ?? [`Vi agent outbounded ${firstName} via ${platform} DM after ${adType} lead form submission for ${interest.toLowerCase()}. Outcome: ${outcome.replace(/-/g, ' ')}.`];
   return pool[Math.floor(rng() * pool.length)];
 }
 

@@ -126,7 +126,7 @@ export default function DMDetail({ dmId, onClose, theme = 'dark' }: DMDetailProp
                 <div className="flex items-center gap-2">
                   {dm && <PlatformLogo className="h-5 w-5" />}
                   <div className={cn('text-xs font-semibold uppercase tracking-[0.22em]', dark ? 'text-slate-400' : 'text-[#8B7D6B]')}>
-                    {dm ? `${platformName} DM` : 'Conversation Detail'}
+                    {dm ? `Outbound ${platformName} DM` : 'Conversation Detail'}
                   </div>
                 </div>
                 {dm ? (
@@ -174,9 +174,9 @@ export default function DMDetail({ dmId, onClose, theme = 'dark' }: DMDetailProp
                 {/* Metadata */}
                 <div className="grid gap-3 sm:grid-cols-2">
                   {[
-                    { label: 'Platform', value: platformName },
+                    { label: 'Source', value: `${platformName} Ad Lead Form` },
+                    { label: 'Direction', value: 'Outbound DM' },
                     { label: 'Location', value: LOCATIONS[dm.location]?.name.replace('NakedMD ', '') ?? dm.location },
-                    { label: 'Messages', value: `${dm.messageCount} messages` },
                     { label: 'Started', value: new Date(dm.startedAt).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }) },
                   ].map((meta) => (
                     <div key={meta.label} className={cn('rounded-none border p-4', dark ? 'border-white/8 bg-white/4' : 'border-[#E0DEDB] bg-[#f4f1ea]/30')}>
@@ -184,7 +184,7 @@ export default function DMDetail({ dmId, onClose, theme = 'dark' }: DMDetailProp
                         {meta.label}
                       </div>
                       <div className={cn('mt-2 flex items-center gap-2 text-lg font-semibold', dark ? 'text-white' : 'text-gray-900')}>
-                        {meta.label === 'Platform' && <PlatformLogo className="h-5 w-5" />}
+                        {meta.label === 'Source' && <PlatformLogo className="h-5 w-5" />}
                         {meta.value}
                       </div>
                     </div>
