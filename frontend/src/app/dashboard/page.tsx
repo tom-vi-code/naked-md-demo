@@ -232,7 +232,7 @@ export default function DashboardPage() {
       <div className="relative flex min-h-screen">
         <aside
           className={cn(
-            'fixed inset-y-0 left-0 z-40 flex w-[256px] flex-col border-r px-4 py-5 transition-all duration-300 md:sticky md:w-[286px] md:translate-x-0',
+            'fixed inset-y-0 left-0 z-40 flex w-[256px] shrink-0 flex-col border-r px-4 py-5 transition-all duration-300 md:relative md:sticky md:top-0 md:h-screen md:w-[286px] md:translate-x-0 md:overflow-y-auto',
             menuOpen ? 'translate-x-0' : '-translate-x-full',
             theme === 'dark'
               ? 'border-white/8 bg-[#1e1e1e]'
