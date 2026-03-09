@@ -205,7 +205,52 @@ export interface ChatResponsePayload {
 // ---------------------------------------------------------------------------
 // First-Response Wins Orchestrator
 // ---------------------------------------------------------------------------
-export type ChannelType = 'voice' | 'sms' | 'chat';
+export type ChannelType = 'voice' | 'sms' | 'chat' | 'instagram-dm' | 'facebook-dm';
+
+// ---------------------------------------------------------------------------
+// Social DM Conversations
+// ---------------------------------------------------------------------------
+export type DMChannel = 'instagram' | 'facebook';
+
+export interface DMMessage {
+  sender: 'agent' | 'prospect';
+  text: string;
+  timestamp: string;
+}
+
+export interface DMConversation {
+  id: string;
+  channel: DMChannel;
+  contact: { firstName: string; lastName: string; handle: string };
+  location: Location;
+  outcome: OutcomeType | null;
+  sentiment: number | null;
+  messageCount: number;
+  lastMessageAt: string;
+  startedAt: string;
+  summary: string | null;
+  keyMoments: string[] | null;
+  messages: DMMessage[];
+}
+
+export interface DMSummary {
+  id: string;
+  channel: DMChannel;
+  contact: { firstName: string; lastName: string; handle: string };
+  location: Location;
+  outcome: OutcomeType | null;
+  sentiment: number | null;
+  messageCount: number;
+  lastMessageAt: string;
+  startedAt: string;
+}
+
+export interface DMsResponse {
+  conversations: DMSummary[];
+  total: number;
+  page: number;
+  totalPages: number;
+}
 export type ChannelFinalStatus = 'engaged' | 'suppressed' | 'failed' | 'repurposed';
 
 export interface OrchestrationEvent {

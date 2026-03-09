@@ -10,6 +10,10 @@ import type {
   TranscriptEntry,
   CallDirection,
   CallStatus,
+  DMChannel,
+  DMConversation,
+  DMSummary,
+  DMMessage,
 } from './types';
 
 // ---------------------------------------------------------------------------
@@ -837,4 +841,302 @@ export function getAnalytics(period: 'today' | 'week' | 'all' = 'all'): Analytic
     topObjections,
     recentCalls,
   };
+}
+
+// ---------------------------------------------------------------------------
+// Social DM Conversations (Instagram + Facebook)
+// ---------------------------------------------------------------------------
+
+const IG_HANDLES = [
+  '@jessicam_beauty', '@mikefit_la', '@sarahglow92', '@lovelylucia',
+  '@tanya.the.queen', '@np_beach_vibes', '@skincare.sam', '@jennyxo',
+  '@desert.rose.az', '@david.smith.bh', '@bh_beauty_hunter', '@scottsdale.sarah',
+  '@karenfit', '@ashley.glam', '@beauty.by.nicole', '@tiffany.skincare',
+  '@monica.newport', '@rachelglow', '@skingoals_emily', '@medspa.curious',
+  '@botox.babe.bh', '@lipqueen_az', '@glow.getter.ca', '@amanda.beauty',
+] as const;
+
+const FB_HANDLES = [
+  'Jessica Martinez', 'Mike Thompson', 'Sarah Chen', 'Lucia Ramirez',
+  'Tanya Williams', 'Nicole Peterson', 'Sam Rivera', 'Jenny Baker',
+  'Rose Anderson', 'David Smith', 'Brittany Hall', 'Sarah Johnson',
+  'Karen Lee', 'Ashley Green', 'Nicole Torres', 'Tiffany Clark',
+  'Monica Nguyen', 'Rachel Adams', 'Emily White', 'Megan Harris',
+  'Christine Lopez', 'Diana Scott', 'Laura Mitchell', 'Amanda Carter',
+] as const;
+
+const DM_OPENERS_PROSPECT = [
+  'Hi! I saw your post about lip fillers. How much do those cost?',
+  'Hey there! Do you guys offer Botox? What are your prices?',
+  'I\'m interested in microneedling. Do you have any openings this week?',
+  'Hi! My friend got her lips done at your Newport Beach location and they look amazing. How do I book?',
+  'Do you offer free consultations? I want to learn about your anti-aging treatments',
+  'Hey! I\'ve been following your page for a while. What\'s the best treatment for acne scarring?',
+  'Hi NakedMD! I saw your before/after photos - incredible results! How much is a consult?',
+  'I\'m thinking about getting Dysport. What\'s the difference between that and Botox?',
+  'Hey! Do you guys have a new client special going on right now?',
+  'Hi! I saw your story about the chemical peel. Is there any downtime?',
+  'I want to look refreshed for my wedding in 3 months. What do you recommend?',
+  'How much are dermal fillers for cheeks? I saw your Beverly Hills location on IG',
+] as const;
+
+function generateDMConversation(
+  channel: DMChannel,
+  outcome: OutcomeType,
+  firstName: string,
+  lastName: string,
+  handle: string,
+  interest: string,
+  location: Location,
+  startTime: Date,
+): DMMessage[] {
+  const messages: DMMessage[] = [];
+  let ts = new Date(startTime);
+
+  const addMsg = (sender: 'agent' | 'prospect', text: string, minutesLater: number) => {
+    ts = new Date(ts.getTime() + minutesLater * 60 * 1000);
+    messages.push({ sender, text, timestamp: ts.toISOString() });
+  };
+
+  const locName = location === 'newport-beach' ? 'Newport Beach' : location === 'beverly-hills' ? 'Beverly Hills' : 'Scottsdale';
+  const platform = channel === 'instagram' ? 'Instagram' : 'Facebook';
+
+  // Opening message from prospect
+  addMsg('prospect', pick(DM_OPENERS_PROSPECT), 0);
+
+  // Quick agent response
+  addMsg('agent', `Hey ${firstName}! Thanks so much for reaching out on ${platform}! 💛 We'd love to help you. ${interest} is one of our most popular treatments at our ${locName} studio!`, randInt(1, 4));
+
+  if (outcome === 'no-answer') {
+    // Prospect never responds
+    addMsg('agent', `Just following up, ${firstName}! Let me know if you have any questions about our treatments. We'd love to help! 😊`, randInt(120, 240));
+    return messages;
+  }
+
+  addMsg('prospect', pick([
+    'Oh awesome! What are the prices like?',
+    'Great! How do I get started?',
+    'Nice! Do you have any specials right now?',
+    'Cool! Can you tell me more about what\'s included?',
+  ]), randInt(2, 15));
+
+  addMsg('agent', `Great question! Our treatments start at $150/session for our Essential tier (facials, peels, dermaplaning), $250/session for Premium (neurotoxins, microneedling), and $450/session for our Luxury tier (fillers, advanced injectables, custom packages). We also offer a complimentary consultation to create your personalized plan! ✨`, randInt(1, 3));
+
+  if (outcome === 'consultation-booked' || outcome === 'appointment-scheduled') {
+    addMsg('prospect', pick([
+      'I\'d love to come in for a consultation! When are you available?',
+      'Can I book a free consultation? That would be perfect',
+      'Let\'s do the complimentary consult! What times work?',
+    ]), randInt(3, 20));
+    addMsg('agent', `Absolutely! I can get you in this week. We have openings on Tuesday at 2pm, Wednesday at 11am, or Thursday at 4pm. Which works best for you? 📅`, randInt(1, 3));
+    addMsg('prospect', pick([
+      'Wednesday at 11am works perfectly!',
+      'Thursday at 4pm please!',
+      'Tuesday at 2pm would be great',
+    ]), randInt(5, 30));
+    addMsg('agent', `You're all set, ${firstName}! 🎉 I'll send you a confirmation with all the details. Our ${locName} studio is at ${location === 'newport-beach' ? '369 San Miguel Dr' : location === 'beverly-hills' ? '9735 Wilshire Blvd' : '7014 E Camelback Rd'}. Can't wait to meet you!`, randInt(1, 2));
+    addMsg('prospect', 'Thank you so much! Looking forward to it! 😍', randInt(2, 10));
+  } else if (outcome === 'treatment-sold' || outcome === 'package-sold') {
+    addMsg('prospect', 'Those prices are reasonable! I\'m ready to book something. What do you recommend for a first-timer?', randInt(3, 15));
+    addMsg('agent', `Love your enthusiasm! 🙌 For first-timers, I'd suggest our New Client Special - $50 off your first treatment! Based on your interest in ${interest.toLowerCase()}, I think our ${interest.includes('Lip') || interest.includes('Wrinkle') ? 'Premium or Luxury' : 'Essential or Premium'} tier would be perfect. Want me to get you booked?`, randInt(1, 3));
+    addMsg('prospect', 'Yes please! Let\'s do it! 🙏', randInt(2, 10));
+    addMsg('agent', `Amazing! 🎉 Welcome to the NakedMD family, ${firstName}! I'll DM you a booking link. You're going to love the results! You, but better. ✨`, randInt(1, 2));
+    addMsg('prospect', 'Can\'t wait!! Thank you! 💕', randInt(1, 5));
+  } else if (outcome === 'info-provided' || outcome === 'info-sent') {
+    addMsg('prospect', pick([
+      'Interesting! Let me think about it. Can you send me more info?',
+      'That\'s helpful. I want to do some research first. Do you have a website?',
+      'Thanks for all the info! I need to check with my schedule',
+    ]), randInt(5, 30));
+    addMsg('agent', `Of course! Take your time 😊 Here's our website: nakedmd.com - you can see all our treatments, before/afters, and book directly. I'm also here if you have any more questions! Don't be a stranger 💛`, randInt(1, 3));
+    addMsg('prospect', 'Thanks! I\'ll check it out 🙌', randInt(2, 15));
+  } else if (outcome === 'nurture') {
+    addMsg('prospect', pick([
+      'Hmm that\'s a bit more than I expected. Let me think about it',
+      'I\'m interested but not ready to commit just yet',
+      'I need to save up a bit first. Maybe in a couple months?',
+    ]), randInt(5, 30));
+    addMsg('agent', `Totally understand, ${firstName}! No pressure at all 😊 We run specials regularly, so keep following us for deals! I'll check back in with you soon. In the meantime, feel free to DM us anytime with questions! 💛`, randInt(1, 3));
+    addMsg('prospect', 'Sounds good, thanks!', randInt(3, 20));
+  } else if (outcome === 'referral-generated') {
+    addMsg('prospect', 'This sounds great! My sister would love this too. Can we both come in?', randInt(3, 15));
+    addMsg('agent', `Absolutely! We have an amazing referral program 🎉 When you bring someone, you both get special perks! I'll set up consultations for both of you. What are her details?`, randInt(1, 3));
+    addMsg('prospect', 'Amazing! I\'ll have her DM you too. We\'re so excited!', randInt(2, 10));
+    addMsg('agent', `Can't wait to meet you both! 💛 This is going to be so fun. I'll send you both the consultation details shortly!`, randInt(1, 2));
+  } else if (outcome === 'declined') {
+    addMsg('prospect', pick([
+      'Thanks but I think I\'ll pass for now',
+      'I appreciate the info but I\'m going with another provider',
+      'Not really what I\'m looking for, thanks though!',
+    ]), randInt(5, 30));
+    addMsg('agent', `No worries at all, ${firstName}! We're here whenever you change your mind. Wishing you the best! 💛`, randInt(1, 3));
+  } else if (outcome === 'callback-requested') {
+    addMsg('prospect', 'Can someone call me instead? I have a lot of questions', randInt(3, 15));
+    addMsg('agent', `Of course! I'd love to have one of our specialists give you a call. What's your number and when's a good time? 📞`, randInt(1, 3));
+    addMsg('prospect', pick([
+      'My number is 949-555-1234. Anytime after 3pm works!',
+      'Can you call 310-555-5678 tomorrow morning?',
+    ]), randInt(2, 10));
+    addMsg('agent', `Got it! We'll give you a call then. Talk soon, ${firstName}! 😊`, randInt(1, 2));
+  } else {
+    // Generic fallback (voicemail, tech-issue, win-back-success)
+    addMsg('prospect', 'Thanks for the info! I\'ll reach out when I\'m ready', randInt(5, 30));
+    addMsg('agent', `Sounds great, ${firstName}! We'll be here 💛 Follow us for the latest treatments and specials!`, randInt(1, 3));
+  }
+
+  return messages;
+}
+
+function generateDMSummary(channel: DMChannel, outcome: OutcomeType, firstName: string, interest: string): string {
+  const platform = channel === 'instagram' ? 'Instagram' : 'Facebook';
+  const summaries: Record<string, string[]> = {
+    'consultation-booked': [
+      `${firstName} reached out via ${platform} DM about ${interest.toLowerCase()}. After discussing options and pricing, booked a complimentary consultation.`,
+    ],
+    'treatment-sold': [
+      `${firstName} inquired about treatments on ${platform}. Converted directly in DMs after discussing ${interest.toLowerCase()} options and New Client Special.`,
+    ],
+    'package-sold': [
+      `${firstName} messaged on ${platform} interested in ${interest.toLowerCase()}. Sold New Client Special package through DM conversation.`,
+    ],
+    'info-provided': [
+      `${firstName} asked about ${interest.toLowerCase()} via ${platform} DM. Provided pricing and treatment info. Prospect wants time to decide.`,
+    ],
+    'nurture': [
+      `${firstName} expressed interest in ${interest.toLowerCase()} on ${platform} but not ready to commit. Added to follow-up sequence.`,
+    ],
+    'referral-generated': [
+      `${firstName} messaged about ${interest.toLowerCase()} on ${platform} and wants to bring a friend. Double consultation booked via referral program.`,
+    ],
+    'declined': [
+      `${firstName} inquired via ${platform} DM but decided to pass on ${interest.toLowerCase()} treatments at this time.`,
+    ],
+  };
+  const pool = summaries[outcome] ?? [`${firstName} engaged via ${platform} DM regarding ${interest.toLowerCase()}. Conversation concluded with ${outcome.replace(/-/g, ' ')}.`];
+  return pool[Math.floor(rng() * pool.length)];
+}
+
+const DM_OUTCOME_DISTRIBUTION: { outcome: OutcomeType; count: number }[] = [
+  { outcome: 'consultation-booked', count: 5 },
+  { outcome: 'treatment-sold', count: 2 },
+  { outcome: 'package-sold', count: 3 },
+  { outcome: 'info-provided', count: 4 },
+  { outcome: 'nurture', count: 3 },
+  { outcome: 'referral-generated', count: 2 },
+  { outcome: 'callback-requested', count: 2 },
+  { outcome: 'declined', count: 1 },
+  { outcome: 'no-answer', count: 2 },
+];
+
+function buildAllDMs(): DMConversation[] {
+  const outcomes: OutcomeType[] = [];
+  for (const { outcome, count } of DM_OUTCOME_DISTRIBUTION) {
+    for (let i = 0; i < count; i++) outcomes.push(outcome);
+  }
+  // Shuffle
+  for (let i = outcomes.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [outcomes[i], outcomes[j]] = [outcomes[j], outcomes[i]];
+  }
+
+  const now = new Date();
+  const conversations: DMConversation[] = [];
+
+  for (let i = 0; i < outcomes.length; i++) {
+    const channel: DMChannel = i % 2 === 0 ? 'instagram' : 'facebook';
+    const firstName = pick(FIRST_NAMES);
+    const lastName = pick(LAST_NAMES);
+    const handle = channel === 'instagram'
+      ? pick(IG_HANDLES)
+      : pick(FB_HANDLES);
+    const location = LOCATION_LIST[i % 3];
+    const interest = pick(INTERESTS);
+    const outcome = outcomes[i];
+
+    const daysAgo = Math.floor((i / outcomes.length) * 7);
+    const startTime = new Date(now);
+    startTime.setDate(startTime.getDate() - daysAgo);
+    startTime.setHours(randInt(8, 21), randInt(0, 59), randInt(0, 59), 0);
+
+    const messages = generateDMConversation(channel, outcome, firstName, lastName, handle, interest, location, startTime);
+    const lastMsg = messages[messages.length - 1];
+    const sentiment = sentimentForOutcome(outcome);
+    const summary = generateDMSummary(channel, outcome, firstName, interest);
+    const keyMoments: string[] = [];
+    if (!['no-answer', 'voicemail', 'tech-issue'].includes(outcome)) {
+      keyMoments.push(`Discussed ${interest.toLowerCase()} treatments`);
+    }
+    if (CONVERSION_OUTCOMES.includes(outcome)) {
+      keyMoments.push(`Secured ${outcome.replace(/-/g, ' ')}`);
+    }
+
+    conversations.push({
+      id: pseudoUUID(),
+      channel,
+      contact: { firstName, lastName, handle },
+      location,
+      outcome,
+      sentiment,
+      messageCount: messages.length,
+      lastMessageAt: lastMsg.timestamp,
+      startedAt: startTime.toISOString(),
+      summary,
+      keyMoments: keyMoments.length > 0 ? keyMoments : null,
+      messages,
+    });
+  }
+
+  conversations.sort((a, b) => new Date(b.lastMessageAt).getTime() - new Date(a.lastMessageAt).getTime());
+  return conversations;
+}
+
+const ALL_DMS = buildAllDMs();
+const DM_MAP = new Map<string, DMConversation>();
+for (const dm of ALL_DMS) DM_MAP.set(dm.id, dm);
+
+export function getFilteredDMs(filters: {
+  channel?: DMChannel;
+  location?: string;
+  outcome?: string;
+  search?: string;
+  page?: number;
+  limit?: number;
+}): { conversations: DMSummary[]; total: number; page: number; totalPages: number } {
+  const { channel, location, outcome, search, page = 1, limit = 20 } = filters;
+
+  const filtered = ALL_DMS.filter((dm) => {
+    if (channel && dm.channel !== channel) return false;
+    if (location && dm.location !== location) return false;
+    if (outcome && dm.outcome !== outcome) return false;
+    if (search) {
+      const q = search.toLowerCase();
+      const fullName = `${dm.contact.firstName} ${dm.contact.lastName}`.toLowerCase();
+      const handle = dm.contact.handle.toLowerCase();
+      if (!fullName.includes(q) && !handle.includes(q)) return false;
+    }
+    return true;
+  });
+
+  const total = filtered.length;
+  const totalPages = Math.ceil(total / limit);
+  const start = (page - 1) * limit;
+  const paginated = filtered.slice(start, start + limit);
+
+  const conversations: DMSummary[] = paginated.map((dm) => ({
+    id: dm.id,
+    channel: dm.channel,
+    contact: dm.contact,
+    location: dm.location,
+    outcome: dm.outcome,
+    sentiment: dm.sentiment,
+    messageCount: dm.messageCount,
+    lastMessageAt: dm.lastMessageAt,
+    startedAt: dm.startedAt,
+  }));
+
+  return { conversations, total, page, totalPages };
+}
+
+export function getDMDetail(id: string): DMConversation | undefined {
+  return DM_MAP.get(id);
 }

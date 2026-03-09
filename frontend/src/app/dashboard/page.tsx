@@ -18,6 +18,7 @@ import OrchestratorView from '@/app/components/Dashboard/OrchestratorView';
 import NakedMDAICommand from '@/app/components/Dashboard/NakedMDAICommand';
 import AutopilotOverview from '@/app/components/Dashboard/AutopilotOverview';
 import AgentConfigPanel from '@/app/components/Dashboard/AgentConfigPanel';
+import DMDetail from '@/app/components/Dashboard/DMDetail';
 
 type Tab = 'overview' | 'calls' | 'analytics' | 'orchestrator' | 'agent-config';
 type Period = 'today' | 'week' | 'all';
@@ -87,6 +88,7 @@ export default function DashboardPage() {
   const [orchestrator, setOrchestrator] = useState<OrchestratorResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [selectedCallId, setSelectedCallId] = useState<string | null>(null);
+  const [selectedDMId, setSelectedDMId] = useState<string | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [theme, setTheme] = useState<'dark' | 'light'>('light');
   const [autopilot, setAutopilot] = useState(true);
@@ -182,7 +184,7 @@ export default function DashboardPage() {
 
   useEffect(() => {
     setMenuOpen(false);
-  }, [activeTab, selectedCallId]);
+  }, [activeTab, selectedCallId, selectedDMId]);
 
   async function handleLogout() {
     await fetch('/api/auth/logout', { method: 'POST' });
@@ -535,6 +537,7 @@ export default function DashboardPage() {
                   <div className="animate-fade-in">
                     <CallLog
                       onSelectCall={setSelectedCallId}
+                      onSelectDM={(id) => setSelectedDMId(id)}
                       autopilot={autopilot}
                       theme={theme}
                     />
@@ -612,7 +615,7 @@ export default function DashboardPage() {
         </main>
       </div>
 
-      {!selectedCallId && (
+      {!selectedCallId && !selectedDMId && (
         <NakedMDAICommand
           theme={theme}
           analytics={analytics}
@@ -629,6 +632,14 @@ export default function DashboardPage() {
           onClose={() => setSelectedCallId(null)}
           theme={theme}
           autopilot={autopilot}
+        />
+      )}
+
+      {selectedDMId && (
+        <DMDetail
+          dmId={selectedDMId}
+          onClose={() => setSelectedDMId(null)}
+          theme={theme}
         />
       )}
     </div>
