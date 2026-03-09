@@ -17,8 +17,6 @@ const CHANNEL_META: Record<ChannelType, { label: string; color: string; icon: st
   voice: { label: 'Voice', color: '#818cf8', icon: 'V' },
   sms: { label: 'SMS', color: '#34d399', icon: 'S' },
   chat: { label: 'Chat', color: '#fbbf24', icon: 'C' },
-  'instagram-dm': { label: 'IG DM', color: '#d6249f', icon: 'I' },
-  'facebook-dm': { label: 'FB DM', color: '#1877F2', icon: 'F' },
 };
 
 const STATUS_META: Record<ChannelFinalStatus, { label: string; color: string }> = {

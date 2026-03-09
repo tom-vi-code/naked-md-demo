@@ -205,7 +205,8 @@ export interface ChatResponsePayload {
 // ---------------------------------------------------------------------------
 // First-Response Wins Orchestrator
 // ---------------------------------------------------------------------------
-export type ChannelType = 'voice' | 'sms' | 'chat' | 'instagram-dm' | 'facebook-dm';
+export type ChannelType = 'voice' | 'sms' | 'chat';
+export type ExtendedChannelType = ChannelType | 'instagram-dm' | 'facebook-dm';
 
 // ---------------------------------------------------------------------------
 // Social DM Conversations
