@@ -107,9 +107,9 @@ export function addTrackedDMFromWebhook(payload: WebhookPayload): TrackedDM {
     messageCount: messages.length,
     lastMessageAt: messages[messages.length - 1].timestamp,
     startedAt: now,
-    summary: `Automated DM flow triggered by comment keyword "${payload.keyword}". Reached out to ${firstName} with consultation offer.`,
+    summary: `Automated outbound DM triggered by Instagram engagement. Vi reached out to ${firstName} with a personalized consultation offer.`,
     keyMoments: [
-      `Triggered by keyword: ${payload.keyword}`,
+      `Instagram comment detected: "${payload.keyword}"`,
       'Sent personalized greeting',
       'Offered complimentary consultation',
     ],
@@ -124,7 +124,7 @@ export function addTrackedDMFromTrigger(payload: TriggerPayload): TrackedDM {
   const webhookPayload: WebhookPayload = {
     name: payload.name,
     ig_handle: payload.handle,
-    keyword: 'demo-trigger',
+    keyword: 'aesthetics treatments',
     timestamp: new Date().toISOString(),
   };
   return addTrackedDMFromWebhook(webhookPayload);
