@@ -8,6 +8,7 @@ import { healthRoutes } from './routes/health.js';
 import { twilioVoiceRoutes } from './routes/twilio-voice.js';
 import { twilioMediaRoutes } from './routes/twilio-media.js';
 import { twilioStatusRoutes } from './routes/twilio-status.js';
+import { instagramWebhookRoutes } from './routes/instagram-webhook.js';
 import { processLead } from './services/lead-processor.js';
 
 // ---------------------------------------------------------------------------
@@ -63,6 +64,7 @@ async function bootstrap() {
   await server.register(twilioVoiceRoutes);
   await server.register(twilioMediaRoutes);
   await server.register(twilioStatusRoutes);
+  await server.register(instagramWebhookRoutes);
 
   // ---- Lead processing endpoint ----
 

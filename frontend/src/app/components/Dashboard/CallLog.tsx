@@ -91,6 +91,18 @@ function ChannelIcon({ channel, className }: { channel: ChannelTab; className?: 
   );
 }
 
+function LiveBadge() {
+  return (
+    <span className="inline-flex items-center gap-1 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.14em] text-emerald-300">
+      <span className="relative flex h-1.5 w-1.5">
+        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+        <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
+      </span>
+      Live
+    </span>
+  );
+}
+
 function FilterSelect({
   value,
   onChange,
@@ -393,8 +405,9 @@ export default function CallLog({
                       <div className="flex items-center gap-2.5">
                         <ChannelIcon channel={dm.channel === 'instagram' ? 'instagram' : 'facebook'} className="h-5 w-5 shrink-0" />
                         <div>
-                          <div className="dashboard-heading font-semibold">
+                          <div className="flex items-center gap-2 dashboard-heading font-semibold">
                             {dm.contact.firstName} {dm.contact.lastName}
+                            {dm.id.startsWith('tracked-') && <LiveBadge />}
                           </div>
                           <div className="dashboard-muted mt-0.5 text-xs">{dm.contact.handle}</div>
                         </div>
@@ -478,8 +491,9 @@ export default function CallLog({
                         </div>
                       </td>
                       <td className="px-4 py-4">
-                        <div className="dashboard-heading font-semibold">
+                        <div className="flex items-center gap-2 dashboard-heading font-semibold">
                           {dm.contact.firstName} {dm.contact.lastName}
+                          {dm.id.startsWith('tracked-') && <LiveBadge />}
                         </div>
                         <div className="dashboard-muted mt-1 text-xs">{dm.contact.handle}</div>
                       </td>
