@@ -221,11 +221,6 @@ export async function twilioMediaRoutes(fastify: FastifyInstance) {
             }
             break;
 
-          case 'send_sms':
-            fastify.log.info({ args }, 'Function call: send_sms requested');
-            // SMS will be handled in post-call processing; log intent here
-            break;
-
           default:
             fastify.log.warn({ name }, 'Unknown function call from Deepgram');
         }

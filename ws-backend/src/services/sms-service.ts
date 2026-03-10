@@ -26,12 +26,18 @@ export async function sendFollowUpSMS(
       return;
     }
 
+    // Format phone for display: +19495551001 → (949) 555-1001
+    const rawPhone = locationInfo.phone;
+    const digits = rawPhone.replace(/\D/g, '').replace(/^1/, '');
+    const displayPhone = `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
+
     const message = getSMSTemplate(outcomeDef.smsTemplate, {
       firstName: lead.firstName,
       offerType: lead.offerType,
       location: locationInfo.name.replace('NakedMD ', ''),
       locationAddress: locationInfo.address,
       locationHours: locationInfo.hours,
+      locationPhone: displayPhone,
     });
 
     await twilioService.sendSMS(lead.phone, message);

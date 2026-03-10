@@ -77,22 +77,6 @@ export function createDeepgramAgent(
                 required: ['reason'],
               },
             },
-            {
-              name: 'send_sms',
-              description:
-                'Send the prospect a confirmation text message with next steps, pricing info, or guest pass details.',
-              parameters: {
-                type: 'object',
-                properties: {
-                  template: {
-                    type: 'string',
-                    description:
-                      'The type of SMS to send: tour_confirmation, guest_pass_info, pricing_summary, or general_followup',
-                  },
-                },
-                required: ['template'],
-              },
-            },
           ],
         },
         speak: {

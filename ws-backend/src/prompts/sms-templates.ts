@@ -6,6 +6,7 @@ interface SMSTemplateData {
   location: string;
   locationAddress: string;
   locationHours: string;
+  locationPhone: string;
 }
 
 const OFFER_TYPE_DISPLAY: Record<OfferType, string> = {
@@ -27,7 +28,7 @@ Here's what to expect: Your provider will discuss your aesthetic goals, answer a
 ${data.locationAddress}
 ${data.locationHours}
 
-Questions before your visit? Reply here anytime.
+Questions before your visit? Call us at ${data.locationPhone} or reply here anytime.
 
 - Vi @ NakedMD`,
 
@@ -39,7 +40,7 @@ ${data.locationHours}
 
 Remember: New clients get $50 off their first treatment when they book during their consultation.
 
-We can't wait to meet you!
+We can't wait to meet you! Questions? Call us at ${data.locationPhone}.
 
 - Vi @ NakedMD`,
 
@@ -54,6 +55,8 @@ Popular services:
 
 Your ${displayOfferType(data.offerType)} is ready — visit us at NakedMD ${data.location} to get started!
 
+Questions? Call us at ${data.locationPhone}.
+
 - Vi @ NakedMD`,
 
   general_followup: (data) =>
@@ -64,7 +67,7 @@ Your ${displayOfferType(data.offerType)} is ready to go at NakedMD ${data.locati
 ${data.locationAddress}
 ${data.locationHours}
 
-When you're ready, we'd love to help you look and feel your absolute best. Reply here or call anytime!
+When you're ready, we'd love to help you look and feel your absolute best. Call us at ${data.locationPhone} or reply here anytime!
 
 - Vi @ NakedMD`,
 
@@ -76,6 +79,8 @@ ${data.locationAddress}
 ${data.locationHours}
 
 We're thrilled to have you. Our team is here to help you achieve your aesthetic goals — naturally and beautifully.
+
+Questions? Call us at ${data.locationPhone}.
 
 - Vi @ NakedMD`,
 };
